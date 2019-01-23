@@ -9,6 +9,12 @@ ALevelVisual::ALevelVisual()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	bGenerateOverlapEventsDuringLevelStreaming = true;
+
+	Level = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Level"));
+	Level->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
+	Level->SetWorldScale3D(FVector(1.0f, 1.0f, 2.0f));
+	Level->SetWorldLocation(FVector(0.0f, 0.0f, 100.0f));
 }
 
 // Called when the game starts or when spawned

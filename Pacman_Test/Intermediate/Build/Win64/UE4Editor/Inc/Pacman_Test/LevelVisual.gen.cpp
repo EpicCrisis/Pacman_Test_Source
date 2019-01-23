@@ -17,6 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeLevelVisual() {}
 	PACMAN_TEST_API UClass* Z_Construct_UClass_ALevelVisual();
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
 	UPackage* Z_Construct_UPackage__Script_Pacman_Test();
+	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 // End Cross Module References
 	void ALevelVisual::StaticRegisterNativesALevelVisual()
 	{
@@ -40,6 +41,17 @@ void EmptyLinkFunctionForGeneratedCodeLevelVisual() {}
 				{ "ModuleRelativePath", "LevelVisual.h" },
 			};
 #endif
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Level_MetaData[] = {
+				{ "Category", "LevelVisual" },
+				{ "EditInline", "true" },
+				{ "ModuleRelativePath", "LevelVisual.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Level = { UE4CodeGen_Private::EPropertyClass::Object, "Level", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000080009, 1, nullptr, STRUCT_OFFSET(ALevelVisual, Level), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(NewProp_Level_MetaData, ARRAY_COUNT(NewProp_Level_MetaData)) };
+			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_Level,
+			};
 			static const FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 				TCppClassTypeTraits<ALevelVisual>::IsAbstract,
 			};
@@ -48,7 +60,7 @@ void EmptyLinkFunctionForGeneratedCodeLevelVisual() {}
 				DependentSingletons, ARRAY_COUNT(DependentSingletons),
 				0x00900080u,
 				nullptr, 0,
-				nullptr, 0,
+				PropPointers, ARRAY_COUNT(PropPointers),
 				nullptr,
 				&StaticCppClassTypeInfo,
 				nullptr, 0,
@@ -58,7 +70,7 @@ void EmptyLinkFunctionForGeneratedCodeLevelVisual() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ALevelVisual, 1094537146);
+	IMPLEMENT_CLASS(ALevelVisual, 4144868628);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_ALevelVisual(Z_Construct_UClass_ALevelVisual, &ALevelVisual::StaticClass, TEXT("/Script/Pacman_Test"), TEXT("ALevelVisual"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(ALevelVisual);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

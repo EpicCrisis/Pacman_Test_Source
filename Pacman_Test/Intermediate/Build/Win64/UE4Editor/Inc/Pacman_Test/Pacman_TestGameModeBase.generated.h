@@ -8,6 +8,7 @@
 #include "ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class AActor;
 struct FVector;
 class AGridBlock;
 #ifdef PACMAN_TEST_Pacman_TestGameModeBase_generated_h
@@ -16,15 +17,16 @@ class AGridBlock;
 #define PACMAN_TEST_Pacman_TestGameModeBase_generated_h
 
 #define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_RPC_WRAPPERS \
-	virtual void WinEvent_Implementation(); \
+	virtual void WinEvent_Implementation(AActor* DestroyedActor); \
 	virtual void SpawnPacman_Implementation(); \
 	virtual void CreateGrid_Implementation(); \
  \
 	DECLARE_FUNCTION(execWinEvent) \
 	{ \
+		P_GET_OBJECT(AActor,Z_Param_DestroyedActor); \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->WinEvent_Implementation(); \
+		P_THIS->WinEvent_Implementation(Z_Param_DestroyedActor); \
 		P_NATIVE_END; \
 	} \
  \
@@ -74,15 +76,16 @@ class AGridBlock;
 
 
 #define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_RPC_WRAPPERS_NO_PURE_DECLS \
-	virtual void WinEvent_Implementation(); \
+	virtual void WinEvent_Implementation(AActor* DestroyedActor); \
 	virtual void SpawnPacman_Implementation(); \
 	virtual void CreateGrid_Implementation(); \
  \
 	DECLARE_FUNCTION(execWinEvent) \
 	{ \
+		P_GET_OBJECT(AActor,Z_Param_DestroyedActor); \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->WinEvent_Implementation(); \
+		P_THIS->WinEvent_Implementation(Z_Param_DestroyedActor); \
 		P_NATIVE_END; \
 	} \
  \
@@ -131,7 +134,13 @@ class AGridBlock;
 	}
 
 
-#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_EVENT_PARMS
+#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_EVENT_PARMS \
+	struct Pacman_TestGameModeBase_eventWinEvent_Parms \
+	{ \
+		AActor* DestroyedActor; \
+	};
+
+
 #define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_CALLBACK_WRAPPERS
 #define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_INCLASS_NO_PURE_DECLS \
 private: \

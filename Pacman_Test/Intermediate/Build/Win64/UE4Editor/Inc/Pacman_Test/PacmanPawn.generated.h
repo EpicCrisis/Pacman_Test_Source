@@ -13,9 +13,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define PACMAN_TEST_PacmanPawn_generated_h
 
-#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_12_RPC_WRAPPERS
-#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_12_RPC_WRAPPERS_NO_PURE_DECLS
-#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_12_INCLASS_NO_PURE_DECLS \
+#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_RPC_WRAPPERS
+#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_RPC_WRAPPERS_NO_PURE_DECLS
+#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAPacmanPawn(); \
 	friend PACMAN_TEST_API class UClass* Z_Construct_UClass_APacmanPawn(); \
@@ -25,7 +25,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_12_INCLASS \
+#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_INCLASS \
 private: \
 	static void StaticRegisterNativesAPacmanPawn(); \
 	friend PACMAN_TEST_API class UClass* Z_Construct_UClass_APacmanPawn(); \
@@ -35,7 +35,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_12_STANDARD_CONSTRUCTORS \
+#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API APacmanPawn(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(APacmanPawn) \
@@ -48,7 +48,7 @@ private: \
 public:
 
 
-#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_12_ENHANCED_CONSTRUCTORS \
+#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API APacmanPawn(APacmanPawn&&); \
@@ -59,26 +59,26 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(APacmanPawn); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(APacmanPawn)
 
 
-#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_12_PRIVATE_PROPERTY_OFFSET
-#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_9_PROLOG
-#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_12_GENERATED_BODY_LEGACY \
+#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_PRIVATE_PROPERTY_OFFSET
+#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_15_PROLOG
+#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Pacman_Test_Source_Pacman_Test_PacmanPawn_h_12_PRIVATE_PROPERTY_OFFSET \
-	Pacman_Test_Source_Pacman_Test_PacmanPawn_h_12_RPC_WRAPPERS \
-	Pacman_Test_Source_Pacman_Test_PacmanPawn_h_12_INCLASS \
-	Pacman_Test_Source_Pacman_Test_PacmanPawn_h_12_STANDARD_CONSTRUCTORS \
+	Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_PRIVATE_PROPERTY_OFFSET \
+	Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_RPC_WRAPPERS \
+	Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_INCLASS \
+	Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_12_GENERATED_BODY \
+#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Pacman_Test_Source_Pacman_Test_PacmanPawn_h_12_PRIVATE_PROPERTY_OFFSET \
-	Pacman_Test_Source_Pacman_Test_PacmanPawn_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
-	Pacman_Test_Source_Pacman_Test_PacmanPawn_h_12_INCLASS_NO_PURE_DECLS \
-	Pacman_Test_Source_Pacman_Test_PacmanPawn_h_12_ENHANCED_CONSTRUCTORS \
+	Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_PRIVATE_PROPERTY_OFFSET \
+	Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
+	Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_INCLASS_NO_PURE_DECLS \
+	Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

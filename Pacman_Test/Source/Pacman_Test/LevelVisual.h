@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Components/StaticMeshComponent.h"
 #include "LevelVisual.generated.h"
 
 UCLASS()
@@ -23,6 +24,12 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	
-	
+	// Variables and References
+public:
+	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* Level;
+
+	// Functions and Events
+public:
+
 };

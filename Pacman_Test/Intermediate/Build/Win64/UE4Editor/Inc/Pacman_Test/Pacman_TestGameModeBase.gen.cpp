@@ -24,6 +24,7 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacman_TestGameModeBase_SpawnPacman();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacman_TestGameModeBase_WinEvent();
+	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacman_TestGameModeBase_WorldToGridLocation();
 // End Cross Module References
 	static FName NAME_APacman_TestGameModeBase_CreateGrid = FName(TEXT("CreateGrid"));
@@ -37,9 +38,11 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 		ProcessEvent(FindFunctionChecked(NAME_APacman_TestGameModeBase_SpawnPacman),NULL);
 	}
 	static FName NAME_APacman_TestGameModeBase_WinEvent = FName(TEXT("WinEvent"));
-	void APacman_TestGameModeBase::WinEvent()
+	void APacman_TestGameModeBase::WinEvent(AActor* DestroyedActor)
 	{
-		ProcessEvent(FindFunctionChecked(NAME_APacman_TestGameModeBase_WinEvent),NULL);
+		Pacman_TestGameModeBase_eventWinEvent_Parms Parms;
+		Parms.DestroyedActor=DestroyedActor;
+		ProcessEvent(FindFunctionChecked(NAME_APacman_TestGameModeBase_WinEvent),&Parms);
 	}
 	void APacman_TestGameModeBase::StaticRegisterNativesAPacman_TestGameModeBase()
 	{
@@ -144,12 +147,16 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 		static UFunction* ReturnFunction = nullptr;
 		if (!ReturnFunction)
 		{
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_DestroyedActor = { UE4CodeGen_Private::EPropertyClass::Object, "DestroyedActor", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000080, 1, nullptr, STRUCT_OFFSET(Pacman_TestGameModeBase_eventWinEvent_Parms, DestroyedActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(nullptr, 0) };
+			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DestroyedActor,
+			};
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacman_TestGameModeBase, "WinEvent", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x08020C00, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacman_TestGameModeBase, "WinEvent", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x08020C00, sizeof(Pacman_TestGameModeBase_eventWinEvent_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
 		}
 		return ReturnFunction;
@@ -198,7 +205,7 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 				{ &Z_Construct_UFunction_APacman_TestGameModeBase_GetBlockFromGridLocation, "GetBlockFromGridLocation" }, // 4157491540
 				{ &Z_Construct_UFunction_APacman_TestGameModeBase_GetBlockFromWorldLocation, "GetBlockFromWorldLocation" }, // 14291376
 				{ &Z_Construct_UFunction_APacman_TestGameModeBase_SpawnPacman, "SpawnPacman" }, // 2480732313
-				{ &Z_Construct_UFunction_APacman_TestGameModeBase_WinEvent, "WinEvent" }, // 446180008
+				{ &Z_Construct_UFunction_APacman_TestGameModeBase_WinEvent, "WinEvent" }, // 2880112584
 				{ &Z_Construct_UFunction_APacman_TestGameModeBase_WorldToGridLocation, "WorldToGridLocation" }, // 525633219
 			};
 #if WITH_METADATA
@@ -287,7 +294,7 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APacman_TestGameModeBase, 3930704692);
+	IMPLEMENT_CLASS(APacman_TestGameModeBase, 4284265221);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_APacman_TestGameModeBase(Z_Construct_UClass_APacman_TestGameModeBase, &APacman_TestGameModeBase::StaticClass, TEXT("/Script/Pacman_Test"), TEXT("APacman_TestGameModeBase"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(APacman_TestGameModeBase);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

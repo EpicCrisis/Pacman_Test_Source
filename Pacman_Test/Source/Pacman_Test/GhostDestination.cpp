@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Pacman_TestGameModeBase.h"
 #include "GhostDestination.h"
+#include "Pacman_TestGameModeBase.h"
 
 
 // Sets default values

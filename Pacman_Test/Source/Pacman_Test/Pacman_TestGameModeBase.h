@@ -75,6 +75,6 @@ public:
 		void SpawnPacman();
 
 	UFUNCTION(BlueprintNativeEvent)
-		void WinEvent();
+		void WinEvent(class AActor* DestroyedActor);
 
 };

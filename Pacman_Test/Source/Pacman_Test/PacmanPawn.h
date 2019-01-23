@@ -2,8 +2,14 @@
 
 #pragma once
 
+// Forward Declaration
+class APacman_TestGameModeBase;
+
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "Components/StaticMeshComponent.h"
+#include "Components/BoxComponent.h"
+#include "Camera/CameraComponent.h"
 #include "PacmanPawn.generated.h"
 
 UCLASS()
@@ -26,6 +32,48 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	// Variables and References
+public:
+	UPROPERTY(EditAnywhere)
+		USceneComponent* SceneRoot;
+
+	UPROPERTY(EditAnywhere)
+		UStaticMeshComponent* Sphere;
+
+	UPROPERTY(EditAnywhere)
+		UBoxComponent* Box;
+
+	UPROPERTY(EditAnywhere)
+		UCameraComponent* Camera;
+
+	UPROPERTY(EditAnywhere)
+		APacman_TestGameModeBase* GameModeRef;
+
+	UPROPERTY(EditAnywhere)
+		FVector TempLocation;
+
+	UPROPERTY(EditAnywhere)
+		bool isDead;
 	
-	
+	UPROPERTY(EditAnywhere)
+		bool CanChangeDirection;
+
+	UPROPERTY(EditAnywhere)
+		int DirectionX;
+
+	UPROPERTY(EditAnywhere)
+		int DirectionY;
+
+	UPROPERTY(EditAnywhere)
+		int GhostPoints;
+
+	UPROPERTY(EditAnywhere)
+		FTimerHandle EatBonusTimerHandle;
+
+	UPROPERTY(EditAnywhere)
+		float BonusPointsTime;
+
+	// Functions and Events
+public:
+
 };

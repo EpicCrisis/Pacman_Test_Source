@@ -24,9 +24,9 @@
 /wd4838
 /w44668
 /I "C:\Program Files\Epic Games\UE_4.19\Engine\Source"
-/I "C:\Users\User\Documents\Unreal Projects\Pacman_Test\Source"
-/I "C:\Users\User\Documents\Unreal Projects\Pacman_Test\Intermediate\Build\Win64\UE4Editor\Inc\Pacman_Test"
-/I "C:\Users\User\Documents\Unreal Projects\Pacman_Test\Source\Pacman_Test"
+/I C:\Users\User\Documents\GitHub\Pacman_Test_Source\Pacman_Test\Source
+/I C:\Users\User\Documents\GitHub\Pacman_Test_Source\Pacman_Test\Intermediate\Build\Win64\UE4Editor\Inc\Pacman_Test
+/I C:\Users\User\Documents\GitHub\Pacman_Test_Source\Pacman_Test\Source\Pacman_Test
 /I "C:\Program Files\Epic Games\UE_4.19\Engine\Source\Runtime\Core\Public"
 /I "C:\Program Files\Epic Games\UE_4.19\Engine\Source\Runtime\Core\Public\Internationalization"
 /I "C:\Program Files\Epic Games\UE_4.19\Engine\Source\Runtime\Core\Public\Async"
@@ -368,9 +368,9 @@
 /FI"C:\Program Files\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h"
 /Yu"C:\Program Files\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h"
 /Fp"C:\Program Files\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.pch"
-"C:\Users\User\Documents\Unreal Projects\Pacman_Test\Source\Pacman_Test\PacDot.cpp"
-/FI"C:\Users\User\Documents\Unreal Projects\Pacman_Test\Intermediate\Build\Win64\UE4Editor\Development\Pacman_Test\Definitions.Pacman_Test.h"
-/Fo"C:\Users\User\Documents\Unreal Projects\Pacman_Test\Intermediate\Build\Win64\UE4Editor\Development\Pacman_Test\PacDot.cpp.obj"
+"C:\Users\User\Documents\GitHub\Pacman_Test_Source\Pacman_Test\Source\Pacman_Test\PacDot.cpp"
+/FI"C:\Users\User\Documents\GitHub\Pacman_Test_Source\Pacman_Test\Intermediate\Build\Win64\UE4Editor\Development\Pacman_Test\Definitions.Pacman_Test.h"
+/Fo"C:\Users\User\Documents\GitHub\Pacman_Test_Source\Pacman_Test\Intermediate\Build\Win64\UE4Editor\Development\Pacman_Test\PacDot.cpp.obj"
 /TP
 /GR-
 /W4

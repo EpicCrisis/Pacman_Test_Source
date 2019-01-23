@@ -39,7 +39,7 @@ void AGridBlock::Tick(float DeltaTime)
 
 void AGridBlock::ActorOverlap(class AActor* ThisActor, AActor* OtherActor)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, "Overlap Complete");
+	//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, "Overlap Complete");
 
 	if (Checked == false)
 	{
