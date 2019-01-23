@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<None Include="..\..\Pacman_Test.uproject" />
+		<Filter Include="Source">
+			<UniqueIdentifier>{4B95AEDA-0D01-4995-9946-614A7AF760A9}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\Pacman_Test.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<None Include="..\..\Source\Pacman_TestEditor.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<Filter Include="Config">
+			<UniqueIdentifier>{854A4D9C-6973-4D00-BFD2-99F8B97A53CA}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Config\DefaultEngine.ini">
+			<Filter>Config</Filter>
+		</None >
+		<Filter Include="Source\Pacman_Test">
+			<UniqueIdentifier>{0FEFAEBC-8650-4FC1-B588-0892E7E7D44E}</UniqueIdentifier>
+		</Filter>
+		<ClCompile Include="..\..\Source\Pacman_Test\AI_Controller.cpp">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Pacman_Test\AI_Controller.h">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\Pacman_Test\ENUM_GhostType.cpp">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Pacman_Test\ENUM_GhostType.h">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\Pacman_Test\GhostCharacter.cpp">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Pacman_Test\GhostCharacter.h">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\Pacman_Test\GhostDestination.cpp">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Pacman_Test\GhostDestination.h">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\Pacman_Test\GhostHouseTrigger.cpp">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Pacman_Test\GhostHouseTrigger.h">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\Pacman_Test\GridBlock.cpp">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Pacman_Test\GridBlock.h">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\Pacman_Test\LevelVisual.cpp">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Pacman_Test\LevelVisual.h">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\Pacman_Test\PacDot.cpp">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Pacman_Test\PacDot.h">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\Pacman_Test\PacmanPawn.cpp">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Pacman_Test\PacmanPawn.h">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClInclude >
+		<None Include="..\..\Source\Pacman_Test\Pacman_Test.Build.cs">
+			<Filter>Source\Pacman_Test</Filter>
+		</None >
+		<ClCompile Include="..\..\Source\Pacman_Test\Pacman_Test.cpp">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Pacman_Test\Pacman_Test.h">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\Pacman_Test\Pacman_TestGameModeBase.cpp">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Pacman_Test\Pacman_TestGameModeBase.h">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\Pacman_Test\Struct_GhostAnimation.cpp">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Pacman_Test\Struct_GhostAnimation.h">
+			<Filter>Source\Pacman_Test</Filter>
+		</ClInclude >
+	</ItemGroup>
+</Project>

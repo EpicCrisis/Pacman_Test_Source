@@ -1,0 +1,3 @@
+C:\Users\User\Documents\Unreal Projects\Pacman_Test\Source\Pacman_Test\Pacman_Test.Build.cs
+C:\Users\User\Documents\Unreal Projects\Pacman_Test\Source\Pacman_Test.Target.cs
+C:\Users\User\Documents\Unreal Projects\Pacman_Test\Source\Pacman_TestEditor.Target.cs
