@@ -32,6 +32,20 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	// Hard Variables, for condition checking such as DoOnce and Delay.
+private:
+	UPROPERTY()
+		bool DoOnceDead = false;
+
+	UPROPERTY()
+		bool DoOnceMove = false;
+
+	UPROPERTY()
+		FTimerHandle DelayDeathTimerHandle;
+
+	UPROPERTY()
+		FTimerHandle LoadLevelTimerHandle;
+
 	// Variables and References
 public:
 	UPROPERTY(EditAnywhere)
@@ -75,5 +89,24 @@ public:
 
 	// Functions and Events
 public:
+	UFUNCTION()
+		void ActorDestroyed(AActor* DestroyedActor);
 
+	UFUNCTION()
+		void ActorOverlap(class AActor* ThisActor, AActor* OtherActor);
+
+	UFUNCTION()
+		void GetGhostPoints();
+
+	UFUNCTION()
+		void EatGhostEvent();
+
+	UFUNCTION()
+		void ResetBonusPoints();
+
+	UFUNCTION()
+		void CallGameOver();
+
+	UFUNCTION()
+		void RestartMap();
 };

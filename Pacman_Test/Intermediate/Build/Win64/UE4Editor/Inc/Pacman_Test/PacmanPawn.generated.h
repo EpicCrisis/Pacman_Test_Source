@@ -8,13 +8,136 @@
 #include "ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class AActor;
 #ifdef PACMAN_TEST_PacmanPawn_generated_h
 #error "PacmanPawn.generated.h already included, missing '#pragma once' in PacmanPawn.h"
 #endif
 #define PACMAN_TEST_PacmanPawn_generated_h
 
-#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_RPC_WRAPPERS
-#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_RPC_WRAPPERS_NO_PURE_DECLS
+#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execRestartMap) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->RestartMap(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execCallGameOver) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->CallGameOver(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execResetBonusPoints) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->ResetBonusPoints(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execEatGhostEvent) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->EatGhostEvent(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetGhostPoints) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->GetGhostPoints(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execActorOverlap) \
+	{ \
+		P_GET_OBJECT(AActor,Z_Param_ThisActor); \
+		P_GET_OBJECT(AActor,Z_Param_OtherActor); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->ActorOverlap(Z_Param_ThisActor,Z_Param_OtherActor); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execActorDestroyed) \
+	{ \
+		P_GET_OBJECT(AActor,Z_Param_DestroyedActor); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->ActorDestroyed(Z_Param_DestroyedActor); \
+		P_NATIVE_END; \
+	}
+
+
+#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execRestartMap) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->RestartMap(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execCallGameOver) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->CallGameOver(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execResetBonusPoints) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->ResetBonusPoints(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execEatGhostEvent) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->EatGhostEvent(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetGhostPoints) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->GetGhostPoints(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execActorOverlap) \
+	{ \
+		P_GET_OBJECT(AActor,Z_Param_ThisActor); \
+		P_GET_OBJECT(AActor,Z_Param_OtherActor); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->ActorOverlap(Z_Param_ThisActor,Z_Param_OtherActor); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execActorDestroyed) \
+	{ \
+		P_GET_OBJECT(AActor,Z_Param_DestroyedActor); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->ActorDestroyed(Z_Param_DestroyedActor); \
+		P_NATIVE_END; \
+	}
+
+
 #define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAPacmanPawn(); \
@@ -59,7 +182,13 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(APacmanPawn); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(APacmanPawn)
 
 
-#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_PRIVATE_PROPERTY_OFFSET
+#define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_PRIVATE_PROPERTY_OFFSET \
+	FORCEINLINE static uint32 __PPO__DoOnceDead() { return STRUCT_OFFSET(APacmanPawn, DoOnceDead); } \
+	FORCEINLINE static uint32 __PPO__DoOnceMove() { return STRUCT_OFFSET(APacmanPawn, DoOnceMove); } \
+	FORCEINLINE static uint32 __PPO__DelayDeathTimerHandle() { return STRUCT_OFFSET(APacmanPawn, DelayDeathTimerHandle); } \
+	FORCEINLINE static uint32 __PPO__LoadLevelTimerHandle() { return STRUCT_OFFSET(APacmanPawn, LoadLevelTimerHandle); }
+
+
 #define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_15_PROLOG
 #define Pacman_Test_Source_Pacman_Test_PacmanPawn_h_18_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \

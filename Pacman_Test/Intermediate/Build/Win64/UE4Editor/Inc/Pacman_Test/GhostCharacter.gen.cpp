@@ -21,6 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_AvoidPlayer();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_BackToNormal();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_CanBeEatenAnimations();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_CanBeEatenEvent();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_ChaseEvent();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_CheckIfCanBeEaten();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_CheckMovingLeft();
@@ -63,6 +64,11 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 	void AGhostCharacter::BackToNormal()
 	{
 		ProcessEvent(FindFunctionChecked(NAME_AGhostCharacter_BackToNormal),NULL);
+	}
+	static FName NAME_AGhostCharacter_CanBeEatenEvent = FName(TEXT("CanBeEatenEvent"));
+	void AGhostCharacter::CanBeEatenEvent()
+	{
+		ProcessEvent(FindFunctionChecked(NAME_AGhostCharacter_CanBeEatenEvent),NULL);
 	}
 	static FName NAME_AGhostCharacter_ChaseEvent = FName(TEXT("ChaseEvent"));
 	void AGhostCharacter::ChaseEvent()
@@ -112,6 +118,7 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 			{ "AvoidPlayer", &AGhostCharacter::execAvoidPlayer },
 			{ "BackToNormal", &AGhostCharacter::execBackToNormal },
 			{ "CanBeEatenAnimations", &AGhostCharacter::execCanBeEatenAnimations },
+			{ "CanBeEatenEvent", &AGhostCharacter::execCanBeEatenEvent },
 			{ "ChaseEvent", &AGhostCharacter::execChaseEvent },
 			{ "CheckIfCanBeEaten", &AGhostCharacter::execCheckIfCanBeEaten },
 			{ "CheckMovingLeft", &AGhostCharacter::execCheckMovingLeft },
@@ -194,6 +201,21 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 			};
 #endif
 			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "CanBeEatenAnimations", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_AGhostCharacter_CanBeEatenEvent()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "CanBeEatenEvent", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x08020C00, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
 		}
 		return ReturnFunction;
@@ -561,6 +583,7 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 				{ &Z_Construct_UFunction_AGhostCharacter_AvoidPlayer, "AvoidPlayer" }, // 1655356525
 				{ &Z_Construct_UFunction_AGhostCharacter_BackToNormal, "BackToNormal" }, // 968076247
 				{ &Z_Construct_UFunction_AGhostCharacter_CanBeEatenAnimations, "CanBeEatenAnimations" }, // 1408563443
+				{ &Z_Construct_UFunction_AGhostCharacter_CanBeEatenEvent, "CanBeEatenEvent" }, // 1741304009
 				{ &Z_Construct_UFunction_AGhostCharacter_ChaseEvent, "ChaseEvent" }, // 1975542402
 				{ &Z_Construct_UFunction_AGhostCharacter_CheckIfCanBeEaten, "CheckIfCanBeEaten" }, // 3070358252
 				{ &Z_Construct_UFunction_AGhostCharacter_CheckMovingLeft, "CheckMovingLeft" }, // 490421928
@@ -762,7 +785,7 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AGhostCharacter, 805354461);
+	IMPLEMENT_CLASS(AGhostCharacter, 771257564);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AGhostCharacter(Z_Construct_UClass_AGhostCharacter, &AGhostCharacter::StaticClass, TEXT("/Script/Pacman_Test"), TEXT("AGhostCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AGhostCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

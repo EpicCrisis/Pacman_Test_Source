@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "PacDot.h"
+#include "Pacman_TestGameModeBase.h"
 
 
 // Sets default values
@@ -11,24 +12,27 @@ APacDot::APacDot()
 
 	bGenerateOverlapEventsDuringLevelStreaming = true;
 
+	isPowerUp = false;
+	PowerUpScale = FVector(0.5f, 0.5f, 0.5f);
+	NormalScale = FVector(0.25f, 0.25f, 0.25f);
+	Points = 10;
+
 	Sphere = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Sphere"));
 	Sphere->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepWorldTransform);
 	Sphere->SetWorldScale3D(NormalScale);
 
 	OnActorBeginOverlap.AddDynamic(this, &APacDot::ActorOverlap);
+	//OnDestroyed.AddDynamic(this, &APacDot::ActorDestroyed);
 
 	RootComponent = Sphere;
-
-	isPowerUp = false;
-	PowerUpScale = FVector(0.5f, 0.5f, 0.5f);
-	NormalScale = FVector(0.25f, 0.25f, 0.25f);
-	Points = 10;
 }
 
 // Called when the game starts or when spawned
 void APacDot::BeginPlay()
 {
 	Super::BeginPlay();
+
+	GameModeRef = (APacman_TestGameModeBase *)GetWorld()->GetAuthGameMode();
 
 	CheckPowerUp();
 }
@@ -46,16 +50,16 @@ void APacDot::ActorOverlap(AActor * ThisActor, AActor * OtherActor)
 
 	if (isPowerUp)
 	{
-		//PlayerPawn->EatGhostEvent_Implementation();
+		//PlayerPawn->EatGhostEvent();
 	}
-	else
-	{
-		APacman_TestGameModeBase* GameMode = (APacman_TestGameModeBase *)GetWorld()->GetAuthGameMode();
 
-		GameMode->Score += Points;
+	GameModeRef->Score += Points;
 
-		Destroy();
-	}
+	GameModeRef->EatenDots += 1;
+
+	GameModeRef->WinEvent();
+
+	Destroy();
 }
 
 void APacDot::CheckPowerUp()
@@ -69,4 +73,3 @@ void APacDot::CheckPowerUp()
 		Sphere->SetWorldScale3D(NormalScale);
 	}
 }
-

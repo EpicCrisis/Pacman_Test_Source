@@ -35,26 +35,35 @@ public:
 
 	// Variables and References
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		TArray<AGridBlock*> BlocksArray;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		int MaxX;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		int MaxY;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		float Spacing;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		int Score;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		int Lives;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		int BonusGhostPoints;
+
+	UPROPERTY(EditAnywhere)
+		int TotalDots;
+
+	UPROPERTY(EditAnywhere)
+		int EatenDots;
+
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<class APawn> PacPlayer;
 
 	// Functions and Events
 public:
@@ -68,13 +77,13 @@ public:
 	UFUNCTION()
 		AGridBlock* GetBlockFromWorldLocation(FVector Location);
 
+	UFUNCTION()
+		void WinEvent();
+
 	UFUNCTION(BlueprintNativeEvent)
 		void CreateGrid();
 
 	UFUNCTION(BlueprintNativeEvent)
 		void SpawnPacman();
-
-	UFUNCTION(BlueprintNativeEvent)
-		void WinEvent(class AActor* DestroyedActor);
 
 };

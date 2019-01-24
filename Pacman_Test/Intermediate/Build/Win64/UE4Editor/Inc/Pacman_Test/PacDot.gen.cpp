@@ -104,35 +104,35 @@ void EmptyLinkFunctionForGeneratedCodePacDot() {}
 				{ "ModuleRelativePath", "PacDot.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Sphere = { UE4CodeGen_Private::EPropertyClass::Object, "Sphere", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000080009, 1, nullptr, STRUCT_OFFSET(APacDot, Sphere), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(NewProp_Sphere_MetaData, ARRAY_COUNT(NewProp_Sphere_MetaData)) };
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Sphere = { UE4CodeGen_Private::EPropertyClass::Object, "Sphere", RF_Public|RF_Transient|RF_MarkAsNative, 0x001000000008000d, 1, nullptr, STRUCT_OFFSET(APacDot, Sphere), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(NewProp_Sphere_MetaData, ARRAY_COUNT(NewProp_Sphere_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Points_MetaData[] = {
 				{ "Category", "PacDot" },
 				{ "ModuleRelativePath", "PacDot.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_Points = { UE4CodeGen_Private::EPropertyClass::Int, "Points", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacDot, Points), METADATA_PARAMS(NewProp_Points_MetaData, ARRAY_COUNT(NewProp_Points_MetaData)) };
+			static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_Points = { UE4CodeGen_Private::EPropertyClass::Int, "Points", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000005, 1, nullptr, STRUCT_OFFSET(APacDot, Points), METADATA_PARAMS(NewProp_Points_MetaData, ARRAY_COUNT(NewProp_Points_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_GameModeRef_MetaData[] = {
 				{ "Category", "PacDot" },
 				{ "ModuleRelativePath", "PacDot.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_GameModeRef = { UE4CodeGen_Private::EPropertyClass::Object, "GameModeRef", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacDot, GameModeRef), Z_Construct_UClass_APacman_TestGameModeBase_NoRegister, METADATA_PARAMS(NewProp_GameModeRef_MetaData, ARRAY_COUNT(NewProp_GameModeRef_MetaData)) };
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_GameModeRef = { UE4CodeGen_Private::EPropertyClass::Object, "GameModeRef", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000005, 1, nullptr, STRUCT_OFFSET(APacDot, GameModeRef), Z_Construct_UClass_APacman_TestGameModeBase_NoRegister, METADATA_PARAMS(NewProp_GameModeRef_MetaData, ARRAY_COUNT(NewProp_GameModeRef_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_NormalScale_MetaData[] = {
 				{ "Category", "PacDot" },
 				{ "ModuleRelativePath", "PacDot.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FStructPropertyParams NewProp_NormalScale = { UE4CodeGen_Private::EPropertyClass::Struct, "NormalScale", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacDot, NormalScale), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(NewProp_NormalScale_MetaData, ARRAY_COUNT(NewProp_NormalScale_MetaData)) };
+			static const UE4CodeGen_Private::FStructPropertyParams NewProp_NormalScale = { UE4CodeGen_Private::EPropertyClass::Struct, "NormalScale", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000005, 1, nullptr, STRUCT_OFFSET(APacDot, NormalScale), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(NewProp_NormalScale_MetaData, ARRAY_COUNT(NewProp_NormalScale_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_PowerUpScale_MetaData[] = {
 				{ "Category", "PacDot" },
 				{ "ModuleRelativePath", "PacDot.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FStructPropertyParams NewProp_PowerUpScale = { UE4CodeGen_Private::EPropertyClass::Struct, "PowerUpScale", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacDot, PowerUpScale), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(NewProp_PowerUpScale_MetaData, ARRAY_COUNT(NewProp_PowerUpScale_MetaData)) };
+			static const UE4CodeGen_Private::FStructPropertyParams NewProp_PowerUpScale = { UE4CodeGen_Private::EPropertyClass::Struct, "PowerUpScale", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000005, 1, nullptr, STRUCT_OFFSET(APacDot, PowerUpScale), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(NewProp_PowerUpScale_MetaData, ARRAY_COUNT(NewProp_PowerUpScale_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_isPowerUp_MetaData[] = {
 				{ "Category", "PacDot" },
@@ -140,7 +140,7 @@ void EmptyLinkFunctionForGeneratedCodePacDot() {}
 			};
 #endif
 			auto NewProp_isPowerUp_SetBit = [](void* Obj){ ((APacDot*)Obj)->isPowerUp = 1; };
-			static const UE4CodeGen_Private::FBoolPropertyParams NewProp_isPowerUp = { UE4CodeGen_Private::EPropertyClass::Bool, "isPowerUp", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(APacDot), &UE4CodeGen_Private::TBoolSetBitWrapper<decltype(NewProp_isPowerUp_SetBit)>::SetBit, METADATA_PARAMS(NewProp_isPowerUp_MetaData, ARRAY_COUNT(NewProp_isPowerUp_MetaData)) };
+			static const UE4CodeGen_Private::FBoolPropertyParams NewProp_isPowerUp = { UE4CodeGen_Private::EPropertyClass::Bool, "isPowerUp", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000005, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(APacDot), &UE4CodeGen_Private::TBoolSetBitWrapper<decltype(NewProp_isPowerUp_SetBit)>::SetBit, METADATA_PARAMS(NewProp_isPowerUp_MetaData, ARRAY_COUNT(NewProp_isPowerUp_MetaData)) };
 			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_Sphere,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_Points,
@@ -167,7 +167,7 @@ void EmptyLinkFunctionForGeneratedCodePacDot() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APacDot, 1455036575);
+	IMPLEMENT_CLASS(APacDot, 2689234243);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_APacDot(Z_Construct_UClass_APacDot, &APacDot::StaticClass, TEXT("/Script/Pacman_Test"), TEXT("APacDot"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(APacDot);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

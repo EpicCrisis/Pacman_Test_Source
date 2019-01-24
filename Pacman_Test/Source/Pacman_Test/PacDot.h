@@ -2,9 +2,11 @@
 
 #pragma once
 
+// Forward Declaration
+class Pacman_TestGameModeBase;
+
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Pacman_TestGameModeBase.h"
 #include "Components/StaticMeshComponent.h"
 #include "PacmanPawn.h"
 #include "PacDot.generated.h"
@@ -28,22 +30,22 @@ public:
 
 	// Variables and References
 public:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool isPowerUp;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FVector PowerUpScale;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FVector NormalScale;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		APacman_TestGameModeBase* GameModeRef;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int Points;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UStaticMeshComponent* Sphere;
 
 	// Functions and Events

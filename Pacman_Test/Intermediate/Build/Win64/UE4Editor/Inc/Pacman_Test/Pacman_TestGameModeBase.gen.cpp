@@ -24,8 +24,9 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacman_TestGameModeBase_SpawnPacman();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacman_TestGameModeBase_WinEvent();
-	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacman_TestGameModeBase_WorldToGridLocation();
+	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
+	ENGINE_API UClass* Z_Construct_UClass_APawn_NoRegister();
 // End Cross Module References
 	static FName NAME_APacman_TestGameModeBase_CreateGrid = FName(TEXT("CreateGrid"));
 	void APacman_TestGameModeBase::CreateGrid()
@@ -36,13 +37,6 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 	void APacman_TestGameModeBase::SpawnPacman()
 	{
 		ProcessEvent(FindFunctionChecked(NAME_APacman_TestGameModeBase_SpawnPacman),NULL);
-	}
-	static FName NAME_APacman_TestGameModeBase_WinEvent = FName(TEXT("WinEvent"));
-	void APacman_TestGameModeBase::WinEvent(AActor* DestroyedActor)
-	{
-		Pacman_TestGameModeBase_eventWinEvent_Parms Parms;
-		Parms.DestroyedActor=DestroyedActor;
-		ProcessEvent(FindFunctionChecked(NAME_APacman_TestGameModeBase_WinEvent),&Parms);
 	}
 	void APacman_TestGameModeBase::StaticRegisterNativesAPacman_TestGameModeBase()
 	{
@@ -147,16 +141,12 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 		static UFunction* ReturnFunction = nullptr;
 		if (!ReturnFunction)
 		{
-			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_DestroyedActor = { UE4CodeGen_Private::EPropertyClass::Object, "DestroyedActor", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000080, 1, nullptr, STRUCT_OFFSET(Pacman_TestGameModeBase_eventWinEvent_Parms, DestroyedActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(nullptr, 0) };
-			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
-				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DestroyedActor,
-			};
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacman_TestGameModeBase, "WinEvent", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x08020C00, sizeof(Pacman_TestGameModeBase_eventWinEvent_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacman_TestGameModeBase, "WinEvent", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
 		}
 		return ReturnFunction;
@@ -205,7 +195,7 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 				{ &Z_Construct_UFunction_APacman_TestGameModeBase_GetBlockFromGridLocation, "GetBlockFromGridLocation" }, // 4157491540
 				{ &Z_Construct_UFunction_APacman_TestGameModeBase_GetBlockFromWorldLocation, "GetBlockFromWorldLocation" }, // 14291376
 				{ &Z_Construct_UFunction_APacman_TestGameModeBase_SpawnPacman, "SpawnPacman" }, // 2480732313
-				{ &Z_Construct_UFunction_APacman_TestGameModeBase_WinEvent, "WinEvent" }, // 2880112584
+				{ &Z_Construct_UFunction_APacman_TestGameModeBase_WinEvent, "WinEvent" }, // 3347672099
 				{ &Z_Construct_UFunction_APacman_TestGameModeBase_WorldToGridLocation, "WorldToGridLocation" }, // 525633219
 			};
 #if WITH_METADATA
@@ -217,56 +207,80 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 			};
 #endif
 #if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_PacPlayer_MetaData[] = {
+				{ "Category", "Pacman_TestGameModeBase" },
+				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FClassPropertyParams NewProp_PacPlayer = { UE4CodeGen_Private::EPropertyClass::Class, "PacPlayer", RF_Public|RF_Transient|RF_MarkAsNative, 0x0014000000000001, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, PacPlayer), Z_Construct_UClass_APawn_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(NewProp_PacPlayer_MetaData, ARRAY_COUNT(NewProp_PacPlayer_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_EatenDots_MetaData[] = {
+				{ "Category", "Pacman_TestGameModeBase" },
+				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_EatenDots = { UE4CodeGen_Private::EPropertyClass::Int, "EatenDots", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, EatenDots), METADATA_PARAMS(NewProp_EatenDots_MetaData, ARRAY_COUNT(NewProp_EatenDots_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_TotalDots_MetaData[] = {
+				{ "Category", "Pacman_TestGameModeBase" },
+				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_TotalDots = { UE4CodeGen_Private::EPropertyClass::Int, "TotalDots", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, TotalDots), METADATA_PARAMS(NewProp_TotalDots_MetaData, ARRAY_COUNT(NewProp_TotalDots_MetaData)) };
+#if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_BonusGhostPoints_MetaData[] = {
 				{ "Category", "Pacman_TestGameModeBase" },
 				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_BonusGhostPoints = { UE4CodeGen_Private::EPropertyClass::Int, "BonusGhostPoints", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000005, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, BonusGhostPoints), METADATA_PARAMS(NewProp_BonusGhostPoints_MetaData, ARRAY_COUNT(NewProp_BonusGhostPoints_MetaData)) };
+			static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_BonusGhostPoints = { UE4CodeGen_Private::EPropertyClass::Int, "BonusGhostPoints", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, BonusGhostPoints), METADATA_PARAMS(NewProp_BonusGhostPoints_MetaData, ARRAY_COUNT(NewProp_BonusGhostPoints_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Lives_MetaData[] = {
 				{ "Category", "Pacman_TestGameModeBase" },
 				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_Lives = { UE4CodeGen_Private::EPropertyClass::Int, "Lives", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000005, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, Lives), METADATA_PARAMS(NewProp_Lives_MetaData, ARRAY_COUNT(NewProp_Lives_MetaData)) };
+			static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_Lives = { UE4CodeGen_Private::EPropertyClass::Int, "Lives", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, Lives), METADATA_PARAMS(NewProp_Lives_MetaData, ARRAY_COUNT(NewProp_Lives_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Score_MetaData[] = {
 				{ "Category", "Pacman_TestGameModeBase" },
 				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_Score = { UE4CodeGen_Private::EPropertyClass::Int, "Score", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000005, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, Score), METADATA_PARAMS(NewProp_Score_MetaData, ARRAY_COUNT(NewProp_Score_MetaData)) };
+			static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_Score = { UE4CodeGen_Private::EPropertyClass::Int, "Score", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, Score), METADATA_PARAMS(NewProp_Score_MetaData, ARRAY_COUNT(NewProp_Score_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Spacing_MetaData[] = {
 				{ "Category", "Pacman_TestGameModeBase" },
 				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FFloatPropertyParams NewProp_Spacing = { UE4CodeGen_Private::EPropertyClass::Float, "Spacing", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000005, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, Spacing), METADATA_PARAMS(NewProp_Spacing_MetaData, ARRAY_COUNT(NewProp_Spacing_MetaData)) };
+			static const UE4CodeGen_Private::FFloatPropertyParams NewProp_Spacing = { UE4CodeGen_Private::EPropertyClass::Float, "Spacing", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, Spacing), METADATA_PARAMS(NewProp_Spacing_MetaData, ARRAY_COUNT(NewProp_Spacing_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MaxY_MetaData[] = {
 				{ "Category", "Pacman_TestGameModeBase" },
 				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_MaxY = { UE4CodeGen_Private::EPropertyClass::Int, "MaxY", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000005, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, MaxY), METADATA_PARAMS(NewProp_MaxY_MetaData, ARRAY_COUNT(NewProp_MaxY_MetaData)) };
+			static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_MaxY = { UE4CodeGen_Private::EPropertyClass::Int, "MaxY", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, MaxY), METADATA_PARAMS(NewProp_MaxY_MetaData, ARRAY_COUNT(NewProp_MaxY_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MaxX_MetaData[] = {
 				{ "Category", "Pacman_TestGameModeBase" },
 				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_MaxX = { UE4CodeGen_Private::EPropertyClass::Int, "MaxX", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000005, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, MaxX), METADATA_PARAMS(NewProp_MaxX_MetaData, ARRAY_COUNT(NewProp_MaxX_MetaData)) };
+			static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_MaxX = { UE4CodeGen_Private::EPropertyClass::Int, "MaxX", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, MaxX), METADATA_PARAMS(NewProp_MaxX_MetaData, ARRAY_COUNT(NewProp_MaxX_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_BlocksArray_MetaData[] = {
 				{ "Category", "Pacman_TestGameModeBase" },
 				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FArrayPropertyParams NewProp_BlocksArray = { UE4CodeGen_Private::EPropertyClass::Array, "BlocksArray", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000005, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, BlocksArray), METADATA_PARAMS(NewProp_BlocksArray_MetaData, ARRAY_COUNT(NewProp_BlocksArray_MetaData)) };
+			static const UE4CodeGen_Private::FArrayPropertyParams NewProp_BlocksArray = { UE4CodeGen_Private::EPropertyClass::Array, "BlocksArray", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, BlocksArray), METADATA_PARAMS(NewProp_BlocksArray_MetaData, ARRAY_COUNT(NewProp_BlocksArray_MetaData)) };
 			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_BlocksArray_Inner = { UE4CodeGen_Private::EPropertyClass::Object, "BlocksArray", RF_Public|RF_Transient|RF_MarkAsNative, 0x0000000000000000, 1, nullptr, 0, Z_Construct_UClass_AGridBlock_NoRegister, METADATA_PARAMS(nullptr, 0) };
 			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_PacPlayer,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_EatenDots,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_TotalDots,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_BonusGhostPoints,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_Lives,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_Score,
@@ -294,7 +308,7 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APacman_TestGameModeBase, 4284265221);
+	IMPLEMENT_CLASS(APacman_TestGameModeBase, 990846231);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_APacman_TestGameModeBase(Z_Construct_UClass_APacman_TestGameModeBase, &APacman_TestGameModeBase::StaticClass, TEXT("/Script/Pacman_Test"), TEXT("APacman_TestGameModeBase"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(APacman_TestGameModeBase);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

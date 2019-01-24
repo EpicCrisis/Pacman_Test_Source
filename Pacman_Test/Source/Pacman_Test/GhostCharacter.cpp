@@ -116,6 +116,10 @@ void AGhostCharacter::IsWithinAmbushDistance()
 {
 }
 
+void AGhostCharacter::CanBeEatenEvent_Implementation()
+{
+}
+
 void AGhostCharacter::BackToNormal_Implementation()
 {
 }

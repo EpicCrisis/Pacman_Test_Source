@@ -137,6 +137,9 @@ public:
 		void IsWithinAmbushDistance();
 
 	UFUNCTION(BlueprintNativeEvent)
+		void CanBeEatenEvent();
+
+	UFUNCTION(BlueprintNativeEvent)
 		void BackToNormal();
 
 	UFUNCTION(BlueprintNativeEvent)

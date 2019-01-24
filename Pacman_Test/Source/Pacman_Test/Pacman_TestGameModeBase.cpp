@@ -29,6 +29,11 @@ void APacman_TestGameModeBase::BeginPlay()
 
 	CreateGrid();
 
+	for (TActorIterator<APacDot> ActorItr(GetWorld()); ActorItr; ++ActorItr)
+	{
+		TotalDots = ActorItr.GetProgressNumerator();
+	}
+
 	for (TActorIterator<AGhostCharacter> ActorItr(GetWorld()); ActorItr; ++ActorItr)
 	{
 		ActorItr->FindNextDestination();
@@ -42,6 +47,8 @@ void APacman_TestGameModeBase::BeginPlay()
 
 void APacman_TestGameModeBase::Tick(float DeltaTime)
 {
+	GEngine->AddOnScreenDebugMessage(-1, DeltaTime, FColor::Cyan, "Score : ");
+	GEngine->AddOnScreenDebugMessage(-1, DeltaTime, FColor::Cyan, "Lives : ");
 }
 
 FVector APacman_TestGameModeBase::WorldToGridLocation(FVector Location)
@@ -75,6 +82,14 @@ AGridBlock* APacman_TestGameModeBase::GetBlockFromWorldLocation(FVector Location
 	return GetBlockFromGridLocation(xCoord, yCoord);
 }
 
+void APacman_TestGameModeBase::WinEvent()
+{
+	if (EatenDots == TotalDots)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, "You Win!");
+	}
+}
+
 void APacman_TestGameModeBase::CreateGrid_Implementation()
 {
 	BlocksArray.Empty();
@@ -91,11 +106,6 @@ void APacman_TestGameModeBase::CreateGrid_Implementation()
 
 		BlocksArray.Add(SpawnBlock);
 	}
-
-	for (TActorIterator<APacDot> ActorItr(GetWorld()); ActorItr; ++ActorItr)
-	{
-		ActorItr->OnDestroyed.AddDynamic(this, &APacman_TestGameModeBase::WinEvent);
-	}
 }
 
 void APacman_TestGameModeBase::SpawnPacman_Implementation()
@@ -109,18 +119,7 @@ void APacman_TestGameModeBase::SpawnPacman_Implementation()
 		APlayerController* Controller = UGameplayStatics::GetPlayerController(GetWorld(), 0);
 		Controller->UnPossess();
 
-		APacmanPawn* SpawnPacman = GetWorld()->SpawnActor<APacmanPawn>(Loc, Rot, SpawnInfo);
-		Controller->Possess(SpawnPacman);
-	}
-}
-
-void APacman_TestGameModeBase::WinEvent_Implementation(class AActor* DestroyedActor)
-{
-	for (TActorIterator<APacDot> ActorItr(GetWorld()); ActorItr; ++ActorItr)
-	{
-		if (ActorItr.GetProgressNumerator() == 2)
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, "You Win!");
-		}
+		APacmanPawn* Spawn = GetWorld()->SpawnActor<APacmanPawn>(PacPlayer, Loc, Rot, SpawnInfo);
+		Controller->Possess(Spawn);
 	}
 }

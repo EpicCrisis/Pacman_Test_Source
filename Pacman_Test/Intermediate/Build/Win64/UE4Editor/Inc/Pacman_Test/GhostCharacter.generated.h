@@ -25,6 +25,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	virtual void Reset_Implementation(); \
 	virtual void EatEvent_Implementation(); \
 	virtual void BackToNormal_Implementation(); \
+	virtual void CanBeEatenEvent_Implementation(); \
  \
 	DECLARE_FUNCTION(execRandomBehavior) \
 	{ \
@@ -111,6 +112,14 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		P_THIS->BackToNormal_Implementation(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execCanBeEatenEvent) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->CanBeEatenEvent_Implementation(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -255,6 +264,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	virtual void Reset_Implementation(); \
 	virtual void EatEvent_Implementation(); \
 	virtual void BackToNormal_Implementation(); \
+	virtual void CanBeEatenEvent_Implementation(); \
  \
 	DECLARE_FUNCTION(execRandomBehavior) \
 	{ \
@@ -341,6 +351,14 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		P_THIS->BackToNormal_Implementation(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execCanBeEatenEvent) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->CanBeEatenEvent_Implementation(); \
 		P_NATIVE_END; \
 	} \
  \
