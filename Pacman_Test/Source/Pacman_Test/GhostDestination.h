@@ -2,14 +2,14 @@
 
 #pragma once
 
-// Forward Declaration
-class APacman_TestGameModeBase;
-
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/BillboardComponent.h"
 #include "Components/BoxComponent.h"
 #include "GhostDestination.generated.h"
+
+// Forward Declaration
+class APacman_TestGameModeBase;
 
 UCLASS()
 class PACMAN_TEST_API AGhostDestination : public AActor
@@ -55,6 +55,6 @@ public:
 			const FHitResult &SweepResult
 		);
 
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION()
 		void Randomize();
 };

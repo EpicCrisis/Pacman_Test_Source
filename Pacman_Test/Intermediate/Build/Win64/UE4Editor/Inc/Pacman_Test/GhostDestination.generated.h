@@ -17,13 +17,12 @@ struct FHitResult;
 #define PACMAN_TEST_GhostDestination_generated_h
 
 #define Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_RPC_WRAPPERS \
-	virtual void Randomize_Implementation(); \
  \
 	DECLARE_FUNCTION(execRandomize) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->Randomize_Implementation(); \
+		P_THIS->Randomize(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -43,13 +42,12 @@ struct FHitResult;
 
 
 #define Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
-	virtual void Randomize_Implementation(); \
  \
 	DECLARE_FUNCTION(execRandomize) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->Randomize_Implementation(); \
+		P_THIS->Randomize(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -68,8 +66,6 @@ struct FHitResult;
 	}
 
 
-#define Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_EVENT_PARMS
-#define Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_CALLBACK_WRAPPERS
 #define Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAGhostDestination(); \
@@ -115,16 +111,12 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AGhostDestination); \
 
 
 #define Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_PRIVATE_PROPERTY_OFFSET
-#define Pacman_Test_Source_Pacman_Test_GhostDestination_h_14_PROLOG \
-	Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_EVENT_PARMS
-
-
+#define Pacman_Test_Source_Pacman_Test_GhostDestination_h_14_PROLOG
 #define Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_PRIVATE_PROPERTY_OFFSET \
 	Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_RPC_WRAPPERS \
-	Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_CALLBACK_WRAPPERS \
 	Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_INCLASS \
 	Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_STANDARD_CONSTRUCTORS \
 public: \
@@ -136,7 +128,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_PRIVATE_PROPERTY_OFFSET \
 	Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
-	Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_CALLBACK_WRAPPERS \
 	Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_INCLASS_NO_PURE_DECLS \
 	Pacman_Test_Source_Pacman_Test_GhostDestination_h_17_ENHANCED_CONSTRUCTORS \
 private: \

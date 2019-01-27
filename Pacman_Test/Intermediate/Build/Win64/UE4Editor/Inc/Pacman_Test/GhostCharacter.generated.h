@@ -13,25 +13,13 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define PACMAN_TEST_GhostCharacter_generated_h
 
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_RPC_WRAPPERS \
-	virtual void RandomBehavior_Implementation(); \
-	virtual void AmbushEvent_Implementation(); \
-	virtual void ChaseEvent_Implementation(); \
-	virtual void RandomMovement_Implementation(); \
-	virtual void AvoidPlayer_Implementation(); \
-	virtual void ResetLocation_Implementation(); \
-	virtual void FindNextDestination_Implementation(); \
-	virtual void FlashingEvent_Implementation(); \
-	virtual void Reset_Implementation(); \
-	virtual void EatEvent_Implementation(); \
-	virtual void BackToNormal_Implementation(); \
-	virtual void CanBeEatenEvent_Implementation(); \
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_RPC_WRAPPERS \
  \
 	DECLARE_FUNCTION(execRandomBehavior) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->RandomBehavior_Implementation(); \
+		P_THIS->RandomBehavior(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -39,7 +27,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->AmbushEvent_Implementation(); \
+		P_THIS->AmbushEvent(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -47,7 +35,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->ChaseEvent_Implementation(); \
+		P_THIS->ChaseEvent(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -55,7 +43,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->RandomMovement_Implementation(); \
+		P_THIS->RandomMovement(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -63,7 +51,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->AvoidPlayer_Implementation(); \
+		P_THIS->AvoidPlayer(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -71,7 +59,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->ResetLocation_Implementation(); \
+		P_THIS->ResetLocation(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -79,7 +67,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->FindNextDestination_Implementation(); \
+		P_THIS->FindNextDestination(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -87,7 +75,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->FlashingEvent_Implementation(); \
+		P_THIS->FlashingEvent(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -95,23 +83,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->Reset_Implementation(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execEatEvent) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->EatEvent_Implementation(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execBackToNormal) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->BackToNormal_Implementation(); \
+		P_THIS->Reset(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -119,7 +91,23 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->CanBeEatenEvent_Implementation(); \
+		P_THIS->CanBeEatenEvent(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execEatEvent) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->EatEvent(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execBackToNormal) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->BackToNormal(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -203,14 +191,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_NATIVE_END; \
 	} \
  \
-	DECLARE_FUNCTION(execCheckIfCanBeEaten) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->CheckIfCanBeEaten(); \
-		P_NATIVE_END; \
-	} \
- \
 	DECLARE_FUNCTION(execUpdateGhostAnimations) \
 	{ \
 		P_FINISH; \
@@ -252,25 +232,13 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
-	virtual void RandomBehavior_Implementation(); \
-	virtual void AmbushEvent_Implementation(); \
-	virtual void ChaseEvent_Implementation(); \
-	virtual void RandomMovement_Implementation(); \
-	virtual void AvoidPlayer_Implementation(); \
-	virtual void ResetLocation_Implementation(); \
-	virtual void FindNextDestination_Implementation(); \
-	virtual void FlashingEvent_Implementation(); \
-	virtual void Reset_Implementation(); \
-	virtual void EatEvent_Implementation(); \
-	virtual void BackToNormal_Implementation(); \
-	virtual void CanBeEatenEvent_Implementation(); \
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execRandomBehavior) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->RandomBehavior_Implementation(); \
+		P_THIS->RandomBehavior(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -278,7 +246,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->AmbushEvent_Implementation(); \
+		P_THIS->AmbushEvent(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -286,7 +254,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->ChaseEvent_Implementation(); \
+		P_THIS->ChaseEvent(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -294,7 +262,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->RandomMovement_Implementation(); \
+		P_THIS->RandomMovement(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -302,7 +270,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->AvoidPlayer_Implementation(); \
+		P_THIS->AvoidPlayer(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -310,7 +278,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->ResetLocation_Implementation(); \
+		P_THIS->ResetLocation(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -318,7 +286,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->FindNextDestination_Implementation(); \
+		P_THIS->FindNextDestination(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -326,7 +294,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->FlashingEvent_Implementation(); \
+		P_THIS->FlashingEvent(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -334,23 +302,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->Reset_Implementation(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execEatEvent) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->EatEvent_Implementation(); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execBackToNormal) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->BackToNormal_Implementation(); \
+		P_THIS->Reset(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -358,7 +310,23 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->CanBeEatenEvent_Implementation(); \
+		P_THIS->CanBeEatenEvent(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execEatEvent) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->EatEvent(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execBackToNormal) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->BackToNormal(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -442,14 +410,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 		P_NATIVE_END; \
 	} \
  \
-	DECLARE_FUNCTION(execCheckIfCanBeEaten) \
-	{ \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		P_THIS->CheckIfCanBeEaten(); \
-		P_NATIVE_END; \
-	} \
- \
 	DECLARE_FUNCTION(execUpdateGhostAnimations) \
 	{ \
 		P_FINISH; \
@@ -491,9 +451,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_EVENT_PARMS
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_CALLBACK_WRAPPERS
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_INCLASS_NO_PURE_DECLS \
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAGhostCharacter(); \
 	friend PACMAN_TEST_API class UClass* Z_Construct_UClass_AGhostCharacter(); \
@@ -503,7 +461,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_INCLASS \
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_INCLASS \
 private: \
 	static void StaticRegisterNativesAGhostCharacter(); \
 	friend PACMAN_TEST_API class UClass* Z_Construct_UClass_AGhostCharacter(); \
@@ -513,7 +471,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_STANDARD_CONSTRUCTORS \
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AGhostCharacter(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AGhostCharacter) \
@@ -526,7 +484,7 @@ private: \
 public:
 
 
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_ENHANCED_CONSTRUCTORS \
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AGhostCharacter(AGhostCharacter&&); \
@@ -537,31 +495,26 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AGhostCharacter); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AGhostCharacter)
 
 
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_PRIVATE_PROPERTY_OFFSET
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_13_PROLOG \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_EVENT_PARMS
-
-
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_GENERATED_BODY_LEGACY \
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_PRIVATE_PROPERTY_OFFSET
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_17_PROLOG
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_PRIVATE_PROPERTY_OFFSET \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_RPC_WRAPPERS \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_CALLBACK_WRAPPERS \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_INCLASS \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_STANDARD_CONSTRUCTORS \
+	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_PRIVATE_PROPERTY_OFFSET \
+	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_RPC_WRAPPERS \
+	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_INCLASS \
+	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_GENERATED_BODY \
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_PRIVATE_PROPERTY_OFFSET \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_CALLBACK_WRAPPERS \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_INCLASS_NO_PURE_DECLS \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_16_ENHANCED_CONSTRUCTORS \
+	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_PRIVATE_PROPERTY_OFFSET \
+	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
+	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_INCLASS_NO_PURE_DECLS \
+	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

@@ -207,6 +207,13 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 			};
 #endif
 #if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_BlockSpawn_MetaData[] = {
+				{ "Category", "Pacman_TestGameModeBase" },
+				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FClassPropertyParams NewProp_BlockSpawn = { UE4CodeGen_Private::EPropertyClass::Class, "BlockSpawn", RF_Public|RF_Transient|RF_MarkAsNative, 0x0014000000000001, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, BlockSpawn), Z_Construct_UClass_AGridBlock_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(NewProp_BlockSpawn_MetaData, ARRAY_COUNT(NewProp_BlockSpawn_MetaData)) };
+#if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_PacPlayer_MetaData[] = {
 				{ "Category", "Pacman_TestGameModeBase" },
 				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
@@ -278,6 +285,7 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 			static const UE4CodeGen_Private::FArrayPropertyParams NewProp_BlocksArray = { UE4CodeGen_Private::EPropertyClass::Array, "BlocksArray", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, BlocksArray), METADATA_PARAMS(NewProp_BlocksArray_MetaData, ARRAY_COUNT(NewProp_BlocksArray_MetaData)) };
 			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_BlocksArray_Inner = { UE4CodeGen_Private::EPropertyClass::Object, "BlocksArray", RF_Public|RF_Transient|RF_MarkAsNative, 0x0000000000000000, 1, nullptr, 0, Z_Construct_UClass_AGridBlock_NoRegister, METADATA_PARAMS(nullptr, 0) };
 			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_BlockSpawn,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_PacPlayer,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_EatenDots,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_TotalDots,
@@ -308,7 +316,7 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APacman_TestGameModeBase, 990846231);
+	IMPLEMENT_CLASS(APacman_TestGameModeBase, 3458539438);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_APacman_TestGameModeBase(Z_Construct_UClass_APacman_TestGameModeBase, &APacman_TestGameModeBase::StaticClass, TEXT("/Script/Pacman_Test"), TEXT("APacman_TestGameModeBase"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(APacman_TestGameModeBase);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

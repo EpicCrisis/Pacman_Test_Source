@@ -1,13 +1,26 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "GhostCharacter.h"
+#include "Engine/World.h"
+#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
+#include "GameFramework/CharacterMovementComponent.h"
+#include "ENUM_GhostType.h"
+#include "Struct_GhostAnimation.h"
+#include "PacmanPawn.h"
+#include "GhostDestination.h"
 
 
 // Sets default values
 AGhostCharacter::AGhostCharacter()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	bGenerateOverlapEventsDuringLevelStreaming = true;
+
+	SpriteFlipBook = CreateDefaultSubobject<UPaperFlipbookComponent>(TEXT("SpriteFlipBook"));
+	SpriteFlipBook->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+
 
 }
 
@@ -54,6 +67,7 @@ void AGhostCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 
 void AGhostCharacter::SetRedAnimations()
 {
+
 }
 
 void AGhostCharacter::SetPinkAnimations()
@@ -69,10 +83,6 @@ void AGhostCharacter::SetOrangeAnimations()
 }
 
 void AGhostCharacter::UpdateGhostAnimations()
-{
-}
-
-void AGhostCharacter::CheckIfCanBeEaten()
 {
 }
 
@@ -116,50 +126,173 @@ void AGhostCharacter::IsWithinAmbushDistance()
 {
 }
 
-void AGhostCharacter::CanBeEatenEvent_Implementation()
+void AGhostCharacter::BackToNormal()
+{
+	isDead = false;
+	CanBeEaten = false;
+	isFlashing = false;
+	CanKill = true;
+
+	GetCharacterMovement()->MaxWalkSpeed = NormalSpeed;
+
+	GetCharacterMovement()->StopActiveMovement();
+
+	CurrentTargetTrigger = NULL;
+
+	FindNextDestination();
+}
+
+void AGhostCharacter::EatEvent()
+{
+	if (CanBeEaten && !isDead)
+	{
+		GetWorld()->GetTimerManager().ClearTimer(FlashingEventTimerHandle);
+
+		GetWorld()->GetTimerManager().ClearTimer(BackToNormalTimerHandle);
+
+		CanBeEaten = false;
+		isDead = true;
+
+		//Navigate->SimpleMoveToLocation(GetController(), StartLocation);
+
+		GetCharacterMovement()->MaxWalkSpeed = NormalSpeed;
+	}
+}
+
+void AGhostCharacter::CanBeEatenEvent()
+{
+	if (!isDead)
+	{
+		GetWorld()->GetTimerManager().ClearTimer(FlashingEventTimerHandle);
+
+		GetWorld()->GetTimerManager().ClearTimer(BackToNormalTimerHandle);
+
+		GetCharacterMovement()->MaxWalkSpeed = BlueSpeed;
+
+		CanKill = false;
+		CanBeEaten = true;
+		isFlashing = false;
+
+		GetWorld()->GetTimerManager().SetTimer
+		(
+			FlashingEventTimerHandle, this, &AGhostCharacter::FlashingEvent, CanBeEatenTime, false
+		);
+
+		RandomMovement();
+	}
+}
+
+void AGhostCharacter::Reset()
+{
+	CanBeEaten = true;
+	isFlashing = true;
+
+	GetWorld()->GetTimerManager().SetTimer
+	(
+		DelayBackToNormalTimerHandle, this, &AGhostCharacter::BackToNormal, 2.0f, false
+	);
+
+}
+
+void AGhostCharacter::FlashingEvent()
+{
+	isFlashing = true;
+
+	GetWorld()->GetTimerManager().SetTimer
+	(
+		BackToNormalTimerHandle, this, &AGhostCharacter::BackToNormal, FlashingTime, false
+	);
+}
+
+void AGhostCharacter::FindNextDestination()
+{
+	/*for (TActorIterator<AGhostDestination> ActorItr(GetWorld()); ActorItr; ++ActorItr)
+	{
+		ActorItr->isTaken = false;
+	}*/
+
+	if (GhostType::Red)
+	{
+		ChaseEvent();
+	}
+	else if (GhostType::Pink)
+	{
+		AmbushEvent();
+	}
+	else if (GhostType::Cyan)
+	{
+		RandomMovement();
+	}
+	else if (GhostType::Orange)
+	{
+		RandomMovement();
+	}
+}
+
+void AGhostCharacter::ResetLocation()
+{
+	GetWorld()->GetTimerManager().ClearTimer(FlashingEventTimerHandle);
+
+	GetWorld()->GetTimerManager().ClearTimer(BackToNormalTimerHandle);
+
+	SetActorLocation(StartLocation);
+
+	CanKill = false;
+
+	GetCharacterMovement()->MaxWalkSpeed = 0.0f;
+
+	Reset();
+}
+
+void AGhostCharacter::AvoidPlayer()
 {
 }
 
-void AGhostCharacter::BackToNormal_Implementation()
+void AGhostCharacter::RandomMovement()
+{
+	if (!isDead)
+	{
+		if (IsValid(CurrentTargetTrigger))
+		{
+			/*for (TActorIterator<AGhostDestination> ActorItr(GetWorld()); ActorItr; ++ActorItr)
+			{
+				TargetTriggerArray.Add(ActorItr);
+			}*/
+
+			TargetTriggerArray.Remove(CurrentTargetTrigger);
+		}
+		else
+		{
+			/*for (TActorIterator<AGhostDestination> ActorItr(GetWorld()); ActorItr; ++ActorItr)
+			{
+				TargetTriggerArray.Add(ActorItr);
+
+				if(ActorItr->isTaken)
+				{
+					TargetTriggerArray.Remove(ActorItr);
+				}
+			}*/
+
+			//int Index = FMath::RandRange(0, (TargetTriggerArray.Max - 1));
+			
+			//CurrentTargetTrigger = TargetTriggerArray[Index];
+			//CurrentTargetTrigger->isTaken = true;
+
+			// AI Move To Syntax
+			// AI Move To Fails and isDead
+			// Timer handle delay
+		}
+	}
+}
+
+void AGhostCharacter::ChaseEvent()
 {
 }
 
-void AGhostCharacter::EatEvent_Implementation()
+void AGhostCharacter::AmbushEvent()
 {
 }
 
-void AGhostCharacter::Reset_Implementation()
-{
-}
-
-void AGhostCharacter::FlashingEvent_Implementation()
-{
-}
-
-void AGhostCharacter::FindNextDestination_Implementation()
-{
-}
-
-void AGhostCharacter::ResetLocation_Implementation()
-{
-}
-
-void AGhostCharacter::AvoidPlayer_Implementation()
-{
-}
-
-void AGhostCharacter::RandomMovement_Implementation()
-{
-}
-
-void AGhostCharacter::ChaseEvent_Implementation()
-{
-}
-
-void AGhostCharacter::AmbushEvent_Implementation()
-{
-}
-
-void AGhostCharacter::RandomBehavior_Implementation()
+void AGhostCharacter::RandomBehavior()
 {
 }

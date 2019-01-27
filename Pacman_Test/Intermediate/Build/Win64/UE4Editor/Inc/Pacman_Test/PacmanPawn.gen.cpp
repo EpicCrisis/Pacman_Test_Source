@@ -21,12 +21,33 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_ActorOverlap();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_CallGameOver();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_CheckDownCollision();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_CheckLeftCollision();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_CheckRightCollision();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_CheckUpCollision();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_DownKeyAction();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_DownKeyPressed();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_DownKeyReleased();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_EatGhostEvent();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_GetGhostPoints();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_LeftKeyAction();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_LeftKeyPressed();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_LeftKeyReleased();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_OnTimelineFinished();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_ResetBonusPoints();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_ResetDoOnce();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_RestartMap();
-	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTimerHandle();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_RightKeyAction();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_RightKeyPressed();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_RightKeyReleased();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_TimelineFloatReturn();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_UpKeyAction();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_UpKeyPressed();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_UpKeyReleased();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
+	ENGINE_API UClass* Z_Construct_UClass_UCurveFloat_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_UTimelineComponent_NoRegister();
+	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTimerHandle();
 	PACMAN_TEST_API UClass* Z_Construct_UClass_APacman_TestGameModeBase_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
@@ -40,10 +61,29 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 			{ "ActorDestroyed", &APacmanPawn::execActorDestroyed },
 			{ "ActorOverlap", &APacmanPawn::execActorOverlap },
 			{ "CallGameOver", &APacmanPawn::execCallGameOver },
+			{ "CheckDownCollision", &APacmanPawn::execCheckDownCollision },
+			{ "CheckLeftCollision", &APacmanPawn::execCheckLeftCollision },
+			{ "CheckRightCollision", &APacmanPawn::execCheckRightCollision },
+			{ "CheckUpCollision", &APacmanPawn::execCheckUpCollision },
+			{ "DownKeyAction", &APacmanPawn::execDownKeyAction },
+			{ "DownKeyPressed", &APacmanPawn::execDownKeyPressed },
+			{ "DownKeyReleased", &APacmanPawn::execDownKeyReleased },
 			{ "EatGhostEvent", &APacmanPawn::execEatGhostEvent },
 			{ "GetGhostPoints", &APacmanPawn::execGetGhostPoints },
+			{ "LeftKeyAction", &APacmanPawn::execLeftKeyAction },
+			{ "LeftKeyPressed", &APacmanPawn::execLeftKeyPressed },
+			{ "LeftKeyReleased", &APacmanPawn::execLeftKeyReleased },
+			{ "OnTimelineFinished", &APacmanPawn::execOnTimelineFinished },
 			{ "ResetBonusPoints", &APacmanPawn::execResetBonusPoints },
+			{ "ResetDoOnce", &APacmanPawn::execResetDoOnce },
 			{ "RestartMap", &APacmanPawn::execRestartMap },
+			{ "RightKeyAction", &APacmanPawn::execRightKeyAction },
+			{ "RightKeyPressed", &APacmanPawn::execRightKeyPressed },
+			{ "RightKeyReleased", &APacmanPawn::execRightKeyReleased },
+			{ "TimelineFloatReturn", &APacmanPawn::execTimelineFloatReturn },
+			{ "UpKeyAction", &APacmanPawn::execUpKeyAction },
+			{ "UpKeyPressed", &APacmanPawn::execUpKeyPressed },
+			{ "UpKeyReleased", &APacmanPawn::execUpKeyReleased },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
 	}
@@ -111,6 +151,148 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 		}
 		return ReturnFunction;
 	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_CheckDownCollision()
+	{
+		struct PacmanPawn_eventCheckDownCollision_Parms
+		{
+			bool ReturnValue;
+		};
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			auto NewProp_ReturnValue_SetBit = [](void* Obj){ ((PacmanPawn_eventCheckDownCollision_Parms*)Obj)->ReturnValue = 1; };
+			static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue = { UE4CodeGen_Private::EPropertyClass::Bool, "ReturnValue", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000580, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(PacmanPawn_eventCheckDownCollision_Parms), &UE4CodeGen_Private::TBoolSetBitWrapper<decltype(NewProp_ReturnValue_SetBit)>::SetBit, METADATA_PARAMS(nullptr, 0) };
+			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ReturnValue,
+			};
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "CheckDownCollision", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, sizeof(PacmanPawn_eventCheckDownCollision_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_CheckLeftCollision()
+	{
+		struct PacmanPawn_eventCheckLeftCollision_Parms
+		{
+			bool ReturnValue;
+		};
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			auto NewProp_ReturnValue_SetBit = [](void* Obj){ ((PacmanPawn_eventCheckLeftCollision_Parms*)Obj)->ReturnValue = 1; };
+			static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue = { UE4CodeGen_Private::EPropertyClass::Bool, "ReturnValue", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000580, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(PacmanPawn_eventCheckLeftCollision_Parms), &UE4CodeGen_Private::TBoolSetBitWrapper<decltype(NewProp_ReturnValue_SetBit)>::SetBit, METADATA_PARAMS(nullptr, 0) };
+			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ReturnValue,
+			};
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "CheckLeftCollision", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, sizeof(PacmanPawn_eventCheckLeftCollision_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_CheckRightCollision()
+	{
+		struct PacmanPawn_eventCheckRightCollision_Parms
+		{
+			bool ReturnValue;
+		};
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			auto NewProp_ReturnValue_SetBit = [](void* Obj){ ((PacmanPawn_eventCheckRightCollision_Parms*)Obj)->ReturnValue = 1; };
+			static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue = { UE4CodeGen_Private::EPropertyClass::Bool, "ReturnValue", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000580, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(PacmanPawn_eventCheckRightCollision_Parms), &UE4CodeGen_Private::TBoolSetBitWrapper<decltype(NewProp_ReturnValue_SetBit)>::SetBit, METADATA_PARAMS(nullptr, 0) };
+			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ReturnValue,
+			};
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+				{ "ToolTip", "Collision check" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "CheckRightCollision", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, sizeof(PacmanPawn_eventCheckRightCollision_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_CheckUpCollision()
+	{
+		struct PacmanPawn_eventCheckUpCollision_Parms
+		{
+			bool ReturnValue;
+		};
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			auto NewProp_ReturnValue_SetBit = [](void* Obj){ ((PacmanPawn_eventCheckUpCollision_Parms*)Obj)->ReturnValue = 1; };
+			static const UE4CodeGen_Private::FBoolPropertyParams NewProp_ReturnValue = { UE4CodeGen_Private::EPropertyClass::Bool, "ReturnValue", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000580, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(PacmanPawn_eventCheckUpCollision_Parms), &UE4CodeGen_Private::TBoolSetBitWrapper<decltype(NewProp_ReturnValue_SetBit)>::SetBit, METADATA_PARAMS(nullptr, 0) };
+			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ReturnValue,
+			};
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "CheckUpCollision", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, sizeof(PacmanPawn_eventCheckUpCollision_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_DownKeyAction()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "DownKeyAction", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_DownKeyPressed()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "DownKeyPressed", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_DownKeyReleased()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "DownKeyReleased", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
 	UFunction* Z_Construct_UFunction_APacmanPawn_EatGhostEvent()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -141,6 +323,67 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 		}
 		return ReturnFunction;
 	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_LeftKeyAction()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "LeftKeyAction", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_LeftKeyPressed()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "LeftKeyPressed", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_LeftKeyReleased()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "LeftKeyReleased", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_OnTimelineFinished()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "Category", "Timeline" },
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "OnTimelineFinished", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
 	UFunction* Z_Construct_UFunction_APacmanPawn_ResetBonusPoints()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -156,6 +399,21 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 		}
 		return ReturnFunction;
 	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_ResetDoOnce()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "ResetDoOnce", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
 	UFunction* Z_Construct_UFunction_APacmanPawn_RestartMap()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -167,6 +425,122 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 			};
 #endif
 			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "RestartMap", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_RightKeyAction()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+				{ "ToolTip", "Key press action" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "RightKeyAction", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_RightKeyPressed()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+				{ "ToolTip", "Key press check" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "RightKeyPressed", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_RightKeyReleased()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "RightKeyReleased", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_TimelineFloatReturn()
+	{
+		struct PacmanPawn_eventTimelineFloatReturn_Parms
+		{
+			float value;
+		};
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			static const UE4CodeGen_Private::FFloatPropertyParams NewProp_value = { UE4CodeGen_Private::EPropertyClass::Float, "value", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000080, 1, nullptr, STRUCT_OFFSET(PacmanPawn_eventTimelineFloatReturn_Parms, value), METADATA_PARAMS(nullptr, 0) };
+			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_value,
+			};
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "Category", "Timeline" },
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "TimelineFloatReturn", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, sizeof(PacmanPawn_eventTimelineFloatReturn_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_UpKeyAction()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "UpKeyAction", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_UpKeyPressed()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "UpKeyPressed", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_UpKeyReleased()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "UpKeyReleased", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
 		}
 		return ReturnFunction;
@@ -188,10 +562,29 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 				{ &Z_Construct_UFunction_APacmanPawn_ActorDestroyed, "ActorDestroyed" }, // 3212003517
 				{ &Z_Construct_UFunction_APacmanPawn_ActorOverlap, "ActorOverlap" }, // 145565326
 				{ &Z_Construct_UFunction_APacmanPawn_CallGameOver, "CallGameOver" }, // 153585919
+				{ &Z_Construct_UFunction_APacmanPawn_CheckDownCollision, "CheckDownCollision" }, // 4172527076
+				{ &Z_Construct_UFunction_APacmanPawn_CheckLeftCollision, "CheckLeftCollision" }, // 4188498884
+				{ &Z_Construct_UFunction_APacmanPawn_CheckRightCollision, "CheckRightCollision" }, // 2104566041
+				{ &Z_Construct_UFunction_APacmanPawn_CheckUpCollision, "CheckUpCollision" }, // 1172636277
+				{ &Z_Construct_UFunction_APacmanPawn_DownKeyAction, "DownKeyAction" }, // 2883530329
+				{ &Z_Construct_UFunction_APacmanPawn_DownKeyPressed, "DownKeyPressed" }, // 772876857
+				{ &Z_Construct_UFunction_APacmanPawn_DownKeyReleased, "DownKeyReleased" }, // 3292826684
 				{ &Z_Construct_UFunction_APacmanPawn_EatGhostEvent, "EatGhostEvent" }, // 2360396844
 				{ &Z_Construct_UFunction_APacmanPawn_GetGhostPoints, "GetGhostPoints" }, // 2538090431
+				{ &Z_Construct_UFunction_APacmanPawn_LeftKeyAction, "LeftKeyAction" }, // 1205961374
+				{ &Z_Construct_UFunction_APacmanPawn_LeftKeyPressed, "LeftKeyPressed" }, // 1002337367
+				{ &Z_Construct_UFunction_APacmanPawn_LeftKeyReleased, "LeftKeyReleased" }, // 2092911249
+				{ &Z_Construct_UFunction_APacmanPawn_OnTimelineFinished, "OnTimelineFinished" }, // 2663931376
 				{ &Z_Construct_UFunction_APacmanPawn_ResetBonusPoints, "ResetBonusPoints" }, // 1396200844
+				{ &Z_Construct_UFunction_APacmanPawn_ResetDoOnce, "ResetDoOnce" }, // 3068817946
 				{ &Z_Construct_UFunction_APacmanPawn_RestartMap, "RestartMap" }, // 2213395223
+				{ &Z_Construct_UFunction_APacmanPawn_RightKeyAction, "RightKeyAction" }, // 979818593
+				{ &Z_Construct_UFunction_APacmanPawn_RightKeyPressed, "RightKeyPressed" }, // 2937585915
+				{ &Z_Construct_UFunction_APacmanPawn_RightKeyReleased, "RightKeyReleased" }, // 2422317533
+				{ &Z_Construct_UFunction_APacmanPawn_TimelineFloatReturn, "TimelineFloatReturn" }, // 243947304
+				{ &Z_Construct_UFunction_APacmanPawn_UpKeyAction, "UpKeyAction" }, // 258934723
+				{ &Z_Construct_UFunction_APacmanPawn_UpKeyPressed, "UpKeyPressed" }, // 2467419961
+				{ &Z_Construct_UFunction_APacmanPawn_UpKeyReleased, "UpKeyReleased" }, // 2244736639
 			};
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
@@ -200,6 +593,35 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 				{ "ModuleRelativePath", "PacmanPawn.h" },
 			};
 #endif
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MoveDistance_MetaData[] = {
+				{ "Category", "Timeline" },
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFloatPropertyParams NewProp_MoveDistance = { UE4CodeGen_Private::EPropertyClass::Float, "MoveDistance", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacmanPawn, MoveDistance), METADATA_PARAMS(NewProp_MoveDistance_MetaData, ARRAY_COUNT(NewProp_MoveDistance_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_EndLocation_MetaData[] = {
+				{ "Category", "Timeline" },
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FStructPropertyParams NewProp_EndLocation = { UE4CodeGen_Private::EPropertyClass::Struct, "EndLocation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacmanPawn, EndLocation), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(NewProp_EndLocation_MetaData, ARRAY_COUNT(NewProp_EndLocation_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MoveCurve_MetaData[] = {
+				{ "Category", "Timeline" },
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_MoveCurve = { UE4CodeGen_Private::EPropertyClass::Object, "MoveCurve", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacmanPawn, MoveCurve), Z_Construct_UClass_UCurveFloat_NoRegister, METADATA_PARAMS(NewProp_MoveCurve_MetaData, ARRAY_COUNT(NewProp_MoveCurve_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MoveTimeline_MetaData[] = {
+				{ "Category", "Timeline" },
+				{ "EditInline", "true" },
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_MoveTimeline = { UE4CodeGen_Private::EPropertyClass::Object, "MoveTimeline", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000080009, 1, nullptr, STRUCT_OFFSET(APacmanPawn, MoveTimeline), Z_Construct_UClass_UTimelineComponent_NoRegister, METADATA_PARAMS(NewProp_MoveTimeline_MetaData, ARRAY_COUNT(NewProp_MoveTimeline_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_BonusPointsTime_MetaData[] = {
 				{ "Category", "PacmanPawn" },
@@ -310,6 +732,34 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 #endif
 			static const UE4CodeGen_Private::FStructPropertyParams NewProp_DelayDeathTimerHandle = { UE4CodeGen_Private::EPropertyClass::Struct, "DelayDeathTimerHandle", RF_Public|RF_Transient|RF_MarkAsNative, 0x0040000000000000, 1, nullptr, STRUCT_OFFSET(APacmanPawn, DelayDeathTimerHandle), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(NewProp_DelayDeathTimerHandle_MetaData, ARRAY_COUNT(NewProp_DelayDeathTimerHandle_MetaData)) };
 #if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_RightPressed_MetaData[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			auto NewProp_RightPressed_SetBit = [](void* Obj){ ((APacmanPawn*)Obj)->RightPressed = 1; };
+			static const UE4CodeGen_Private::FBoolPropertyParams NewProp_RightPressed = { UE4CodeGen_Private::EPropertyClass::Bool, "RightPressed", RF_Public|RF_Transient|RF_MarkAsNative, 0x0040000000000000, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(APacmanPawn), &UE4CodeGen_Private::TBoolSetBitWrapper<decltype(NewProp_RightPressed_SetBit)>::SetBit, METADATA_PARAMS(NewProp_RightPressed_MetaData, ARRAY_COUNT(NewProp_RightPressed_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_LeftPressed_MetaData[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			auto NewProp_LeftPressed_SetBit = [](void* Obj){ ((APacmanPawn*)Obj)->LeftPressed = 1; };
+			static const UE4CodeGen_Private::FBoolPropertyParams NewProp_LeftPressed = { UE4CodeGen_Private::EPropertyClass::Bool, "LeftPressed", RF_Public|RF_Transient|RF_MarkAsNative, 0x0040000000000000, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(APacmanPawn), &UE4CodeGen_Private::TBoolSetBitWrapper<decltype(NewProp_LeftPressed_SetBit)>::SetBit, METADATA_PARAMS(NewProp_LeftPressed_MetaData, ARRAY_COUNT(NewProp_LeftPressed_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DownPressed_MetaData[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			auto NewProp_DownPressed_SetBit = [](void* Obj){ ((APacmanPawn*)Obj)->DownPressed = 1; };
+			static const UE4CodeGen_Private::FBoolPropertyParams NewProp_DownPressed = { UE4CodeGen_Private::EPropertyClass::Bool, "DownPressed", RF_Public|RF_Transient|RF_MarkAsNative, 0x0040000000000000, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(APacmanPawn), &UE4CodeGen_Private::TBoolSetBitWrapper<decltype(NewProp_DownPressed_SetBit)>::SetBit, METADATA_PARAMS(NewProp_DownPressed_MetaData, ARRAY_COUNT(NewProp_DownPressed_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_UpPressed_MetaData[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			auto NewProp_UpPressed_SetBit = [](void* Obj){ ((APacmanPawn*)Obj)->UpPressed = 1; };
+			static const UE4CodeGen_Private::FBoolPropertyParams NewProp_UpPressed = { UE4CodeGen_Private::EPropertyClass::Bool, "UpPressed", RF_Public|RF_Transient|RF_MarkAsNative, 0x0040000000000000, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(APacmanPawn), &UE4CodeGen_Private::TBoolSetBitWrapper<decltype(NewProp_UpPressed_SetBit)>::SetBit, METADATA_PARAMS(NewProp_UpPressed_MetaData, ARRAY_COUNT(NewProp_UpPressed_MetaData)) };
+#if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DoOnceMove_MetaData[] = {
 				{ "ModuleRelativePath", "PacmanPawn.h" },
 			};
@@ -324,6 +774,10 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 			auto NewProp_DoOnceDead_SetBit = [](void* Obj){ ((APacmanPawn*)Obj)->DoOnceDead = 1; };
 			static const UE4CodeGen_Private::FBoolPropertyParams NewProp_DoOnceDead = { UE4CodeGen_Private::EPropertyClass::Bool, "DoOnceDead", RF_Public|RF_Transient|RF_MarkAsNative, 0x0040000000000000, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(APacmanPawn), &UE4CodeGen_Private::TBoolSetBitWrapper<decltype(NewProp_DoOnceDead_SetBit)>::SetBit, METADATA_PARAMS(NewProp_DoOnceDead_MetaData, ARRAY_COUNT(NewProp_DoOnceDead_MetaData)) };
 			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_MoveDistance,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_EndLocation,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_MoveCurve,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_MoveTimeline,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_BonusPointsTime,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_EatBonusTimerHandle,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_GhostPoints,
@@ -339,6 +793,10 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_SceneRoot,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_LoadLevelTimerHandle,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DelayDeathTimerHandle,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_RightPressed,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_LeftPressed,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DownPressed,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_UpPressed,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DoOnceMove,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DoOnceDead,
 			};
@@ -360,7 +818,7 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APacmanPawn, 1596841670);
+	IMPLEMENT_CLASS(APacmanPawn, 1788910403);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_APacmanPawn(Z_Construct_UClass_APacmanPawn, &APacmanPawn::StaticClass, TEXT("/Script/Pacman_Test"), TEXT("APacmanPawn"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(APacmanPawn);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

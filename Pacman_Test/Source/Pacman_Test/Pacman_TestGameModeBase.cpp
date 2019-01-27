@@ -1,10 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Pacman_TestGameModeBase.h"
-#include "GridBlock.h"
 #include "Engine/World.h"
+#include "GridBlock.h"
 #include "PacDot.h"
 #include "PacmanPawn.h"
+#include "GhostCharacter.h"
+#include "GhostDestination.h"
 
 // Sets default values
 APacman_TestGameModeBase::APacman_TestGameModeBase()
@@ -18,6 +20,8 @@ APacman_TestGameModeBase::APacman_TestGameModeBase()
 	Score = 0;
 	Lives = 3;
 	BonusGhostPoints = 200;
+	TotalDots = 0;
+	EatenDots = 0;
 }
 
 void APacman_TestGameModeBase::BeginPlay()
@@ -29,19 +33,9 @@ void APacman_TestGameModeBase::BeginPlay()
 
 	CreateGrid();
 
-	for (TActorIterator<APacDot> ActorItr(GetWorld()); ActorItr; ++ActorItr)
-	{
-		TotalDots = ActorItr.GetProgressNumerator();
-	}
-
 	for (TActorIterator<AGhostCharacter> ActorItr(GetWorld()); ActorItr; ++ActorItr)
 	{
 		ActorItr->FindNextDestination();
-	}
-
-	for (TActorIterator<AGhostDestination> ActorItr(GetWorld()); ActorItr; ++ActorItr)
-	{
-		ActorItr->Randomize();
 	}
 }
 
@@ -56,10 +50,13 @@ FVector APacman_TestGameModeBase::WorldToGridLocation(FVector Location)
 	int xCoord;
 	int yCoord;
 
-	xCoord = FMath::FloorToInt(Location.X + (Spacing / 2) / Spacing);
-	yCoord = FMath::FloorToInt(Location.Y + (Spacing / 2) / Spacing);
+	xCoord = FMath::FloorToInt((Location.X + (Spacing / 2)) / Spacing);
+	yCoord = FMath::FloorToInt((Location.Y + (Spacing / 2)) / Spacing);
 
-	return FVector(FMath::Clamp(xCoord, 0, MaxX), FMath::Clamp(yCoord, 0, MaxY), Location.Z);
+	int xClamp = FMath::Clamp(xCoord, 0, MaxX);
+	int yClamp = FMath::Clamp(yCoord, 0, MaxY);
+
+	return FVector(xClamp, yClamp, 0.0f);
 }
 
 AGridBlock* APacman_TestGameModeBase::GetBlockFromGridLocation(int X, int Y)
@@ -102,9 +99,10 @@ void APacman_TestGameModeBase::CreateGrid_Implementation()
 		FRotator Rot(0.0f, 0.0f, 0.0f);
 		FActorSpawnParameters SpawnInfo;
 
-		AGridBlock* SpawnBlock = GetWorld()->SpawnActor<AGridBlock>(Loc, Rot, SpawnInfo);
+		//AGridBlock* BlockSpawn = GetWorld()->SpawnActor<AGridBlock>(Loc, Rot, SpawnInfo);
+		AGridBlock* Spawn = GetWorld()->SpawnActor<AGridBlock>(BlockSpawn, Loc, Rot, SpawnInfo);
 
-		BlocksArray.Add(SpawnBlock);
+		BlocksArray.Add(Spawn);
 	}
 }
 

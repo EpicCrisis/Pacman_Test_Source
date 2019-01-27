@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "GhostHouseTrigger.h"
+#include "GhostCharacter.h"
 
 
 // Sets default values

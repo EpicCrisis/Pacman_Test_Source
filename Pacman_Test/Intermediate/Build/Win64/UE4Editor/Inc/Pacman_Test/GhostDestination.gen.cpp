@@ -26,11 +26,6 @@ void EmptyLinkFunctionForGeneratedCodeGhostDestination() {}
 	ENGINE_API UClass* Z_Construct_UClass_UBillboardComponent_NoRegister();
 	PACMAN_TEST_API UClass* Z_Construct_UClass_APacman_TestGameModeBase_NoRegister();
 // End Cross Module References
-	static FName NAME_AGhostDestination_Randomize = FName(TEXT("Randomize"));
-	void AGhostDestination::Randomize()
-	{
-		ProcessEvent(FindFunctionChecked(NAME_AGhostDestination_Randomize),NULL);
-	}
 	void AGhostDestination::StaticRegisterNativesAGhostDestination()
 	{
 		UClass* Class = AGhostDestination::StaticClass();
@@ -50,7 +45,7 @@ void EmptyLinkFunctionForGeneratedCodeGhostDestination() {}
 				{ "ModuleRelativePath", "GhostDestination.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostDestination, "Randomize", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x08020C00, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostDestination, "Randomize", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
 		}
 		return ReturnFunction;
@@ -123,7 +118,7 @@ void EmptyLinkFunctionForGeneratedCodeGhostDestination() {}
 				(UObject* (*)())Z_Construct_UPackage__Script_Pacman_Test,
 			};
 			static const FClassFunctionLinkInfo FuncInfo[] = {
-				{ &Z_Construct_UFunction_AGhostDestination_Randomize, "Randomize" }, // 949944256
+				{ &Z_Construct_UFunction_AGhostDestination_Randomize, "Randomize" }, // 3851401547
 				{ &Z_Construct_UFunction_AGhostDestination_TriggerOverlap, "TriggerOverlap" }, // 3478808297
 			};
 #if WITH_METADATA
@@ -187,7 +182,7 @@ void EmptyLinkFunctionForGeneratedCodeGhostDestination() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AGhostDestination, 1833665176);
+	IMPLEMENT_CLASS(AGhostDestination, 311477017);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AGhostDestination(Z_Construct_UClass_AGhostDestination, &AGhostDestination::StaticClass, TEXT("/Script/Pacman_Test"), TEXT("AGhostDestination"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AGhostDestination);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

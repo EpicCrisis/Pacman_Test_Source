@@ -2,16 +2,14 @@
 
 #pragma once
 
-// Forward declaration
-class AGridBlock;
-
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "GridBlock.h"
-#include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
-#include "GhostCharacter.h"
-#include "GhostDestination.h"
 #include "Pacman_TestGameModeBase.generated.h"
+
+// Forward declaration
+class AGridBlock;
+class AGhostCharacter;
+class AGhostDestination;
 
 /**
  *
@@ -64,6 +62,9 @@ public:
 
 	UPROPERTY(EditAnywhere)
 		TSubclassOf<class APawn> PacPlayer;
+
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<class AGridBlock> BlockSpawn;
 
 	// Functions and Events
 public:

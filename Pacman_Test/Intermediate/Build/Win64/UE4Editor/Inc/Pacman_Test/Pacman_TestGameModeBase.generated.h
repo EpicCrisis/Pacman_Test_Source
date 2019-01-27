@@ -15,7 +15,7 @@ class AGridBlock;
 #endif
 #define PACMAN_TEST_Pacman_TestGameModeBase_generated_h
 
-#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_RPC_WRAPPERS \
+#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_RPC_WRAPPERS \
 	virtual void SpawnPacman_Implementation(); \
 	virtual void CreateGrid_Implementation(); \
  \
@@ -72,7 +72,7 @@ class AGridBlock;
 	}
 
 
-#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_RPC_WRAPPERS_NO_PURE_DECLS \
+#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
 	virtual void SpawnPacman_Implementation(); \
 	virtual void CreateGrid_Implementation(); \
  \
@@ -129,9 +129,9 @@ class AGridBlock;
 	}
 
 
-#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_EVENT_PARMS
-#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_CALLBACK_WRAPPERS
-#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_INCLASS_NO_PURE_DECLS \
+#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_EVENT_PARMS
+#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_CALLBACK_WRAPPERS
+#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAPacman_TestGameModeBase(); \
 	friend PACMAN_TEST_API class UClass* Z_Construct_UClass_APacman_TestGameModeBase(); \
@@ -141,7 +141,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_INCLASS \
+#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_INCLASS \
 private: \
 	static void StaticRegisterNativesAPacman_TestGameModeBase(); \
 	friend PACMAN_TEST_API class UClass* Z_Construct_UClass_APacman_TestGameModeBase(); \
@@ -151,7 +151,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_STANDARD_CONSTRUCTORS \
+#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API APacman_TestGameModeBase(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(APacman_TestGameModeBase) \
@@ -164,7 +164,7 @@ private: \
 public:
 
 
-#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_ENHANCED_CONSTRUCTORS \
+#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API APacman_TestGameModeBase(APacman_TestGameModeBase&&); \
@@ -175,31 +175,31 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(APacman_TestGameModeBase); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(APacman_TestGameModeBase)
 
 
-#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_PRIVATE_PROPERTY_OFFSET
-#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_19_PROLOG \
-	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_EVENT_PARMS
+#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_PRIVATE_PROPERTY_OFFSET
+#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_17_PROLOG \
+	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_EVENT_PARMS
 
 
-#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_GENERATED_BODY_LEGACY \
+#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_PRIVATE_PROPERTY_OFFSET \
-	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_RPC_WRAPPERS \
-	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_CALLBACK_WRAPPERS \
-	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_INCLASS \
-	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_STANDARD_CONSTRUCTORS \
+	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_PRIVATE_PROPERTY_OFFSET \
+	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_RPC_WRAPPERS \
+	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_CALLBACK_WRAPPERS \
+	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_INCLASS \
+	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_GENERATED_BODY \
+#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_PRIVATE_PROPERTY_OFFSET \
-	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_RPC_WRAPPERS_NO_PURE_DECLS \
-	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_CALLBACK_WRAPPERS \
-	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_INCLASS_NO_PURE_DECLS \
-	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_22_ENHANCED_CONSTRUCTORS \
+	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_PRIVATE_PROPERTY_OFFSET \
+	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
+	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_CALLBACK_WRAPPERS \
+	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_INCLASS_NO_PURE_DECLS \
+	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

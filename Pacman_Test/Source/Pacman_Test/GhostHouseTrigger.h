@@ -5,8 +5,10 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/BoxComponent.h"
-#include "GhostCharacter.h"
 #include "GhostHouseTrigger.generated.h"
+
+// Forward Declaration
+class AGhostCharacter;
 
 UCLASS()
 class PACMAN_TEST_API AGhostHouseTrigger : public AActor

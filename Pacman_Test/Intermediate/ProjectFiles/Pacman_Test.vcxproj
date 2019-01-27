@@ -257,7 +257,9 @@
 		<None Include="..\..\Pacman_Test.uproject" />
 		<None Include="..\..\Source\Pacman_Test.Target.cs" />
 		<None Include="..\..\Source\Pacman_TestEditor.Target.cs" />
+		<None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini" />
 		<None Include="..\..\Config\DefaultEngine.ini" />
+		<None Include="..\..\Config\DefaultInput.ini" />
 		<ClCompile Include="..\..\Source\Pacman_Test\AI_Controller.cpp" />
 		<ClInclude Include="..\..\Source\Pacman_Test\AI_Controller.h" />
 		<ClCompile Include="..\..\Source\Pacman_Test\ENUM_GhostType.cpp" />

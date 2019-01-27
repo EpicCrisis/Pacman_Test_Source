@@ -4,11 +4,15 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "ENUM_GhostType.h"
-#include "Struct_GhostAnimation.h"
-#include "PacmanPawn.h"
-#include "GhostDestination.h"
+#include "PaperFlipbookComponent.h"
+#include "AI/Navigation/NavigationSystem.h"
 #include "GhostCharacter.generated.h"
+
+// Forward declaration
+class APacmanPawn;
+class AGhostDestination;
+enum GhostType;
+struct FGhostAnimation;
 
 UCLASS()
 class PACMAN_TEST_API AGhostCharacter : public ACharacter
@@ -32,58 +36,121 @@ public:
 
 	// Variables and References
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	// Vulnerable
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* Blue;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* Flashing;
+	// Dead
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveUp_Dead;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveDown_Dead;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveLeft_Dead;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveRight_Dead;
+	// Red
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveUp_Red;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveDown_Red;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveLeft_Red;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveRight_Red;
+	// Pink
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveUp_Pink;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveDown_Pink;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveLeft_Pink;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveRight_Pink;
+	// Cyan
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveUp_Cyan;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveDown_Cyan;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveLeft_Cyan;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveRight_Cyan;
+	// Orange
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveUp_Orange;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveDown_Orange;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveLeft_Orange;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* MoveRight_Orange;
+
+	UPROPERTY(EditAnywhere)
+		UPaperFlipbookComponent* SpriteFlipBook;
+
+	UPROPERTY(EditAnywhere)
+		UNavigationSystem* Navigate;
+
+	UPROPERTY(EditAnywhere)
 		bool CanKill;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		bool isDead;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		bool CanBeEaten;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		bool isFlashing;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		FVector StartLocation;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		FVector TempLocation;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		FVector AmbushLocation;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		float NormalSpeed;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		float BlueSpeed;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		float AvoidanceDistance;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		float CanBeEatenTime;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		float FlashingTime;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		float CurrentAmbushDistance;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		FTimerHandle FlashingEventTimerHandle;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		FTimerHandle BackToNormalTimerHandle;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
+		FTimerHandle DelayBackToNormalTimerHandle;
+
+	UPROPERTY(EditAnywhere)
+		FTimerHandle LoadLevelTimerHandle;
+
+	UPROPERTY(EditAnywhere)
 		APacmanPawn* PacmanPlayer;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		AGhostDestination* CurrentTargetTrigger;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		TArray<AGhostDestination*> TargetTriggerArray;
 
 	// Functions and Events
@@ -102,9 +169,6 @@ public:
 
 	UFUNCTION()
 		void UpdateGhostAnimations();
-
-	UFUNCTION()
-		void CheckIfCanBeEaten();
 
 	UFUNCTION()
 		void StoringTempVelocity();
@@ -136,40 +200,40 @@ public:
 	UFUNCTION()
 		void IsWithinAmbushDistance();
 
-	UFUNCTION(BlueprintNativeEvent)
-		void CanBeEatenEvent();
-
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION()
 		void BackToNormal();
 
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION()
 		void EatEvent();
 
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION()
+		void CanBeEatenEvent();
+
+	UFUNCTION()
 		void Reset();
 
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION()
 		void FlashingEvent();
 
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION()
 		void FindNextDestination();
 
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION()
 		void ResetLocation();
 
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION()
 		void AvoidPlayer();
 
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION()
 		void RandomMovement();
 
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION()
 		void ChaseEvent();
 
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION()
 		void AmbushEvent();
 
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION()
 		void RandomBehavior();
 
 

@@ -2,15 +2,16 @@
 
 #pragma once
 
-// Forward Declaration
-class APacman_TestGameModeBase;
-
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/BoxComponent.h"
 #include "Camera/CameraComponent.h"
+#include "Components/TimelineComponent.h"
 #include "PacmanPawn.generated.h"
+
+// Forward Declaration
+class APacman_TestGameModeBase;
 
 UCLASS()
 class PACMAN_TEST_API APacmanPawn : public APawn
@@ -25,7 +26,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -39,6 +40,18 @@ private:
 
 	UPROPERTY()
 		bool DoOnceMove = false;
+
+	UPROPERTY()
+		bool UpPressed = false;
+
+	UPROPERTY()
+		bool DownPressed = false;
+
+	UPROPERTY()
+		bool LeftPressed = false;
+
+	UPROPERTY()
+		bool RightPressed = false;
 
 	UPROPERTY()
 		FTimerHandle DelayDeathTimerHandle;
@@ -68,7 +81,7 @@ public:
 
 	UPROPERTY(EditAnywhere)
 		bool isDead;
-	
+
 	UPROPERTY(EditAnywhere)
 		bool CanChangeDirection;
 
@@ -86,6 +99,24 @@ public:
 
 	UPROPERTY(EditAnywhere)
 		float BonusPointsTime;
+
+	UPROPERTY(EditAnywhere, Category = "Timeline")
+		UTimelineComponent* MoveTimeline;
+
+	UPROPERTY(EditAnywhere, Category = "Timeline")
+		UCurveFloat* MoveCurve;
+
+	UPROPERTY(EditAnywhere, Category = "Timeline")
+		FVector EndLocation;
+
+	UPROPERTY(EditAnywhere, Category = "Timeline")
+		float MoveDistance;
+
+	// Declare delegate function to bind with TimelineFloatReturn()
+	FOnTimelineFloat InterpFunction{};
+
+	// Declare delegate function to bind with OnTimelineFinished()
+	FOnTimelineEvent TimelineFinish{};
 
 	// Functions and Events
 public:
@@ -109,4 +140,64 @@ public:
 
 	UFUNCTION()
 		void RestartMap();
+
+	// Collision check
+	UFUNCTION()
+		bool CheckRightCollision();
+
+	UFUNCTION()
+		bool CheckLeftCollision();
+
+	UFUNCTION()
+		bool CheckUpCollision();
+
+	UFUNCTION()
+		bool CheckDownCollision();
+
+	// Key press check
+	UFUNCTION()
+		void RightKeyPressed();
+
+	UFUNCTION()
+		void LeftKeyPressed();
+
+	UFUNCTION()
+		void UpKeyPressed();
+
+	UFUNCTION()
+		void DownKeyPressed();
+
+	UFUNCTION()
+		void RightKeyReleased();
+
+	UFUNCTION()
+		void LeftKeyReleased();
+
+	UFUNCTION()
+		void UpKeyReleased();
+
+	UFUNCTION()
+		void DownKeyReleased();
+
+	// Key press action
+	UFUNCTION()
+		void RightKeyAction();
+
+	UFUNCTION()
+		void LeftKeyAction();
+
+	UFUNCTION()
+		void UpKeyAction();
+
+	UFUNCTION()
+		void DownKeyAction();
+
+	UFUNCTION()
+		void ResetDoOnce();
+
+	UFUNCTION(Category = "Timeline")
+		void TimelineFloatReturn(float value);
+
+	UFUNCTION(Category = "Timeline")
+		void OnTimelineFinished();
 };

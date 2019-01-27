@@ -2,6 +2,8 @@
 
 #include "GhostDestination.h"
 #include "Pacman_TestGameModeBase.h"
+#include "GhostCharacter.h"
+#include "GridBlock.h"
 
 
 // Sets default values
@@ -19,9 +21,7 @@ AGhostDestination::AGhostDestination()
 
 	BoxTrigger = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxTrigger"));
 	BoxTrigger->SetBoxExtent(FVector(50.0f, 50.0f, 300.0f), true);
-	BoxTrigger->AttachToComponent(BillboardRoot, FAttachmentTransformRules::KeepWorldTransform);
-
-	BoxTrigger->OnComponentBeginOverlap.AddDynamic(this, &AGhostDestination::TriggerOverlap);
+	BoxTrigger->AttachToComponent(BillboardRoot, FAttachmentTransformRules::KeepRelativeTransform);
 
 }
 
@@ -30,6 +30,13 @@ void AGhostDestination::BeginPlay()
 {
 	Super::BeginPlay();
 
+	BoxTrigger->OnComponentBeginOverlap.AddDynamic(this, &AGhostDestination::TriggerOverlap);
+
+	isTaken = false;
+
+	GameModeRef = (APacman_TestGameModeBase *)GetWorld()->GetAuthGameMode();
+
+	//Randomize();
 }
 
 // Called every frame
@@ -41,16 +48,31 @@ void AGhostDestination::Tick(float DeltaTime)
 
 void AGhostDestination::TriggerOverlap(UPrimitiveComponent * OverlappedComponent, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
+	AGhostCharacter* Ghost = Cast<AGhostCharacter>(OtherActor);
 
+	if (Ghost->CurrentTargetTrigger == this)
+	{
+		isTaken = false;
+		Ghost->CurrentTargetTrigger = NULL;
+		Ghost->FindNextDestination();
+		Randomize();
+	}
 }
 
-void AGhostDestination::Randomize_Implementation()
+void AGhostDestination::Randomize()
 {
-	GameModeRef = (APacman_TestGameModeBase *)GetWorld()->GetAuthGameMode();
+	int xRand = FMath::RandRange(0, GameModeRef->MaxX - 1);
+	int yRand = FMath::RandRange(0, GameModeRef->MaxY - 1);
 
-	int x = FMath::RandRange(0, GameModeRef->MaxX - 1);
-	int y = FMath::RandRange(0, GameModeRef->MaxY - 1);
+	AGridBlock* Block = GameModeRef->GetBlockFromGridLocation(xRand, yRand);
 
-	//TSubclassOf<AGridBlock> Block = GameModeRef->GetBlockFromGridLocation(x, y);
+	if (Block->isWalkable)
+	{
+		SetActorLocation(Block->GetActorLocation());
+	}
+	else
+	{
+		Randomize();
+	}
 }
 

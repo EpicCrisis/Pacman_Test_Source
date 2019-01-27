@@ -2,6 +2,8 @@
 
 #include "PacDot.h"
 #include "Pacman_TestGameModeBase.h"
+#include "PacmanPawn.h"
+#include "Engine/World.h"
 
 
 // Sets default values
@@ -34,6 +36,8 @@ void APacDot::BeginPlay()
 
 	GameModeRef = (APacman_TestGameModeBase *)GetWorld()->GetAuthGameMode();
 
+	GameModeRef->TotalDots += 1;
+
 	CheckPowerUp();
 }
 
@@ -46,11 +50,17 @@ void APacDot::Tick(float DeltaTime)
 
 void APacDot::ActorOverlap(AActor * ThisActor, AActor * OtherActor)
 {
+	/*if (OtherActor->GetClass() == TSubclassOf<class APacmanPawn>)
+	{
+
+	}*/
+
+
 	APacmanPawn* PlayerPawn = Cast<APacmanPawn>(OtherActor);
 
 	if (isPowerUp)
 	{
-		//PlayerPawn->EatGhostEvent();
+		PlayerPawn->EatGhostEvent();
 	}
 
 	GameModeRef->Score += Points;

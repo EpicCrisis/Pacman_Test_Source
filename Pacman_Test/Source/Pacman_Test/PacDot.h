@@ -2,14 +2,14 @@
 
 #pragma once
 
-// Forward Declaration
-class Pacman_TestGameModeBase;
-
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/StaticMeshComponent.h"
-#include "PacmanPawn.h"
 #include "PacDot.generated.h"
+
+// Forward Declaration
+class APacman_TestGameModeBase;
+class APacmanPawn;
 
 UCLASS()
 class PACMAN_TEST_API APacDot : public AActor

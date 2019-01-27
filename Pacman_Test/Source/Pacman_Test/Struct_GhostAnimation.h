@@ -13,6 +13,7 @@ struct FGhostAnimation
 {
 	GENERATED_USTRUCT_BODY()
 
+public:
 	UPROPERTY(EditAnywhere)
 		UPaperFlipbook* Blue;
 
