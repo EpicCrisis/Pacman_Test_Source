@@ -20,35 +20,23 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_AmbushEvent();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_AvoidPlayer();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_BackToNormal();
-	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_CanBeEatenAnimations();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_CanBeEatenEvent();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_ChaseEvent();
-	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_CheckMovingLeft();
-	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_CheckMovingUp();
-	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_CheckMovingVertically();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_EatEvent();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_FindNextDestination();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_FlashingEvent();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_IsWithinAmbushDistance();
-	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_MoveDownAnimation();
-	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_MoveLeftAnimation();
-	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_MoveRightAnimation();
-	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_MoveUpAnimation();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_RandomBehavior();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_RandomMovement();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_Reset();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_ResetLocation();
-	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_SetCyanAnimations();
-	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_SetOrangeAnimations();
-	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_SetPinkAnimations();
-	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_SetRedAnimations();
-	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_StoringTempVelocity();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_UpdateGhostAnimations();
 	PACMAN_TEST_API UClass* Z_Construct_UClass_AGhostDestination_NoRegister();
 	PACMAN_TEST_API UClass* Z_Construct_UClass_APacmanPawn_NoRegister();
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTimerHandle();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	ENGINE_API UClass* Z_Construct_UClass_UNavigationSystem_NoRegister();
+	PACMAN_TEST_API UEnum* Z_Construct_UEnum_Pacman_Test_GhostType();
 	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbookComponent_NoRegister();
 	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbook_NoRegister();
 // End Cross Module References
@@ -59,29 +47,16 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 			{ "AmbushEvent", &AGhostCharacter::execAmbushEvent },
 			{ "AvoidPlayer", &AGhostCharacter::execAvoidPlayer },
 			{ "BackToNormal", &AGhostCharacter::execBackToNormal },
-			{ "CanBeEatenAnimations", &AGhostCharacter::execCanBeEatenAnimations },
 			{ "CanBeEatenEvent", &AGhostCharacter::execCanBeEatenEvent },
 			{ "ChaseEvent", &AGhostCharacter::execChaseEvent },
-			{ "CheckMovingLeft", &AGhostCharacter::execCheckMovingLeft },
-			{ "CheckMovingUp", &AGhostCharacter::execCheckMovingUp },
-			{ "CheckMovingVertically", &AGhostCharacter::execCheckMovingVertically },
 			{ "EatEvent", &AGhostCharacter::execEatEvent },
 			{ "FindNextDestination", &AGhostCharacter::execFindNextDestination },
 			{ "FlashingEvent", &AGhostCharacter::execFlashingEvent },
 			{ "IsWithinAmbushDistance", &AGhostCharacter::execIsWithinAmbushDistance },
-			{ "MoveDownAnimation", &AGhostCharacter::execMoveDownAnimation },
-			{ "MoveLeftAnimation", &AGhostCharacter::execMoveLeftAnimation },
-			{ "MoveRightAnimation", &AGhostCharacter::execMoveRightAnimation },
-			{ "MoveUpAnimation", &AGhostCharacter::execMoveUpAnimation },
 			{ "RandomBehavior", &AGhostCharacter::execRandomBehavior },
 			{ "RandomMovement", &AGhostCharacter::execRandomMovement },
 			{ "Reset", &AGhostCharacter::execReset },
 			{ "ResetLocation", &AGhostCharacter::execResetLocation },
-			{ "SetCyanAnimations", &AGhostCharacter::execSetCyanAnimations },
-			{ "SetOrangeAnimations", &AGhostCharacter::execSetOrangeAnimations },
-			{ "SetPinkAnimations", &AGhostCharacter::execSetPinkAnimations },
-			{ "SetRedAnimations", &AGhostCharacter::execSetRedAnimations },
-			{ "StoringTempVelocity", &AGhostCharacter::execStoringTempVelocity },
 			{ "UpdateGhostAnimations", &AGhostCharacter::execUpdateGhostAnimations },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
@@ -131,21 +106,6 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 		}
 		return ReturnFunction;
 	}
-	UFunction* Z_Construct_UFunction_AGhostCharacter_CanBeEatenAnimations()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-#if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-				{ "ModuleRelativePath", "GhostCharacter.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "CanBeEatenAnimations", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
-		}
-		return ReturnFunction;
-	}
 	UFunction* Z_Construct_UFunction_AGhostCharacter_CanBeEatenEvent()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -172,51 +132,6 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 			};
 #endif
 			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "ChaseEvent", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
-		}
-		return ReturnFunction;
-	}
-	UFunction* Z_Construct_UFunction_AGhostCharacter_CheckMovingLeft()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-#if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-				{ "ModuleRelativePath", "GhostCharacter.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "CheckMovingLeft", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
-		}
-		return ReturnFunction;
-	}
-	UFunction* Z_Construct_UFunction_AGhostCharacter_CheckMovingUp()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-#if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-				{ "ModuleRelativePath", "GhostCharacter.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "CheckMovingUp", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
-		}
-		return ReturnFunction;
-	}
-	UFunction* Z_Construct_UFunction_AGhostCharacter_CheckMovingVertically()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-#if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-				{ "ModuleRelativePath", "GhostCharacter.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "CheckMovingVertically", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
 		}
 		return ReturnFunction;
@@ -281,66 +196,6 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 		}
 		return ReturnFunction;
 	}
-	UFunction* Z_Construct_UFunction_AGhostCharacter_MoveDownAnimation()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-#if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-				{ "ModuleRelativePath", "GhostCharacter.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "MoveDownAnimation", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
-		}
-		return ReturnFunction;
-	}
-	UFunction* Z_Construct_UFunction_AGhostCharacter_MoveLeftAnimation()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-#if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-				{ "ModuleRelativePath", "GhostCharacter.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "MoveLeftAnimation", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
-		}
-		return ReturnFunction;
-	}
-	UFunction* Z_Construct_UFunction_AGhostCharacter_MoveRightAnimation()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-#if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-				{ "ModuleRelativePath", "GhostCharacter.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "MoveRightAnimation", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
-		}
-		return ReturnFunction;
-	}
-	UFunction* Z_Construct_UFunction_AGhostCharacter_MoveUpAnimation()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-#if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-				{ "ModuleRelativePath", "GhostCharacter.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "MoveUpAnimation", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
-		}
-		return ReturnFunction;
-	}
 	UFunction* Z_Construct_UFunction_AGhostCharacter_RandomBehavior()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -401,81 +256,6 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 		}
 		return ReturnFunction;
 	}
-	UFunction* Z_Construct_UFunction_AGhostCharacter_SetCyanAnimations()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-#if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-				{ "ModuleRelativePath", "GhostCharacter.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "SetCyanAnimations", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
-		}
-		return ReturnFunction;
-	}
-	UFunction* Z_Construct_UFunction_AGhostCharacter_SetOrangeAnimations()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-#if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-				{ "ModuleRelativePath", "GhostCharacter.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "SetOrangeAnimations", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
-		}
-		return ReturnFunction;
-	}
-	UFunction* Z_Construct_UFunction_AGhostCharacter_SetPinkAnimations()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-#if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-				{ "ModuleRelativePath", "GhostCharacter.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "SetPinkAnimations", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
-		}
-		return ReturnFunction;
-	}
-	UFunction* Z_Construct_UFunction_AGhostCharacter_SetRedAnimations()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-#if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-				{ "ModuleRelativePath", "GhostCharacter.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "SetRedAnimations", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
-		}
-		return ReturnFunction;
-	}
-	UFunction* Z_Construct_UFunction_AGhostCharacter_StoringTempVelocity()
-	{
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-#if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-				{ "ModuleRelativePath", "GhostCharacter.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "StoringTempVelocity", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
-		}
-		return ReturnFunction;
-	}
 	UFunction* Z_Construct_UFunction_AGhostCharacter_UpdateGhostAnimations()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -508,29 +288,16 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 				{ &Z_Construct_UFunction_AGhostCharacter_AmbushEvent, "AmbushEvent" }, // 793454085
 				{ &Z_Construct_UFunction_AGhostCharacter_AvoidPlayer, "AvoidPlayer" }, // 3216767718
 				{ &Z_Construct_UFunction_AGhostCharacter_BackToNormal, "BackToNormal" }, // 3835882844
-				{ &Z_Construct_UFunction_AGhostCharacter_CanBeEatenAnimations, "CanBeEatenAnimations" }, // 1408563443
 				{ &Z_Construct_UFunction_AGhostCharacter_CanBeEatenEvent, "CanBeEatenEvent" }, // 3134944834
 				{ &Z_Construct_UFunction_AGhostCharacter_ChaseEvent, "ChaseEvent" }, // 2832278537
-				{ &Z_Construct_UFunction_AGhostCharacter_CheckMovingLeft, "CheckMovingLeft" }, // 490421928
-				{ &Z_Construct_UFunction_AGhostCharacter_CheckMovingUp, "CheckMovingUp" }, // 3698770668
-				{ &Z_Construct_UFunction_AGhostCharacter_CheckMovingVertically, "CheckMovingVertically" }, // 1381183266
 				{ &Z_Construct_UFunction_AGhostCharacter_EatEvent, "EatEvent" }, // 335893009
 				{ &Z_Construct_UFunction_AGhostCharacter_FindNextDestination, "FindNextDestination" }, // 326713797
 				{ &Z_Construct_UFunction_AGhostCharacter_FlashingEvent, "FlashingEvent" }, // 836182105
 				{ &Z_Construct_UFunction_AGhostCharacter_IsWithinAmbushDistance, "IsWithinAmbushDistance" }, // 1972419303
-				{ &Z_Construct_UFunction_AGhostCharacter_MoveDownAnimation, "MoveDownAnimation" }, // 3725734177
-				{ &Z_Construct_UFunction_AGhostCharacter_MoveLeftAnimation, "MoveLeftAnimation" }, // 2428386358
-				{ &Z_Construct_UFunction_AGhostCharacter_MoveRightAnimation, "MoveRightAnimation" }, // 1241117579
-				{ &Z_Construct_UFunction_AGhostCharacter_MoveUpAnimation, "MoveUpAnimation" }, // 1686942051
 				{ &Z_Construct_UFunction_AGhostCharacter_RandomBehavior, "RandomBehavior" }, // 2778326870
 				{ &Z_Construct_UFunction_AGhostCharacter_RandomMovement, "RandomMovement" }, // 2319969893
 				{ &Z_Construct_UFunction_AGhostCharacter_Reset, "Reset" }, // 2545247005
 				{ &Z_Construct_UFunction_AGhostCharacter_ResetLocation, "ResetLocation" }, // 2876086367
-				{ &Z_Construct_UFunction_AGhostCharacter_SetCyanAnimations, "SetCyanAnimations" }, // 190026918
-				{ &Z_Construct_UFunction_AGhostCharacter_SetOrangeAnimations, "SetOrangeAnimations" }, // 1622331539
-				{ &Z_Construct_UFunction_AGhostCharacter_SetPinkAnimations, "SetPinkAnimations" }, // 1017753411
-				{ &Z_Construct_UFunction_AGhostCharacter_SetRedAnimations, "SetRedAnimations" }, // 3429863299
-				{ &Z_Construct_UFunction_AGhostCharacter_StoringTempVelocity, "StoringTempVelocity" }, // 1427136025
 				{ &Z_Construct_UFunction_AGhostCharacter_UpdateGhostAnimations, "UpdateGhostAnimations" }, // 2767375587
 			};
 #if WITH_METADATA
@@ -640,12 +407,12 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 #endif
 			static const UE4CodeGen_Private::FStructPropertyParams NewProp_AmbushLocation = { UE4CodeGen_Private::EPropertyClass::Struct, "AmbushLocation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, AmbushLocation), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(NewProp_AmbushLocation_MetaData, ARRAY_COUNT(NewProp_AmbushLocation_MetaData)) };
 #if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_TempLocation_MetaData[] = {
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_TempVelocity_MetaData[] = {
 				{ "Category", "GhostCharacter" },
 				{ "ModuleRelativePath", "GhostCharacter.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FStructPropertyParams NewProp_TempLocation = { UE4CodeGen_Private::EPropertyClass::Struct, "TempLocation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, TempLocation), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(NewProp_TempLocation_MetaData, ARRAY_COUNT(NewProp_TempLocation_MetaData)) };
+			static const UE4CodeGen_Private::FStructPropertyParams NewProp_TempVelocity = { UE4CodeGen_Private::EPropertyClass::Struct, "TempVelocity", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, TempVelocity), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(NewProp_TempVelocity_MetaData, ARRAY_COUNT(NewProp_TempVelocity_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_StartLocation_MetaData[] = {
 				{ "Category", "GhostCharacter" },
@@ -692,6 +459,13 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 			};
 #endif
 			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Navigate = { UE4CodeGen_Private::EPropertyClass::Object, "Navigate", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, Navigate), Z_Construct_UClass_UNavigationSystem_NoRegister, METADATA_PARAMS(NewProp_Navigate_MetaData, ARRAY_COUNT(NewProp_Navigate_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_GType_MetaData[] = {
+				{ "Category", "GhostCharacter" },
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FBytePropertyParams NewProp_GType = { UE4CodeGen_Private::EPropertyClass::Byte, "GType", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, GType), Z_Construct_UEnum_Pacman_Test_GhostType, METADATA_PARAMS(NewProp_GType_MetaData, ARRAY_COUNT(NewProp_GType_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SpriteFlipBook_MetaData[] = {
 				{ "Category", "GhostCharacter" },
@@ -876,13 +650,14 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_BlueSpeed,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_NormalSpeed,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_AmbushLocation,
-				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_TempLocation,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_TempVelocity,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_StartLocation,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_isFlashing,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CanBeEaten,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_isDead,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CanKill,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_Navigate,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_GType,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_SpriteFlipBook,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_MoveRight_Orange,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_MoveLeft_Orange,
@@ -925,7 +700,7 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AGhostCharacter, 2646302);
+	IMPLEMENT_CLASS(AGhostCharacter, 570564978);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AGhostCharacter(Z_Construct_UClass_AGhostCharacter, &AGhostCharacter::StaticClass, TEXT("/Script/Pacman_Test"), TEXT("AGhostCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AGhostCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
