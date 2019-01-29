@@ -29,6 +29,150 @@ AGhostCharacter::AGhostCharacter()
 	CanBeEatenTime = 6.0f;
 	FlashingTime = 3.0f;
 	CurrentAmbushDistance = 200.0f;
+
+	// Setting up blueprint asset
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> flashing
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Flashing_Flipbook.Flashing_Flipbook'"));
+	if (flashing.Succeeded())
+	{
+		Flashing = flashing.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> blue
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Blue.Blue'"));
+	if (blue.Succeeded())
+	{
+		Blue = blue.Object;
+	}
+
+	// Default asset for dead //
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveUpDead
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Eyes_Up_Flipbook.Eyes_Up_Flipbook'"));
+	if (moveUpDead.Succeeded())
+	{
+		MoveUp_Dead = moveUpDead.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveDownDead
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Eyes_Down_Flipbook.Eyes_Down_Flipbook'"));
+	if (moveDownDead.Succeeded())
+	{
+		MoveDown_Dead = moveDownDead.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveLeftDead
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Eyes_Left_Flipbook.Eyes_Left_Flipbook'"));
+	if (moveLeftDead.Succeeded())
+	{
+		MoveLeft_Dead = moveLeftDead.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveRightDead
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Eyes_Right_Flipbook.Eyes_Right_Flipbook'"));
+	if (moveRightDead.Succeeded())
+	{
+		MoveRight_Dead = moveRightDead.Object;
+	}
+	
+	// Default asset for red //
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveUpRed
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Red_U.Red_U'"));
+	if (moveUpRed.Succeeded())
+	{
+		MoveUp_Red = moveUpRed.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveDownRed
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Red_D.Red_D'"));
+	if (moveDownRed.Succeeded())
+	{
+		MoveDown_Red = moveDownRed.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveLeftRed
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Red_L.Red_L'"));
+	if (moveLeftRed.Succeeded())
+	{
+		MoveLeft_Red = moveLeftRed.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveRightRed
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Red_R.Red_R'"));
+	if (moveRightRed.Succeeded())
+	{
+		MoveRight_Red = moveRightRed.Object;
+	}
+
+	// Default asset for pink //
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveUpPink
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Pink_U.Pink_U'"));
+	if (moveUpPink.Succeeded())
+	{
+		MoveUp_Pink = moveUpPink.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveDownPink
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Pink_D.Pink_D'"));
+	if (moveDownPink.Succeeded())
+	{
+		MoveDown_Pink = moveDownPink.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveLeftPink
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Pink_L.Pink_L'"));
+	if (moveLeftPink.Succeeded())
+	{
+		MoveLeft_Pink = moveLeftPink.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveRightPink
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Pink_R.Pink_R'"));
+	if (moveRightPink.Succeeded())
+	{
+		MoveRight_Pink = moveRightPink.Object;
+	}
+
+	// Default asset for cyan //
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveUpCyan
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Cyan_U.Cyan_U'"));
+	if (moveUpCyan.Succeeded())
+	{
+		MoveUp_Cyan = moveUpCyan.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveDownCyan
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Cyan_D.Cyan_D'"));
+	if (moveDownCyan.Succeeded())
+	{
+		MoveDown_Cyan = moveDownCyan.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveLeftCyan
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Cyan_L.Cyan_L'"));
+	if (moveLeftCyan.Succeeded())
+	{
+		MoveLeft_Cyan = moveLeftCyan.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveRightCyan
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Cyan_R.Cyan_R'"));
+	if (moveRightCyan.Succeeded())
+	{
+		MoveRight_Cyan = moveRightCyan.Object;
+	}
+
+	// Default asset for orange //
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveUpOrange
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Orange_U.Orange_U'"));
+	if (moveUpOrange.Succeeded())
+	{
+		MoveUp_Orange = moveUpOrange.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveDownOrange
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Orange_D.Orange_D'"));
+	if (moveDownOrange.Succeeded())
+	{
+		MoveDown_Orange = moveDownOrange.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveLeftOrange
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Orange_L.Orange_L'"));
+	if (moveLeftOrange.Succeeded())
+	{
+		MoveLeft_Orange = moveLeftOrange.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveRightOrange
+	(TEXT("PaperFlipbook'/Game/FlipBooks/Orange_R.Orange_R'"));
+	if (moveRightOrange.Succeeded())
+	{
+		MoveRight_Orange = moveRightOrange.Object;
+	}
 }
 
 // Called when the game starts or when spawned
@@ -239,7 +383,12 @@ void AGhostCharacter::EatEvent()
 		CanBeEaten = false;
 		isDead = true;
 
-		//Navigate->SimpleMoveToLocation(GetController(), StartLocation);
+		AAIController* Control = Cast<AAIController>(this->GetController());
+
+		if (Control)
+		{
+			Control->MoveToLocation(StartLocation, 1.0f, false, true, true, false, 0, false);
+		}
 
 		GetCharacterMovement()->MaxWalkSpeed = NormalSpeed;
 	}
@@ -306,7 +455,7 @@ void AGhostCharacter::FindNextDestination()
 	}
 	else if (GType == GhostType::Pink)
 	{
-		AmbushEvent();
+		//AmbushEvent();
 	}
 	else if (GType == GhostType::Cyan)
 	{
@@ -365,6 +514,13 @@ void AGhostCharacter::RandomMovement()
 
 		CurrentTargetTrigger = TargetTriggerArray[Index];
 		CurrentTargetTrigger->isTaken = true;
+
+		AAIController* Control = Cast<AAIController>(this->GetController());
+
+		if (Control)
+		{
+			Control->MoveToActor(CurrentTargetTrigger, 1.0f, false, true, false, 0, false);
+		}
 
 		// AI Move To Syntax
 		// AI Move To Fails and isDead
