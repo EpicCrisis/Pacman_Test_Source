@@ -49,6 +49,7 @@ void APacmanPawn::BeginPlay()
 {
 	Super::BeginPlay();
 
+	OnActorBeginOverlap.AddDynamic(this, &APacmanPawn::ActorOverlap);
 	OnDestroyed.AddDynamic(this, &APacmanPawn::ActorDestroyed);
 
 	isDead = false;
@@ -174,17 +175,22 @@ void APacmanPawn::ActorOverlap(AActor * ThisActor, AActor * OtherActor)
 {
 	AGhostCharacter* Ghost = Cast<AGhostCharacter>(OtherActor);
 
-	if (!isDead && Ghost->CanKill)
-	{
-		isDead = true;
-	}
-	else if (Ghost->CanBeEaten)
-	{
-		GetWorld()->GetTimerManager().ClearTimer(EatBonusTimerHandle);
+	//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Cyan, "Kill Pacman!");
 
-		GetGhostPoints();
+	if (Ghost)
+	{
+		if (!isDead && Ghost->CanKill)
+		{
+			isDead = true;
+		}
+		else if (Ghost->CanBeEaten)
+		{
+			GetWorld()->GetTimerManager().ClearTimer(EatBonusTimerHandle);
 
-		Ghost->EatEvent();
+			GetGhostPoints();
+
+			Ghost->EatEvent();
+		}
 	}
 }
 
@@ -234,7 +240,7 @@ void APacmanPawn::CallGameOver()
 
 void APacmanPawn::RestartMap()
 {
-	UGameplayStatics::OpenLevel(this, FName("Pacman_Level"), true);
+	UGameplayStatics::OpenLevel(this, FName("PacmanLevel"), true);
 
 	//UGameplayStatics::OpenLevel(GetWorld(), "Pacman_Level");
 }

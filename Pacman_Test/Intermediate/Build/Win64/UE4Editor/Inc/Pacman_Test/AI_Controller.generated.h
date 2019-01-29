@@ -37,7 +37,7 @@ public: \
 
 #define Pacman_Test_Source_Pacman_Test_AI_Controller_h_15_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API AAI_Controller(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
+	NO_API AAI_Controller(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AAI_Controller) \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, AAI_Controller); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AAI_Controller); \
@@ -49,8 +49,6 @@ public:
 
 
 #define Pacman_Test_Source_Pacman_Test_AI_Controller_h_15_ENHANCED_CONSTRUCTORS \
-	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API AAI_Controller(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AAI_Controller(AAI_Controller&&); \
@@ -58,7 +56,7 @@ private: \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, AAI_Controller); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AAI_Controller); \
-	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AAI_Controller)
+	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AAI_Controller)
 
 
 #define Pacman_Test_Source_Pacman_Test_AI_Controller_h_15_PRIVATE_PROPERTY_OFFSET

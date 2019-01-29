@@ -6,8 +6,8 @@
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "PaperFlipbookComponent.h"
-#include "AI/Navigation/NavigationSystem.h"
 #include "PaperFlipbook.h"
+#include "AIController.h"
 #include "GhostCharacter.generated.h"
 
 // Forward declaration
@@ -28,7 +28,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -95,9 +95,6 @@ public:
 		TEnumAsByte<GhostType> GType;
 
 	UPROPERTY(EditAnywhere)
-		UNavigationSystem* Navigate;		
-
-	UPROPERTY(EditAnywhere)
 		bool CanKill;
 
 	UPROPERTY(EditAnywhere)
@@ -147,6 +144,18 @@ public:
 
 	UPROPERTY(EditAnywhere)
 		FTimerHandle LoadLevelTimerHandle;
+
+	UPROPERTY(EditAnywhere)
+		FTimerHandle CheckChaseDeathTimerHandle;
+
+	UPROPERTY(EditAnywhere)
+		FTimerHandle CheckAmbushDeathTimerHandle;
+
+	UPROPERTY(EditAnywhere)
+		FTimerHandle CheckAmbushAgainTimerHandle;
+
+	UPROPERTY(EditAnywhere)
+		FTimerHandle CheckRandomDeathTimerHandle;
 
 	UPROPERTY(EditAnywhere)
 		APacmanPawn* PacmanPlayer;

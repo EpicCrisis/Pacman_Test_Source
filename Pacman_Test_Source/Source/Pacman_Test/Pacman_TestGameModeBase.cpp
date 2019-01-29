@@ -35,18 +35,12 @@ void APacman_TestGameModeBase::BeginPlay()
 
 	for (TActorIterator<AGhostDestination> ActorItr(GetWorld()); ActorItr; ++ActorItr)
 	{
-		if (ActorItr)
-		{
-			ActorItr->Randomize();
-		}
+		ActorItr->Randomize();
 	}
 
 	for (TActorIterator<AGhostCharacter> ActorItr(GetWorld()); ActorItr; ++ActorItr)
 	{
-		if (ActorItr)
-		{
-			ActorItr->FindNextDestination();
-		}
+		ActorItr->FindNextDestination();
 	}
 }
 

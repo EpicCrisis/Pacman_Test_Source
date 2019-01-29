@@ -35,7 +35,6 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 	PACMAN_TEST_API UClass* Z_Construct_UClass_APacmanPawn_NoRegister();
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTimerHandle();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
-	ENGINE_API UClass* Z_Construct_UClass_UNavigationSystem_NoRegister();
 	PACMAN_TEST_API UEnum* Z_Construct_UEnum_Pacman_Test_GhostType();
 	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbookComponent_NoRegister();
 	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbook_NoRegister();
@@ -330,6 +329,34 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 #endif
 			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_PacmanPlayer = { UE4CodeGen_Private::EPropertyClass::Object, "PacmanPlayer", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, PacmanPlayer), Z_Construct_UClass_APacmanPawn_NoRegister, METADATA_PARAMS(NewProp_PacmanPlayer_MetaData, ARRAY_COUNT(NewProp_PacmanPlayer_MetaData)) };
 #if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CheckRandomDeathTimerHandle_MetaData[] = {
+				{ "Category", "GhostCharacter" },
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FStructPropertyParams NewProp_CheckRandomDeathTimerHandle = { UE4CodeGen_Private::EPropertyClass::Struct, "CheckRandomDeathTimerHandle", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, CheckRandomDeathTimerHandle), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(NewProp_CheckRandomDeathTimerHandle_MetaData, ARRAY_COUNT(NewProp_CheckRandomDeathTimerHandle_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CheckAmbushAgainTimerHandle_MetaData[] = {
+				{ "Category", "GhostCharacter" },
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FStructPropertyParams NewProp_CheckAmbushAgainTimerHandle = { UE4CodeGen_Private::EPropertyClass::Struct, "CheckAmbushAgainTimerHandle", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, CheckAmbushAgainTimerHandle), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(NewProp_CheckAmbushAgainTimerHandle_MetaData, ARRAY_COUNT(NewProp_CheckAmbushAgainTimerHandle_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CheckAmbushDeathTimerHandle_MetaData[] = {
+				{ "Category", "GhostCharacter" },
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FStructPropertyParams NewProp_CheckAmbushDeathTimerHandle = { UE4CodeGen_Private::EPropertyClass::Struct, "CheckAmbushDeathTimerHandle", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, CheckAmbushDeathTimerHandle), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(NewProp_CheckAmbushDeathTimerHandle_MetaData, ARRAY_COUNT(NewProp_CheckAmbushDeathTimerHandle_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CheckChaseDeathTimerHandle_MetaData[] = {
+				{ "Category", "GhostCharacter" },
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FStructPropertyParams NewProp_CheckChaseDeathTimerHandle = { UE4CodeGen_Private::EPropertyClass::Struct, "CheckChaseDeathTimerHandle", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, CheckChaseDeathTimerHandle), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(NewProp_CheckChaseDeathTimerHandle_MetaData, ARRAY_COUNT(NewProp_CheckChaseDeathTimerHandle_MetaData)) };
+#if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_LoadLevelTimerHandle_MetaData[] = {
 				{ "Category", "GhostCharacter" },
 				{ "ModuleRelativePath", "GhostCharacter.h" },
@@ -452,13 +479,6 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 #endif
 			auto NewProp_CanKill_SetBit = [](void* Obj){ ((AGhostCharacter*)Obj)->CanKill = 1; };
 			static const UE4CodeGen_Private::FBoolPropertyParams NewProp_CanKill = { UE4CodeGen_Private::EPropertyClass::Bool, "CanKill", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(AGhostCharacter), &UE4CodeGen_Private::TBoolSetBitWrapper<decltype(NewProp_CanKill_SetBit)>::SetBit, METADATA_PARAMS(NewProp_CanKill_MetaData, ARRAY_COUNT(NewProp_CanKill_MetaData)) };
-#if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Navigate_MetaData[] = {
-				{ "Category", "GhostCharacter" },
-				{ "ModuleRelativePath", "GhostCharacter.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Navigate = { UE4CodeGen_Private::EPropertyClass::Object, "Navigate", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, Navigate), Z_Construct_UClass_UNavigationSystem_NoRegister, METADATA_PARAMS(NewProp_Navigate_MetaData, ARRAY_COUNT(NewProp_Navigate_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_GType_MetaData[] = {
 				{ "Category", "GhostCharacter" },
@@ -639,6 +659,10 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_TargetTriggerArray_Inner,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CurrentTargetTrigger,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_PacmanPlayer,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CheckRandomDeathTimerHandle,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CheckAmbushAgainTimerHandle,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CheckAmbushDeathTimerHandle,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CheckChaseDeathTimerHandle,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_LoadLevelTimerHandle,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DelayBackToNormalTimerHandle,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_BackToNormalTimerHandle,
@@ -656,7 +680,6 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CanBeEaten,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_isDead,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CanKill,
-				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_Navigate,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_GType,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_SpriteFlipBook,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_MoveRight_Orange,
@@ -700,7 +723,7 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AGhostCharacter, 570564978);
+	IMPLEMENT_CLASS(AGhostCharacter, 2774183987);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AGhostCharacter(Z_Construct_UClass_AGhostCharacter, &AGhostCharacter::StaticClass, TEXT("/Script/Pacman_Test"), TEXT("AGhostCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AGhostCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

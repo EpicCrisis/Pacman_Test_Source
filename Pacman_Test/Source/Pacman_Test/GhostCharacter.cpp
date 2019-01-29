@@ -1,7 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "GhostCharacter.h"
+#include "Engine.h"
 #include "Engine/World.h"
+#include "TimerManager.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "PacmanPawn.h"
 #include "EngineUtils.h"
@@ -61,7 +63,7 @@ void AGhostCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	//UpdateGhostAnimations();
+	UpdateGhostAnimations();
 }
 
 // Called to bind functionality to input
@@ -304,7 +306,7 @@ void AGhostCharacter::FindNextDestination()
 	}
 	else if (GType == GhostType::Pink)
 	{
-		//AmbushEvent();
+		AmbushEvent();
 	}
 	else if (GType == GhostType::Cyan)
 	{
@@ -337,42 +339,56 @@ void AGhostCharacter::AvoidPlayer()
 
 void AGhostCharacter::RandomMovement()
 {
-	if (!isDead)
+	if (IsValid(CurrentTargetTrigger))
 	{
-		if (IsValid(CurrentTargetTrigger))
+		for (TActorIterator<AGhostDestination> ActorItr(GetWorld()); ActorItr; ++ActorItr)
 		{
-			for (TActorIterator<AGhostDestination> ActorItr(GetWorld()); ActorItr; ++ActorItr)
+			TargetTriggerArray.Add(*ActorItr);
+		}
+
+		if (CurrentTargetTrigger)
+		{
+			TargetTriggerArray.Remove(CurrentTargetTrigger);
+		}
+	}
+	else
+	{
+		for (TActorIterator<AGhostDestination> ActorItr(GetWorld()); ActorItr; ++ActorItr)
+		{
+			if (!ActorItr->isTaken)
 			{
 				TargetTriggerArray.Add(*ActorItr);
 			}
-
-			TargetTriggerArray.Remove(CurrentTargetTrigger);
 		}
-		else
-		{
-			for (TActorIterator<AGhostDestination> ActorItr(GetWorld()); ActorItr; ++ActorItr)
-			{
-				if (!ActorItr->isTaken)
-				{
-					TargetTriggerArray.Add(*ActorItr);
-				}
-			}
 
-			int Index = FMath::RandRange(0, TargetTriggerArray.Max() - 1);
+		int Index = FMath::RandRange(0, TargetTriggerArray.Max() - 1);
 
-			CurrentTargetTrigger = TargetTriggerArray[Index];
-			CurrentTargetTrigger->isTaken = true;
+		CurrentTargetTrigger = TargetTriggerArray[Index];
+		CurrentTargetTrigger->isTaken = true;
 
-			// AI Move To Syntax
-			// AI Move To Fails and isDead
-			// Timer handle delay
-		}
+		// AI Move To Syntax
+		// AI Move To Fails and isDead
+		// Timer handle delay
 	}
 }
 
 void AGhostCharacter::ChaseEvent()
 {
+	AActor* FollowActor = UGameplayStatics::GetPlayerController(GetWorld(), 0);
 
+	AAIController* Control = Cast<AAIController>(this->GetController());
+
+	if (Control)
+	{
+		//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Cyan, "Chase Pacman!");
+
+		Control->MoveToActor(FollowActor, 1.0f, false, true, false, 0, false);
+	}
+
+	if (!CanKill)
+	{
+		//RandomMovement();
+	}
 }
 
 void AGhostCharacter::AmbushEvent()
@@ -385,23 +401,35 @@ void AGhostCharacter::AmbushEvent()
 	{
 		PacmanPlayer = PlayerPawn;
 
-		int xLoc;
-		int yLoc;
-		int xMulti;
-		int yMulti;
-		int xNextLoc;
-		int yNextLoc;
-
-		xLoc = PacmanPlayer->GetActorLocation().X;
-		yLoc = PacmanPlayer->GetActorLocation().Y;
-		xMulti = PacmanPlayer->DirectionX * CurrentAmbushDistance;
-		yMulti = PacmanPlayer->DirectionY * CurrentAmbushDistance;
-		xNextLoc = xLoc + xMulti;
-		yNextLoc = yLoc + yMulti;
+		int xLoc = PacmanPlayer->GetActorLocation().X;
+		int yLoc = PacmanPlayer->GetActorLocation().Y;
+		int xMulti = PacmanPlayer->DirectionX * CurrentAmbushDistance;
+		int yMulti = PacmanPlayer->DirectionY * CurrentAmbushDistance;
+		int xNextLoc = xLoc + xMulti;
+		int yNextLoc = yLoc + yMulti;
 
 		AmbushLocation = FVector(xNextLoc, yNextLoc, GetActorLocation().Z);
 
+		AActor* FollowActor = UGameplayStatics::GetPlayerController(GetWorld(), 0);
 
+		AAIController* Control = Cast<AAIController>(this->GetController());
+
+		if (Control)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Cyan, "Ambush Pacman!");
+
+			Control->MoveToLocation(AmbushLocation, 1.0f, false, true, true, false, 0, false);
+
+			GetWorld()->GetTimerManager().SetTimer
+			(
+				CheckAmbushAgainTimerHandle, this, &AGhostCharacter::AmbushEvent, 1.0f, false
+			);
+		}
+	}
+
+	if (!CanKill)
+	{
+		//RandomMovement();
 	}
 }
 
