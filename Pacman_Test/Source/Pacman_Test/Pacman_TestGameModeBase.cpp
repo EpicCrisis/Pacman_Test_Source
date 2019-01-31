@@ -7,6 +7,7 @@
 #include "PacmanPawn.h"
 #include "GhostCharacter.h"
 #include "GhostDestination.h"
+#include "TimerManager.h"
 
 // Sets default values
 APacman_TestGameModeBase::APacman_TestGameModeBase()
@@ -35,19 +36,37 @@ void APacman_TestGameModeBase::BeginPlay()
 
 	for (TActorIterator<AGhostDestination> ActorItr(GetWorld()); ActorItr; ++ActorItr)
 	{
-		ActorItr->Randomize();
+		AGhostDestination* GPoint = *ActorItr;
+
+		GPoint->Randomize();
+		DestinationArray.AddUnique(GPoint);
 	}
 
 	for (TActorIterator<AGhostCharacter> ActorItr(GetWorld()); ActorItr; ++ActorItr)
 	{
-		ActorItr->FindNextDestination();
+		AGhostCharacter* Ghost = *ActorItr;
+
+		Ghost->TargetTriggerArray = DestinationArray;
+		Ghost->FindNextDestination();
 	}
 }
 
 void APacman_TestGameModeBase::Tick(float DeltaTime)
 {
-	GEngine->AddOnScreenDebugMessage(-1, DeltaTime, FColor::Cyan, "Score : ");
-	GEngine->AddOnScreenDebugMessage(-1, DeltaTime, FColor::Cyan, "Lives : ");
+
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage
+		(-1, DeltaTime, FColor::Cyan, FString::Printf
+		(TEXT("Score : %d"), Score));
+
+		GEngine->AddOnScreenDebugMessage
+		(-1, DeltaTime, FColor::Cyan, FString::Printf
+		(TEXT("Lives : %d"), Lives));
+	}
+
+	//GEngine->AddOnScreenDebugMessage(-1, DeltaTime, FColor::Cyan, "Score : ");
+	//GEngine->AddOnScreenDebugMessage(-1, DeltaTime, FColor::Cyan, "Lives : ");
 }
 
 FVector APacman_TestGameModeBase::WorldToGridLocation(FVector Location)
@@ -89,10 +108,24 @@ void APacman_TestGameModeBase::WinEvent()
 	if (EatenDots == TotalDots)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, "You Win!");
+
+		for (TActorIterator<AGhostCharacter> ActorItr(GetWorld()); ActorItr; ++ActorItr)
+		{
+			AGhostCharacter* Ghost = *ActorItr;
+
+			Ghost->isDead = false;
+			Ghost->CanBeEatenEvent();
+			Ghost->EatEvent();
+
+			GetWorld()->GetTimerManager().SetTimer
+			(
+				DelayRestartTimerHandle, this, &APacman_TestGameModeBase::RestartLevel, 5.0f, false
+			);
+		}
 	}
 }
 
-void APacman_TestGameModeBase::CreateGrid_Implementation()
+void APacman_TestGameModeBase::CreateGrid()
 {
 	BlocksArray.Empty();
 
@@ -111,12 +144,14 @@ void APacman_TestGameModeBase::CreateGrid_Implementation()
 	}
 }
 
-void APacman_TestGameModeBase::SpawnPacman_Implementation()
+void APacman_TestGameModeBase::SpawnPacman()
 {
 	for (TActorIterator<APlayerStart> ActorItr(GetWorld()); ActorItr; ++ActorItr)
 	{
-		FVector Loc(ActorItr->GetActorLocation());
-		FRotator Rot(ActorItr->GetActorRotation());
+		APlayerStart* Start = *ActorItr;
+
+		FVector Loc(Start->GetActorLocation());
+		FRotator Rot(Start->GetActorRotation());
 		FActorSpawnParameters SpawnInfo;
 
 		APlayerController* Controller = UGameplayStatics::GetPlayerController(GetWorld(), 0);
@@ -125,4 +160,9 @@ void APacman_TestGameModeBase::SpawnPacman_Implementation()
 		APacmanPawn* Spawn = GetWorld()->SpawnActor<APacmanPawn>(PacPlayer, Loc, Rot, SpawnInfo);
 		Controller->Possess(Spawn);
 	}
+}
+
+void APacman_TestGameModeBase::RestartLevel()
+{
+	UGameplayStatics::OpenLevel(this, FName("PacmanLevel"), true);
 }

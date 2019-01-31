@@ -15,6 +15,30 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execActivateOrange) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->ActivateOrange(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execActivateCyan) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->ActivateCyan(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execActivatePink) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->ActivatePink(); \
+		P_NATIVE_END; \
+	} \
+ \
 	DECLARE_FUNCTION(execRandomBehavior) \
 	{ \
 		P_FINISH; \
@@ -129,6 +153,30 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 
 #define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execActivateOrange) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->ActivateOrange(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execActivateCyan) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->ActivateCyan(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execActivatePink) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->ActivatePink(); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execRandomBehavior) \
 	{ \

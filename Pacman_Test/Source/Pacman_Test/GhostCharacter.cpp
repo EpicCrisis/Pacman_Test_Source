@@ -23,12 +23,17 @@ AGhostCharacter::AGhostCharacter()
 	SpriteFlipBook = CreateDefaultSubobject<UPaperFlipbookComponent>(TEXT("SpriteFlipBook"));
 	SpriteFlipBook->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 
-	NormalSpeed = 360.0f;
-	BlueSpeed = 260.0f;
+	RedSpeed = 340.0f;
+	PinkSpeed = 360.0f;
+	CyanSpeed = 350.0f;
+	OrangeSpeed = 330.0f;
+	CurrentSpeed = 0.0f;
+	BlueSpeed = 200.0f;
 	AvoidanceDistance = 100.0f;
 	CanBeEatenTime = 6.0f;
 	FlashingTime = 3.0f;
 	CurrentAmbushDistance = 200.0f;
+	isGhostActive = false;
 
 	// Setting up blueprint asset
 	ConstructorHelpers::FObjectFinder<UPaperFlipbook> flashing
@@ -69,7 +74,7 @@ AGhostCharacter::AGhostCharacter()
 	{
 		MoveRight_Dead = moveRightDead.Object;
 	}
-	
+
 	// Default asset for red //
 	ConstructorHelpers::FObjectFinder<UPaperFlipbook> moveUpRed
 	(TEXT("PaperFlipbook'/Game/FlipBooks/Red_U.Red_U'"));
@@ -182,24 +187,41 @@ void AGhostCharacter::BeginPlay()
 
 	StartLocation = GetActorLocation();
 
-	BackToNormal();
-
 	if (GType == GhostType::Red)
 	{
 		SpriteFlipBook->SetFlipbook(MoveUp_Red);
+
+		isGhostActive = true;
 	}
 	else if (GType == GhostType::Pink)
 	{
 		SpriteFlipBook->SetFlipbook(MoveUp_Pink);
+
+		GetWorld()->GetTimerManager().SetTimer
+		(
+			ActivatePinkTimerHandle, this, &AGhostCharacter::ActivatePink, 4.0f, false
+		);
 	}
 	else if (GType == GhostType::Cyan)
 	{
 		SpriteFlipBook->SetFlipbook(MoveUp_Cyan);
+
+		GetWorld()->GetTimerManager().SetTimer
+		(
+			ActivateCyanTimerHandle, this, &AGhostCharacter::ActivateCyan, 8.0f, false
+		);
 	}
 	else
 	{
 		SpriteFlipBook->SetFlipbook(MoveUp_Orange);
+
+		GetWorld()->GetTimerManager().SetTimer
+		(
+			ActivateOrangeTimerHandle, this, &AGhostCharacter::ActivateOrange, 12.0f, false
+		);
 	}
+
+	BackToNormal();
 }
 
 // Called every frame
@@ -363,7 +385,43 @@ void AGhostCharacter::BackToNormal()
 	isFlashing = false;
 	CanKill = true;
 
-	GetCharacterMovement()->MaxWalkSpeed = NormalSpeed;
+	if (!isGhostActive)
+	{
+		GetCharacterMovement()->MaxWalkSpeed = 0.0f;
+	}
+
+	if (GType == GhostType::Red)
+	{
+		if (isGhostActive)
+		{
+			CurrentSpeed = RedSpeed;
+			GetCharacterMovement()->MaxWalkSpeed = CurrentSpeed;
+		}
+	}
+	else if (GType == GhostType::Pink)
+	{
+		if (isGhostActive)
+		{
+			CurrentSpeed = PinkSpeed;
+			GetCharacterMovement()->MaxWalkSpeed = CurrentSpeed;
+		}
+	}
+	else if (GType == GhostType::Cyan)
+	{
+		if (isGhostActive)
+		{
+			CurrentSpeed = CyanSpeed;
+			GetCharacterMovement()->MaxWalkSpeed = CurrentSpeed;
+		}
+	}
+	else if (GType == GhostType::Orange)
+	{
+		if (isGhostActive)
+		{
+			CurrentSpeed = OrangeSpeed;
+			GetCharacterMovement()->MaxWalkSpeed = CurrentSpeed;
+		}
+	}
 
 	GetCharacterMovement()->StopActiveMovement();
 
@@ -383,14 +441,47 @@ void AGhostCharacter::EatEvent()
 		CanBeEaten = false;
 		isDead = true;
 
+		GetCharacterMovement()->StopActiveMovement();
+
 		AAIController* Control = Cast<AAIController>(this->GetController());
 
 		if (Control)
 		{
-			Control->MoveToLocation(StartLocation, 1.0f, false, true, true, false, 0, false);
+			Control->MoveToLocation(StartLocation, -1.0f, false, true, true, false, 0, false);
 		}
 
-		GetCharacterMovement()->MaxWalkSpeed = NormalSpeed;
+		if (GType == GhostType::Red)
+		{
+			if (isGhostActive)
+			{
+				CurrentSpeed = RedSpeed;
+				GetCharacterMovement()->MaxWalkSpeed = CurrentSpeed;
+			}
+		}
+		else if (GType == GhostType::Pink)
+		{
+			if (isGhostActive)
+			{
+				CurrentSpeed = PinkSpeed;
+				GetCharacterMovement()->MaxWalkSpeed = CurrentSpeed;
+			}
+		}
+		else if (GType == GhostType::Cyan)
+		{
+			if (isGhostActive)
+			{
+				CurrentSpeed = CyanSpeed;
+				GetCharacterMovement()->MaxWalkSpeed = CurrentSpeed;
+			}
+		}
+		else if (GType == GhostType::Orange)
+		{
+			if (isGhostActive)
+			{
+				CurrentSpeed = OrangeSpeed;
+				GetCharacterMovement()->MaxWalkSpeed = CurrentSpeed;
+			}
+		}
 	}
 }
 
@@ -402,7 +493,11 @@ void AGhostCharacter::CanBeEatenEvent()
 
 		GetWorld()->GetTimerManager().ClearTimer(BackToNormalTimerHandle);
 
-		GetCharacterMovement()->MaxWalkSpeed = BlueSpeed;
+		if (isGhostActive)
+		{
+			CurrentSpeed = BlueSpeed;
+			GetCharacterMovement()->MaxWalkSpeed = CurrentSpeed;
+		}
 
 		CanKill = false;
 		CanBeEaten = true;
@@ -424,9 +519,8 @@ void AGhostCharacter::Reset()
 
 	GetWorld()->GetTimerManager().SetTimer
 	(
-		DelayBackToNormalTimerHandle, this, &AGhostCharacter::BackToNormal, 2.0f, false
+		DelayBackToNormalTimerHandle, this, &AGhostCharacter::BackToNormal, 3.0f, false
 	);
-
 }
 
 void AGhostCharacter::FlashingEvent()
@@ -443,27 +537,31 @@ void AGhostCharacter::FindNextDestination()
 {
 	for (TActorIterator<AGhostDestination> ActorItr(GetWorld()); ActorItr; ++ActorItr)
 	{
-		if (ActorItr)
+		AGhostDestination* GPoint = *ActorItr;
+
+		if (GPoint)
 		{
-			ActorItr->isTaken = false;
+			GPoint->isTaken = false;
 		}
 	}
 
 	if (GType == GhostType::Red)
 	{
-		//ChaseEvent();
+		//RandomMovement();
+		ChaseEvent();
 	}
 	else if (GType == GhostType::Pink)
 	{
-		//AmbushEvent();
+		//RandomMovement();
+		AmbushEvent();
 	}
 	else if (GType == GhostType::Cyan)
 	{
-		//RandomMovement();
+		RandomMovement();
 	}
 	else if (GType == GhostType::Orange)
 	{
-		//RandomMovement();
+		RandomMovement();
 	}
 }
 
@@ -477,7 +575,41 @@ void AGhostCharacter::ResetLocation()
 
 	CanKill = false;
 
+	isGhostActive = false;
+
 	GetCharacterMovement()->MaxWalkSpeed = 0.0f;
+
+	if (GType == GhostType::Red)
+	{
+		isGhostActive = true;
+	}
+	else if (GType == GhostType::Pink)
+	{
+		GetWorld()->GetTimerManager().ClearTimer(ActivatePinkTimerHandle);
+
+		GetWorld()->GetTimerManager().SetTimer
+		(
+			ActivatePinkTimerHandle, this, &AGhostCharacter::ActivatePink, 4.0f, false
+		);
+	}
+	else if (GType == GhostType::Cyan)
+	{
+		GetWorld()->GetTimerManager().ClearTimer(ActivateCyanTimerHandle);
+
+		GetWorld()->GetTimerManager().SetTimer
+		(
+			ActivateCyanTimerHandle, this, &AGhostCharacter::ActivateCyan, 8.0f, false
+		);
+	}
+	else
+	{
+		GetWorld()->GetTimerManager().ClearTimer(ActivateOrangeTimerHandle);
+
+		GetWorld()->GetTimerManager().SetTimer
+		(
+			ActivateOrangeTimerHandle, this, &AGhostCharacter::ActivateOrange, 12.0f, false
+		);
+	}
 
 	Reset();
 }
@@ -488,62 +620,50 @@ void AGhostCharacter::AvoidPlayer()
 
 void AGhostCharacter::RandomMovement()
 {
-	if (IsValid(CurrentTargetTrigger))
+	if (CurrentTargetTrigger)
 	{
-		for (TActorIterator<AGhostDestination> ActorItr(GetWorld()); ActorItr; ++ActorItr)
-		{
-			TargetTriggerArray.Add(*ActorItr);
-		}
+		CurrentTargetTrigger->isTaken = false;
 
-		if (CurrentTargetTrigger)
-		{
-			TargetTriggerArray.Remove(CurrentTargetTrigger);
-		}
+		CurrentTargetTrigger = NULL;
 	}
-	else
+
+	int Index = FMath::RandRange(0, TargetTriggerArray.Num() - 1);
+
+	CurrentTargetTrigger = TargetTriggerArray[Index];
+
+	CurrentTargetTrigger->isTaken = true;
+
+	GetCharacterMovement()->StopActiveMovement();
+
+	AAIController* Control = Cast<AAIController>(this->GetController());
+
+	if (Control)
 	{
-		for (TActorIterator<AGhostDestination> ActorItr(GetWorld()); ActorItr; ++ActorItr)
-		{
-			if (!ActorItr->isTaken)
-			{
-				TargetTriggerArray.Add(*ActorItr);
-			}
-		}
-
-		int Index = FMath::RandRange(0, TargetTriggerArray.Max() - 1);
-
-		CurrentTargetTrigger = TargetTriggerArray[Index];
-		CurrentTargetTrigger->isTaken = true;
-
-		AAIController* Control = Cast<AAIController>(this->GetController());
-
-		if (Control)
-		{
-			Control->MoveToActor(CurrentTargetTrigger, 1.0f, false, true, false, 0, false);
-		}
-
-		// AI Move To Syntax
-		// AI Move To Fails and isDead
-		// Timer handle delay
+		Control->MoveToActor(CurrentTargetTrigger, -1.0f, false, true, false, 0, false);
 	}
+
+	// AI Move To Syntax
+	// AI Move To Fails and isDead
+	// Timer handle delay
 }
 
 void AGhostCharacter::ChaseEvent()
 {
 	AActor* FollowActor = UGameplayStatics::GetPlayerController(GetWorld(), 0);
 
+	GetCharacterMovement()->StopActiveMovement();
+
 	AAIController* Control = Cast<AAIController>(this->GetController());
-
-	if (Control)
-	{
-		//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Cyan, "Chase Pacman!");
-
-		Control->MoveToActor(FollowActor, 1.0f, false, true, false, 0, false);
-	}
 
 	if (!CanKill)
 	{
-		//RandomMovement();
+		RandomMovement();
+	}
+	else if (Control)
+	{
+		//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Cyan, "Chase Pacman!");
+
+		Control->MoveToActor(FollowActor, -1.0f, false, true, false, 0, false);
 	}
 }
 
@@ -553,12 +673,16 @@ void AGhostCharacter::AmbushEvent()
 
 	APacmanPawn* PlayerPawn = Cast<APacmanPawn>(Pawn);
 
-	if (PlayerPawn)
+	if (!CanKill)
+	{
+		RandomMovement();
+	}
+	else if (PlayerPawn)
 	{
 		PacmanPlayer = PlayerPawn;
 
-		int xLoc = PacmanPlayer->GetActorLocation().X;
-		int yLoc = PacmanPlayer->GetActorLocation().Y;
+		int xLoc = PacmanPlayer->TempLocation.X;
+		int yLoc = PacmanPlayer->TempLocation.Y;
 		int xMulti = PacmanPlayer->DirectionX * CurrentAmbushDistance;
 		int yMulti = PacmanPlayer->DirectionY * CurrentAmbushDistance;
 		int xNextLoc = xLoc + xMulti;
@@ -572,9 +696,9 @@ void AGhostCharacter::AmbushEvent()
 
 		if (Control)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Cyan, "Ambush Pacman!");
+			//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Cyan, "Ambush Pacman!");
 
-			Control->MoveToLocation(AmbushLocation, 1.0f, false, true, true, false, 0, false);
+			Control->MoveToLocation(AmbushLocation, -1.0f, false, true, true, false, 0, false);
 
 			GetWorld()->GetTimerManager().SetTimer
 			(
@@ -582,13 +706,41 @@ void AGhostCharacter::AmbushEvent()
 			);
 		}
 	}
-
-	if (!CanKill)
-	{
-		//RandomMovement();
-	}
 }
 
 void AGhostCharacter::RandomBehavior()
 {
+}
+
+void AGhostCharacter::ActivatePink()
+{
+	isGhostActive = true;
+	CurrentSpeed = PinkSpeed;
+
+	if (!CanBeEaten)
+	{
+		BackToNormal();
+	}
+}
+
+void AGhostCharacter::ActivateCyan()
+{
+	isGhostActive = true;
+	CurrentSpeed = CyanSpeed;
+
+	if (!CanBeEaten)
+	{
+		BackToNormal();
+	}
+}
+
+void AGhostCharacter::ActivateOrange()
+{
+	isGhostActive = true;
+	CurrentSpeed = OrangeSpeed;
+
+	if (!CanBeEaten)
+	{
+		BackToNormal();
+	}
 }

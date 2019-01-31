@@ -2,6 +2,8 @@
 
 #include "GhostHouseTrigger.h"
 #include "GhostCharacter.h"
+#include "Engine/World.h"
+#include "TimerManager.h"
 
 
 // Sets default values
@@ -39,9 +41,15 @@ void AGhostHouseTrigger::OnOverlap(AActor * ThisActor, AActor * OtherActor)
 {
 	AGhostCharacter* Ghost = Cast<AGhostCharacter>(OtherActor);
 
-	if (Ghost->isDead)
+	if (Ghost)
 	{
-		//GetWorldTimerManager().SetTimer(Ghost->BackToNormalTimerHandle, this, Ghost->Reset, 1.0f, true, 2.0f);
+		if (Ghost->isDead)
+		{
+			GetWorld()->GetTimerManager().SetTimer
+			(
+				Ghost->BackToNormalTimerHandle, Ghost, &AGhostCharacter::Reset, 0.5f, false
+			);
+		}
 	}
 }
 

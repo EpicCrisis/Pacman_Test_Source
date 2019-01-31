@@ -16,14 +16,20 @@ class AGridBlock;
 #define PACMAN_TEST_Pacman_TestGameModeBase_generated_h
 
 #define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_RPC_WRAPPERS \
-	virtual void SpawnPacman_Implementation(); \
-	virtual void CreateGrid_Implementation(); \
+ \
+	DECLARE_FUNCTION(execRestartLevel) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->RestartLevel(); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execSpawnPacman) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->SpawnPacman_Implementation(); \
+		P_THIS->SpawnPacman(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -31,7 +37,7 @@ class AGridBlock;
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->CreateGrid_Implementation(); \
+		P_THIS->CreateGrid(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -73,14 +79,20 @@ class AGridBlock;
 
 
 #define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
-	virtual void SpawnPacman_Implementation(); \
-	virtual void CreateGrid_Implementation(); \
+ \
+	DECLARE_FUNCTION(execRestartLevel) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		P_THIS->RestartLevel(); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execSpawnPacman) \
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->SpawnPacman_Implementation(); \
+		P_THIS->SpawnPacman(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -88,7 +100,7 @@ class AGridBlock;
 	{ \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		P_THIS->CreateGrid_Implementation(); \
+		P_THIS->CreateGrid(); \
 		P_NATIVE_END; \
 	} \
  \
@@ -129,8 +141,6 @@ class AGridBlock;
 	}
 
 
-#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_EVENT_PARMS
-#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_CALLBACK_WRAPPERS
 #define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAPacman_TestGameModeBase(); \
@@ -176,16 +186,12 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(APacman_TestGameModeBase); \
 
 
 #define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_PRIVATE_PROPERTY_OFFSET
-#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_17_PROLOG \
-	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_EVENT_PARMS
-
-
+#define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_17_PROLOG
 #define Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_PRIVATE_PROPERTY_OFFSET \
 	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_RPC_WRAPPERS \
-	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_CALLBACK_WRAPPERS \
 	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_INCLASS \
 	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_STANDARD_CONSTRUCTORS \
 public: \
@@ -197,7 +203,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_PRIVATE_PROPERTY_OFFSET \
 	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
-	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_CALLBACK_WRAPPERS \
 	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_INCLASS_NO_PURE_DECLS \
 	Pacman_Test_Source_Pacman_Test_Pacman_TestGameModeBase_h_20_ENHANCED_CONSTRUCTORS \
 private: \

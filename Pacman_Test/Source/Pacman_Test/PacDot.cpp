@@ -4,6 +4,7 @@
 #include "Pacman_TestGameModeBase.h"
 #include "PacmanPawn.h"
 #include "Engine/World.h"
+#include "Engine.h"
 
 
 // Sets default values
@@ -27,6 +28,20 @@ APacDot::APacDot()
 	//OnDestroyed.AddDynamic(this, &APacDot::ActorDestroyed);
 
 	RootComponent = Sphere;
+
+	// Setting up blueprint asset
+	ConstructorHelpers::FObjectFinder<UStaticMesh> sphere
+	(TEXT("StaticMesh'/Engine/BasicShapes/Sphere.Sphere'"));
+	if (sphere.Succeeded())
+	{
+		Sphere->SetStaticMesh(sphere.Object);
+	}
+	ConstructorHelpers::FObjectFinder<UMaterial> coin
+	(TEXT("Material'/Game/Materials/M_Coin.M_Coin'"));
+	if (coin.Succeeded())
+	{
+		Sphere->SetMaterial(0, coin.Object);
+	}
 }
 
 // Called when the game starts or when spawned

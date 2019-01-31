@@ -25,6 +25,8 @@ APacmanPawn::APacmanPawn()
 
 	Sphere = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Sphere"));
 	Sphere->AttachToComponent(SceneRoot, FAttachmentTransformRules::KeepRelativeTransform);
+	Sphere->bHiddenInGame = true;
+	Sphere->bVisible = false;
 
 	Box = CreateDefaultSubobject<UBoxComponent>(TEXT("Box"));
 	Box->SetBoxExtent(FVector(32.0f, 32.0f, 50.0f), true);
@@ -36,12 +38,57 @@ APacmanPawn::APacmanPawn()
 	Camera->SetRelativeRotation(FRotator(-90.0f, -90.0f, 0.0f));
 	Camera->AttachToComponent(SceneRoot, FAttachmentTransformRules::KeepWorldTransform);
 
+	SpriteFlipBook = CreateDefaultSubobject<UPaperFlipbookComponent>(TEXT("SpriteFlipBook"));
+	SpriteFlipBook->AttachToComponent(SceneRoot, FAttachmentTransformRules::KeepRelativeTransform);
+	SpriteFlipBook->SetRelativeRotation(FRotator(90.0f, 0.0f, 0.0f));
+
 	MoveTimeline = CreateDefaultSubobject<UTimelineComponent>(TEXT("MoveTimeline"));
 
 	InterpFunction.BindUFunction(this, FName("TimelineFloatReturn"));
 	TimelineFinish.BindUFunction(this, FName("OnTimelineFinished"));
 
 	MoveDistance = 100.0f;
+
+	// Setting up blueprint asset
+	ConstructorHelpers::FObjectFinder<UStaticMesh> pacSphere
+	(TEXT("StaticMesh'/Engine/BasicShapes/Sphere.Sphere'"));
+	if (pacSphere.Succeeded())
+	{
+		Sphere->SetStaticMesh(pacSphere.Object);
+	}
+	ConstructorHelpers::FObjectFinder<UMaterial> pacMat
+	(TEXT("Material'/Game/Materials/M_Pacman.M_Pacman'"));
+	if (pacMat.Succeeded())
+	{
+		Sphere->SetMaterial(0, pacMat.Object);
+	}
+	ConstructorHelpers::FObjectFinder<UCurveFloat> moveCurve
+	(TEXT("CurveFloat'/Game/Blueprints/MoveCurve.MoveCurve'"));
+	if (moveCurve.Succeeded())
+	{
+		MoveCurve = moveCurve.Object;
+	}
+
+	// Setting up flipbook assets
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> pacMove
+	(TEXT("PaperFlipbook'/Game/FlipBooks/PacMan_Walk.PacMan_Walk'"));
+	if (pacMove.Succeeded())
+	{
+		SpriteFlipBook->SetFlipbook(pacMove.Object);
+		PacmanMoving = pacMove.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> pacDeath
+	(TEXT("PaperFlipbook'/Game/FlipBooks/PacDeath_Flipbook.PacDeath_Flipbook'"));
+	if (pacDeath.Succeeded())
+	{
+		PacmanDeath = pacDeath.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UPaperFlipbook> pacBlock
+	(TEXT("PaperFlipbook'/Game/FlipBooks/PacManBlocked.PacManBlocked'"));
+	if (pacBlock.Succeeded())
+	{
+		PacmanBlock = pacBlock.Object;
+	}
 }
 
 // Called when the game starts or when spawned
@@ -71,7 +118,7 @@ void APacmanPawn::Tick(float DeltaTime)
 		{
 			DoOnceDead = true;
 
-			GameModeRef->Lives -= 1;
+			UpdateAnimation();
 
 			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, "You Died!");
 
@@ -123,6 +170,8 @@ void APacmanPawn::Tick(float DeltaTime)
 				DownKeyAction();
 			}
 
+			UpdateAnimation();
+
 			if (DirectionX != 0 || DirectionY != 0)
 			{
 				if (MoveCurve)
@@ -159,7 +208,7 @@ void APacmanPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	PlayerInputComponent->BindAction("PressS", IE_Pressed, this, &APacmanPawn::DownKeyPressed);
 	PlayerInputComponent->BindAction("PressA", IE_Pressed, this, &APacmanPawn::LeftKeyPressed);
 	PlayerInputComponent->BindAction("PressD", IE_Pressed, this, &APacmanPawn::RightKeyPressed);
-	
+
 	PlayerInputComponent->BindAction("PressW", IE_Released, this, &APacmanPawn::UpKeyReleased);
 	PlayerInputComponent->BindAction("PressS", IE_Released, this, &APacmanPawn::DownKeyReleased);
 	PlayerInputComponent->BindAction("PressA", IE_Released, this, &APacmanPawn::LeftKeyReleased);
@@ -200,14 +249,17 @@ void APacmanPawn::GetGhostPoints()
 
 	GhostPoints *= 2;
 
-	GetWorld()->GetTimerManager().SetTimer(EatBonusTimerHandle, this, &APacmanPawn::ResetBonusPoints, BonusPointsTime, false);
+	GetWorld()->GetTimerManager().SetTimer
+	(EatBonusTimerHandle, this, &APacmanPawn::ResetBonusPoints, BonusPointsTime, false);
 }
 
 void APacmanPawn::EatGhostEvent()
 {
 	for (TActorIterator<AGhostCharacter> ActorItr(GetWorld()); ActorItr; ++ActorItr)
 	{
-		ActorItr->CanBeEatenEvent();
+		AGhostCharacter* Ghost = *ActorItr;
+
+		Ghost->CanBeEatenEvent();
 	}
 }
 
@@ -220,6 +272,8 @@ void APacmanPawn::CallGameOver()
 {
 	if (GameModeRef->Lives <= 0)
 	{
+		SpriteFlipBook->Stop();
+
 		GetWorld()->GetTimerManager().SetTimer
 		(
 			LoadLevelTimerHandle, this, &APacmanPawn::RestartMap, 5.0f, false
@@ -231,8 +285,12 @@ void APacmanPawn::CallGameOver()
 	{
 		for (TActorIterator<AGhostCharacter> ActorItr(GetWorld()); ActorItr; ++ActorItr)
 		{
-			ActorItr->ResetLocation();
+			AGhostCharacter* Ghost = *ActorItr;
+
+			Ghost->ResetLocation();
 		}
+
+		GameModeRef->Lives -= 1;
 
 		Destroy();
 	}
@@ -456,5 +514,44 @@ void APacmanPawn::TimelineFloatReturn(float value)
 void APacmanPawn::OnTimelineFinished()
 {
 	ResetDoOnce();
+}
+
+void APacmanPawn::UpdateAnimation()
+{
+	if (isDead)
+	{
+		TempYaw = 180.0f;
+		SpriteFlipBook->SetFlipbook(PacmanDeath);
+		SpriteFlipBook->SetPlayRate(0.5f);
+	}
+	else
+	{
+		if (DirectionX == 1)
+		{
+			TempYaw = 180.0f;
+			SpriteFlipBook->SetFlipbook(PacmanMoving);
+		}
+		else if (DirectionX == -1)
+		{
+			TempYaw = 0.0f;
+			SpriteFlipBook->SetFlipbook(PacmanMoving);
+		}
+		else if (DirectionY == 1)
+		{
+			TempYaw = 270.0f;
+			SpriteFlipBook->SetFlipbook(PacmanMoving);
+		}
+		else if (DirectionY == -1)
+		{
+			TempYaw = 90.0f;
+			SpriteFlipBook->SetFlipbook(PacmanMoving);
+		}
+		else
+		{
+			SpriteFlipBook->SetFlipbook(PacmanBlock);
+		}
+	}
+
+	SpriteFlipBook->SetRelativeRotation(FRotator(0.0f, TempYaw, 90.0f));
 }
 

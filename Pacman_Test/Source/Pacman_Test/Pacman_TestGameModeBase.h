@@ -66,6 +66,12 @@ public:
 	UPROPERTY(EditAnywhere)
 		TSubclassOf<class AGridBlock> BlockSpawn;
 
+	UPROPERTY(EditAnywhere)
+		FTimerHandle DelayRestartTimerHandle;
+
+	UPROPERTY(EditAnywhere)
+		TArray<AGhostDestination*> DestinationArray;
+
 	// Functions and Events
 public:
 
@@ -81,10 +87,13 @@ public:
 	UFUNCTION()
 		void WinEvent();
 
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION()
 		void CreateGrid();
 
-	UFUNCTION(BlueprintNativeEvent)
+	UFUNCTION()
 		void SpawnPacman();
+
+	UFUNCTION()
+		void RestartLevel();
 
 };

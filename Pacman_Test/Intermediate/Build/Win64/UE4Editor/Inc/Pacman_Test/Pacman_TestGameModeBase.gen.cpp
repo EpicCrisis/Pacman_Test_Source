@@ -22,22 +22,15 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 	PACMAN_TEST_API UClass* Z_Construct_UClass_AGridBlock_NoRegister();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacman_TestGameModeBase_GetBlockFromWorldLocation();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacman_TestGameModeBase_RestartLevel();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacman_TestGameModeBase_SpawnPacman();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacman_TestGameModeBase_WinEvent();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacman_TestGameModeBase_WorldToGridLocation();
+	PACMAN_TEST_API UClass* Z_Construct_UClass_AGhostDestination_NoRegister();
+	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTimerHandle();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 	ENGINE_API UClass* Z_Construct_UClass_APawn_NoRegister();
 // End Cross Module References
-	static FName NAME_APacman_TestGameModeBase_CreateGrid = FName(TEXT("CreateGrid"));
-	void APacman_TestGameModeBase::CreateGrid()
-	{
-		ProcessEvent(FindFunctionChecked(NAME_APacman_TestGameModeBase_CreateGrid),NULL);
-	}
-	static FName NAME_APacman_TestGameModeBase_SpawnPacman = FName(TEXT("SpawnPacman"));
-	void APacman_TestGameModeBase::SpawnPacman()
-	{
-		ProcessEvent(FindFunctionChecked(NAME_APacman_TestGameModeBase_SpawnPacman),NULL);
-	}
 	void APacman_TestGameModeBase::StaticRegisterNativesAPacman_TestGameModeBase()
 	{
 		UClass* Class = APacman_TestGameModeBase::StaticClass();
@@ -45,6 +38,7 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 			{ "CreateGrid", &APacman_TestGameModeBase::execCreateGrid },
 			{ "GetBlockFromGridLocation", &APacman_TestGameModeBase::execGetBlockFromGridLocation },
 			{ "GetBlockFromWorldLocation", &APacman_TestGameModeBase::execGetBlockFromWorldLocation },
+			{ "RestartLevel", &APacman_TestGameModeBase::execRestartLevel },
 			{ "SpawnPacman", &APacman_TestGameModeBase::execSpawnPacman },
 			{ "WinEvent", &APacman_TestGameModeBase::execWinEvent },
 			{ "WorldToGridLocation", &APacman_TestGameModeBase::execWorldToGridLocation },
@@ -61,7 +55,7 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacman_TestGameModeBase, "CreateGrid", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x08020C00, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacman_TestGameModeBase, "CreateGrid", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
 		}
 		return ReturnFunction;
@@ -121,6 +115,21 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 		}
 		return ReturnFunction;
 	}
+	UFunction* Z_Construct_UFunction_APacman_TestGameModeBase_RestartLevel()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacman_TestGameModeBase, "RestartLevel", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
 	UFunction* Z_Construct_UFunction_APacman_TestGameModeBase_SpawnPacman()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -131,7 +140,7 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacman_TestGameModeBase, "SpawnPacman", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x08020C00, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacman_TestGameModeBase, "SpawnPacman", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
 		}
 		return ReturnFunction;
@@ -191,10 +200,11 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 				(UObject* (*)())Z_Construct_UPackage__Script_Pacman_Test,
 			};
 			static const FClassFunctionLinkInfo FuncInfo[] = {
-				{ &Z_Construct_UFunction_APacman_TestGameModeBase_CreateGrid, "CreateGrid" }, // 2544835552
+				{ &Z_Construct_UFunction_APacman_TestGameModeBase_CreateGrid, "CreateGrid" }, // 1253989739
 				{ &Z_Construct_UFunction_APacman_TestGameModeBase_GetBlockFromGridLocation, "GetBlockFromGridLocation" }, // 4157491540
 				{ &Z_Construct_UFunction_APacman_TestGameModeBase_GetBlockFromWorldLocation, "GetBlockFromWorldLocation" }, // 14291376
-				{ &Z_Construct_UFunction_APacman_TestGameModeBase_SpawnPacman, "SpawnPacman" }, // 2480732313
+				{ &Z_Construct_UFunction_APacman_TestGameModeBase_RestartLevel, "RestartLevel" }, // 1950828559
+				{ &Z_Construct_UFunction_APacman_TestGameModeBase_SpawnPacman, "SpawnPacman" }, // 1322106386
 				{ &Z_Construct_UFunction_APacman_TestGameModeBase_WinEvent, "WinEvent" }, // 3347672099
 				{ &Z_Construct_UFunction_APacman_TestGameModeBase_WorldToGridLocation, "WorldToGridLocation" }, // 525633219
 			};
@@ -206,6 +216,21 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 				{ "ShowCategories", "Input|MouseInput Input|TouchInput" },
 			};
 #endif
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DestinationArray_MetaData[] = {
+				{ "Category", "Pacman_TestGameModeBase" },
+				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FArrayPropertyParams NewProp_DestinationArray = { UE4CodeGen_Private::EPropertyClass::Array, "DestinationArray", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, DestinationArray), METADATA_PARAMS(NewProp_DestinationArray_MetaData, ARRAY_COUNT(NewProp_DestinationArray_MetaData)) };
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_DestinationArray_Inner = { UE4CodeGen_Private::EPropertyClass::Object, "DestinationArray", RF_Public|RF_Transient|RF_MarkAsNative, 0x0000000000000000, 1, nullptr, 0, Z_Construct_UClass_AGhostDestination_NoRegister, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DelayRestartTimerHandle_MetaData[] = {
+				{ "Category", "Pacman_TestGameModeBase" },
+				{ "ModuleRelativePath", "Pacman_TestGameModeBase.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FStructPropertyParams NewProp_DelayRestartTimerHandle = { UE4CodeGen_Private::EPropertyClass::Struct, "DelayRestartTimerHandle", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, DelayRestartTimerHandle), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(NewProp_DelayRestartTimerHandle_MetaData, ARRAY_COUNT(NewProp_DelayRestartTimerHandle_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_BlockSpawn_MetaData[] = {
 				{ "Category", "Pacman_TestGameModeBase" },
@@ -285,6 +310,9 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 			static const UE4CodeGen_Private::FArrayPropertyParams NewProp_BlocksArray = { UE4CodeGen_Private::EPropertyClass::Array, "BlocksArray", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacman_TestGameModeBase, BlocksArray), METADATA_PARAMS(NewProp_BlocksArray_MetaData, ARRAY_COUNT(NewProp_BlocksArray_MetaData)) };
 			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_BlocksArray_Inner = { UE4CodeGen_Private::EPropertyClass::Object, "BlocksArray", RF_Public|RF_Transient|RF_MarkAsNative, 0x0000000000000000, 1, nullptr, 0, Z_Construct_UClass_AGridBlock_NoRegister, METADATA_PARAMS(nullptr, 0) };
 			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DestinationArray,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DestinationArray_Inner,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DelayRestartTimerHandle,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_BlockSpawn,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_PacPlayer,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_EatenDots,
@@ -316,7 +344,7 @@ void EmptyLinkFunctionForGeneratedCodePacman_TestGameModeBase() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APacman_TestGameModeBase, 3458539438);
+	IMPLEMENT_CLASS(APacman_TestGameModeBase, 565406728);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_APacman_TestGameModeBase(Z_Construct_UClass_APacman_TestGameModeBase, &APacman_TestGameModeBase::StaticClass, TEXT("/Script/Pacman_Test"), TEXT("APacman_TestGameModeBase"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(APacman_TestGameModeBase);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

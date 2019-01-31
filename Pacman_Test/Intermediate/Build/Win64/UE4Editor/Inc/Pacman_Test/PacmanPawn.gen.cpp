@@ -41,6 +41,7 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_RightKeyPressed();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_RightKeyReleased();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_TimelineFloatReturn();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_UpdateAnimation();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_UpKeyAction();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_UpKeyPressed();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_APacmanPawn_UpKeyReleased();
@@ -53,6 +54,8 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USceneComponent_NoRegister();
+	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbookComponent_NoRegister();
+	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbook_NoRegister();
 // End Cross Module References
 	void APacmanPawn::StaticRegisterNativesAPacmanPawn()
 	{
@@ -81,6 +84,7 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 			{ "RightKeyPressed", &APacmanPawn::execRightKeyPressed },
 			{ "RightKeyReleased", &APacmanPawn::execRightKeyReleased },
 			{ "TimelineFloatReturn", &APacmanPawn::execTimelineFloatReturn },
+			{ "UpdateAnimation", &APacmanPawn::execUpdateAnimation },
 			{ "UpKeyAction", &APacmanPawn::execUpKeyAction },
 			{ "UpKeyPressed", &APacmanPawn::execUpKeyPressed },
 			{ "UpKeyReleased", &APacmanPawn::execUpKeyReleased },
@@ -500,6 +504,21 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 		}
 		return ReturnFunction;
 	}
+	UFunction* Z_Construct_UFunction_APacmanPawn_UpdateAnimation()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_APacmanPawn, "UpdateAnimation", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
 	UFunction* Z_Construct_UFunction_APacmanPawn_UpKeyAction()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -582,6 +601,7 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 				{ &Z_Construct_UFunction_APacmanPawn_RightKeyPressed, "RightKeyPressed" }, // 2937585915
 				{ &Z_Construct_UFunction_APacmanPawn_RightKeyReleased, "RightKeyReleased" }, // 2422317533
 				{ &Z_Construct_UFunction_APacmanPawn_TimelineFloatReturn, "TimelineFloatReturn" }, // 243947304
+				{ &Z_Construct_UFunction_APacmanPawn_UpdateAnimation, "UpdateAnimation" }, // 964100422
 				{ &Z_Construct_UFunction_APacmanPawn_UpKeyAction, "UpKeyAction" }, // 258934723
 				{ &Z_Construct_UFunction_APacmanPawn_UpKeyPressed, "UpKeyPressed" }, // 2467419961
 				{ &Z_Construct_UFunction_APacmanPawn_UpKeyReleased, "UpKeyReleased" }, // 2244736639
@@ -622,6 +642,13 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 			};
 #endif
 			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_MoveTimeline = { UE4CodeGen_Private::EPropertyClass::Object, "MoveTimeline", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000080009, 1, nullptr, STRUCT_OFFSET(APacmanPawn, MoveTimeline), Z_Construct_UClass_UTimelineComponent_NoRegister, METADATA_PARAMS(NewProp_MoveTimeline_MetaData, ARRAY_COUNT(NewProp_MoveTimeline_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_TempYaw_MetaData[] = {
+				{ "Category", "PacmanPawn" },
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFloatPropertyParams NewProp_TempYaw = { UE4CodeGen_Private::EPropertyClass::Float, "TempYaw", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacmanPawn, TempYaw), METADATA_PARAMS(NewProp_TempYaw_MetaData, ARRAY_COUNT(NewProp_TempYaw_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_BonusPointsTime_MetaData[] = {
 				{ "Category", "PacmanPawn" },
@@ -720,6 +747,36 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 #endif
 			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_SceneRoot = { UE4CodeGen_Private::EPropertyClass::Object, "SceneRoot", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000080009, 1, nullptr, STRUCT_OFFSET(APacmanPawn, SceneRoot), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(NewProp_SceneRoot_MetaData, ARRAY_COUNT(NewProp_SceneRoot_MetaData)) };
 #if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SpriteFlipBook_MetaData[] = {
+				{ "Category", "PacmanPawn" },
+				{ "EditInline", "true" },
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_SpriteFlipBook = { UE4CodeGen_Private::EPropertyClass::Object, "SpriteFlipBook", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000080009, 1, nullptr, STRUCT_OFFSET(APacmanPawn, SpriteFlipBook), Z_Construct_UClass_UPaperFlipbookComponent_NoRegister, METADATA_PARAMS(NewProp_SpriteFlipBook_MetaData, ARRAY_COUNT(NewProp_SpriteFlipBook_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_PacmanBlock_MetaData[] = {
+				{ "Category", "Flipbook" },
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_PacmanBlock = { UE4CodeGen_Private::EPropertyClass::Object, "PacmanBlock", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacmanPawn, PacmanBlock), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_PacmanBlock_MetaData, ARRAY_COUNT(NewProp_PacmanBlock_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_PacmanMoving_MetaData[] = {
+				{ "Category", "Flipbook" },
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_PacmanMoving = { UE4CodeGen_Private::EPropertyClass::Object, "PacmanMoving", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacmanPawn, PacmanMoving), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_PacmanMoving_MetaData, ARRAY_COUNT(NewProp_PacmanMoving_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_PacmanDeath_MetaData[] = {
+				{ "Category", "Flipbook" },
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+				{ "ToolTip", "Animation Flipbook" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_PacmanDeath = { UE4CodeGen_Private::EPropertyClass::Object, "PacmanDeath", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacmanPawn, PacmanDeath), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(NewProp_PacmanDeath_MetaData, ARRAY_COUNT(NewProp_PacmanDeath_MetaData)) };
+#if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_LoadLevelTimerHandle_MetaData[] = {
 				{ "ModuleRelativePath", "PacmanPawn.h" },
 			};
@@ -778,6 +835,7 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_EndLocation,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_MoveCurve,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_MoveTimeline,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_TempYaw,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_BonusPointsTime,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_EatBonusTimerHandle,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_GhostPoints,
@@ -791,6 +849,10 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_Box,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_Sphere,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_SceneRoot,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_SpriteFlipBook,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_PacmanBlock,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_PacmanMoving,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_PacmanDeath,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_LoadLevelTimerHandle,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DelayDeathTimerHandle,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_RightPressed,
@@ -818,7 +880,7 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APacmanPawn, 1788910403);
+	IMPLEMENT_CLASS(APacmanPawn, 3042472036);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_APacmanPawn(Z_Construct_UClass_APacmanPawn, &APacmanPawn::StaticClass, TEXT("/Script/Pacman_Test"), TEXT("APacmanPawn"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(APacmanPawn);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

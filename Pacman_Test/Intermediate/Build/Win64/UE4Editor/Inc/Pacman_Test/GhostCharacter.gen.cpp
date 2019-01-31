@@ -17,6 +17,9 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 	PACMAN_TEST_API UClass* Z_Construct_UClass_AGhostCharacter();
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 	UPackage* Z_Construct_UPackage__Script_Pacman_Test();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_ActivateCyan();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_ActivateOrange();
+	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_ActivatePink();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_AmbushEvent();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_AvoidPlayer();
 	PACMAN_TEST_API UFunction* Z_Construct_UFunction_AGhostCharacter_BackToNormal();
@@ -43,6 +46,9 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 	{
 		UClass* Class = AGhostCharacter::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
+			{ "ActivateCyan", &AGhostCharacter::execActivateCyan },
+			{ "ActivateOrange", &AGhostCharacter::execActivateOrange },
+			{ "ActivatePink", &AGhostCharacter::execActivatePink },
 			{ "AmbushEvent", &AGhostCharacter::execAmbushEvent },
 			{ "AvoidPlayer", &AGhostCharacter::execAvoidPlayer },
 			{ "BackToNormal", &AGhostCharacter::execBackToNormal },
@@ -59,6 +65,51 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 			{ "UpdateGhostAnimations", &AGhostCharacter::execUpdateGhostAnimations },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
+	}
+	UFunction* Z_Construct_UFunction_AGhostCharacter_ActivateCyan()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "ActivateCyan", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_AGhostCharacter_ActivateOrange()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "ActivateOrange", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_AGhostCharacter_ActivatePink()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AGhostCharacter, "ActivatePink", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x00020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
 	}
 	UFunction* Z_Construct_UFunction_AGhostCharacter_AmbushEvent()
 	{
@@ -284,6 +335,9 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 				(UObject* (*)())Z_Construct_UPackage__Script_Pacman_Test,
 			};
 			static const FClassFunctionLinkInfo FuncInfo[] = {
+				{ &Z_Construct_UFunction_AGhostCharacter_ActivateCyan, "ActivateCyan" }, // 3320599922
+				{ &Z_Construct_UFunction_AGhostCharacter_ActivateOrange, "ActivateOrange" }, // 729889632
+				{ &Z_Construct_UFunction_AGhostCharacter_ActivatePink, "ActivatePink" }, // 1407380933
 				{ &Z_Construct_UFunction_AGhostCharacter_AmbushEvent, "AmbushEvent" }, // 793454085
 				{ &Z_Construct_UFunction_AGhostCharacter_AvoidPlayer, "AvoidPlayer" }, // 3216767718
 				{ &Z_Construct_UFunction_AGhostCharacter_BackToNormal, "BackToNormal" }, // 3835882844
@@ -328,6 +382,27 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 			};
 #endif
 			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_PacmanPlayer = { UE4CodeGen_Private::EPropertyClass::Object, "PacmanPlayer", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, PacmanPlayer), Z_Construct_UClass_APacmanPawn_NoRegister, METADATA_PARAMS(NewProp_PacmanPlayer_MetaData, ARRAY_COUNT(NewProp_PacmanPlayer_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ActivateOrangeTimerHandle_MetaData[] = {
+				{ "Category", "GhostCharacter" },
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FStructPropertyParams NewProp_ActivateOrangeTimerHandle = { UE4CodeGen_Private::EPropertyClass::Struct, "ActivateOrangeTimerHandle", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, ActivateOrangeTimerHandle), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(NewProp_ActivateOrangeTimerHandle_MetaData, ARRAY_COUNT(NewProp_ActivateOrangeTimerHandle_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ActivateCyanTimerHandle_MetaData[] = {
+				{ "Category", "GhostCharacter" },
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FStructPropertyParams NewProp_ActivateCyanTimerHandle = { UE4CodeGen_Private::EPropertyClass::Struct, "ActivateCyanTimerHandle", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, ActivateCyanTimerHandle), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(NewProp_ActivateCyanTimerHandle_MetaData, ARRAY_COUNT(NewProp_ActivateCyanTimerHandle_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ActivatePinkTimerHandle_MetaData[] = {
+				{ "Category", "GhostCharacter" },
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FStructPropertyParams NewProp_ActivatePinkTimerHandle = { UE4CodeGen_Private::EPropertyClass::Struct, "ActivatePinkTimerHandle", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, ActivatePinkTimerHandle), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(NewProp_ActivatePinkTimerHandle_MetaData, ARRAY_COUNT(NewProp_ActivatePinkTimerHandle_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CheckRandomDeathTimerHandle_MetaData[] = {
 				{ "Category", "GhostCharacter" },
@@ -420,12 +495,40 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 #endif
 			static const UE4CodeGen_Private::FFloatPropertyParams NewProp_BlueSpeed = { UE4CodeGen_Private::EPropertyClass::Float, "BlueSpeed", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, BlueSpeed), METADATA_PARAMS(NewProp_BlueSpeed_MetaData, ARRAY_COUNT(NewProp_BlueSpeed_MetaData)) };
 #if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_NormalSpeed_MetaData[] = {
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CurrentSpeed_MetaData[] = {
 				{ "Category", "GhostCharacter" },
 				{ "ModuleRelativePath", "GhostCharacter.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FFloatPropertyParams NewProp_NormalSpeed = { UE4CodeGen_Private::EPropertyClass::Float, "NormalSpeed", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, NormalSpeed), METADATA_PARAMS(NewProp_NormalSpeed_MetaData, ARRAY_COUNT(NewProp_NormalSpeed_MetaData)) };
+			static const UE4CodeGen_Private::FFloatPropertyParams NewProp_CurrentSpeed = { UE4CodeGen_Private::EPropertyClass::Float, "CurrentSpeed", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, CurrentSpeed), METADATA_PARAMS(NewProp_CurrentSpeed_MetaData, ARRAY_COUNT(NewProp_CurrentSpeed_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_OrangeSpeed_MetaData[] = {
+				{ "Category", "GhostCharacter" },
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFloatPropertyParams NewProp_OrangeSpeed = { UE4CodeGen_Private::EPropertyClass::Float, "OrangeSpeed", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, OrangeSpeed), METADATA_PARAMS(NewProp_OrangeSpeed_MetaData, ARRAY_COUNT(NewProp_OrangeSpeed_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CyanSpeed_MetaData[] = {
+				{ "Category", "GhostCharacter" },
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFloatPropertyParams NewProp_CyanSpeed = { UE4CodeGen_Private::EPropertyClass::Float, "CyanSpeed", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, CyanSpeed), METADATA_PARAMS(NewProp_CyanSpeed_MetaData, ARRAY_COUNT(NewProp_CyanSpeed_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_PinkSpeed_MetaData[] = {
+				{ "Category", "GhostCharacter" },
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFloatPropertyParams NewProp_PinkSpeed = { UE4CodeGen_Private::EPropertyClass::Float, "PinkSpeed", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, PinkSpeed), METADATA_PARAMS(NewProp_PinkSpeed_MetaData, ARRAY_COUNT(NewProp_PinkSpeed_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_RedSpeed_MetaData[] = {
+				{ "Category", "GhostCharacter" },
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFloatPropertyParams NewProp_RedSpeed = { UE4CodeGen_Private::EPropertyClass::Float, "RedSpeed", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, RedSpeed), METADATA_PARAMS(NewProp_RedSpeed_MetaData, ARRAY_COUNT(NewProp_RedSpeed_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_AmbushLocation_MetaData[] = {
 				{ "Category", "GhostCharacter" },
@@ -447,6 +550,14 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 			};
 #endif
 			static const UE4CodeGen_Private::FStructPropertyParams NewProp_StartLocation = { UE4CodeGen_Private::EPropertyClass::Struct, "StartLocation", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, StartLocation), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(NewProp_StartLocation_MetaData, ARRAY_COUNT(NewProp_StartLocation_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_isGhostActive_MetaData[] = {
+				{ "Category", "GhostCharacter" },
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			auto NewProp_isGhostActive_SetBit = [](void* Obj){ ((AGhostCharacter*)Obj)->isGhostActive = 1; };
+			static const UE4CodeGen_Private::FBoolPropertyParams NewProp_isGhostActive = { UE4CodeGen_Private::EPropertyClass::Bool, "isGhostActive", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, sizeof(bool), UE4CodeGen_Private::ENativeBool::Native, sizeof(AGhostCharacter), &UE4CodeGen_Private::TBoolSetBitWrapper<decltype(NewProp_isGhostActive_SetBit)>::SetBit, METADATA_PARAMS(NewProp_isGhostActive_MetaData, ARRAY_COUNT(NewProp_isGhostActive_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_isFlashing_MetaData[] = {
 				{ "Category", "GhostCharacter" },
@@ -659,6 +770,9 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_TargetTriggerArray_Inner,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CurrentTargetTrigger,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_PacmanPlayer,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ActivateOrangeTimerHandle,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ActivateCyanTimerHandle,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ActivatePinkTimerHandle,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CheckRandomDeathTimerHandle,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CheckAmbushAgainTimerHandle,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CheckAmbushDeathTimerHandle,
@@ -672,10 +786,15 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CanBeEatenTime,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_AvoidanceDistance,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_BlueSpeed,
-				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_NormalSpeed,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CurrentSpeed,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_OrangeSpeed,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CyanSpeed,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_PinkSpeed,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_RedSpeed,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_AmbushLocation,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_TempVelocity,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_StartLocation,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_isGhostActive,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_isFlashing,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CanBeEaten,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_isDead,
@@ -723,7 +842,7 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AGhostCharacter, 2774183987);
+	IMPLEMENT_CLASS(AGhostCharacter, 1045341674);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AGhostCharacter(Z_Construct_UClass_AGhostCharacter, &AGhostCharacter::StaticClass, TEXT("/Script/Pacman_Test"), TEXT("AGhostCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AGhostCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -8,6 +8,8 @@
 #include "Components/BoxComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Components/TimelineComponent.h"
+#include "PaperFlipbookComponent.h"
+#include "PaperFlipbook.h"
 #include "PacmanPawn.generated.h"
 
 // Forward Declaration
@@ -61,6 +63,17 @@ private:
 
 	// Variables and References
 public:
+	// Animation Flipbook
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* PacmanDeath;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* PacmanMoving;
+	UPROPERTY(EditAnywhere, Category = "Flipbook")
+		UPaperFlipbook* PacmanBlock;
+
+	UPROPERTY(EditAnywhere)
+		UPaperFlipbookComponent* SpriteFlipBook;
+
 	UPROPERTY(EditAnywhere)
 		USceneComponent* SceneRoot;
 
@@ -99,6 +112,9 @@ public:
 
 	UPROPERTY(EditAnywhere)
 		float BonusPointsTime;
+
+	UPROPERTY(EditAnywhere)
+		float TempYaw;
 
 	UPROPERTY(EditAnywhere, Category = "Timeline")
 		UTimelineComponent* MoveTimeline;
@@ -200,4 +216,7 @@ public:
 
 	UFUNCTION(Category = "Timeline")
 		void OnTimelineFinished();
+
+	UFUNCTION()
+		void UpdateAnimation();
 };

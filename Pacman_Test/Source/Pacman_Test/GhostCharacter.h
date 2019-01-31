@@ -107,6 +107,9 @@ public:
 		bool isFlashing;
 
 	UPROPERTY(EditAnywhere)
+		bool isGhostActive;
+
+	UPROPERTY(EditAnywhere)
 		FVector StartLocation;
 
 	UPROPERTY(EditAnywhere)
@@ -116,7 +119,19 @@ public:
 		FVector AmbushLocation;
 
 	UPROPERTY(EditAnywhere)
-		float NormalSpeed;
+		float RedSpeed;
+
+	UPROPERTY(EditAnywhere)
+		float PinkSpeed;
+
+	UPROPERTY(EditAnywhere)
+		float CyanSpeed;
+
+	UPROPERTY(EditAnywhere)
+		float OrangeSpeed;
+
+	UPROPERTY(EditAnywhere)
+		float CurrentSpeed;
 
 	UPROPERTY(EditAnywhere)
 		float BlueSpeed;
@@ -156,6 +171,15 @@ public:
 
 	UPROPERTY(EditAnywhere)
 		FTimerHandle CheckRandomDeathTimerHandle;
+
+	UPROPERTY(EditAnywhere)
+		FTimerHandle ActivatePinkTimerHandle;
+
+	UPROPERTY(EditAnywhere)
+		FTimerHandle ActivateCyanTimerHandle;
+
+	UPROPERTY(EditAnywhere)
+		FTimerHandle ActivateOrangeTimerHandle;
 
 	UPROPERTY(EditAnywhere)
 		APacmanPawn* PacmanPlayer;
@@ -209,4 +233,14 @@ public:
 
 	UFUNCTION()
 		void RandomBehavior();
+
+	UFUNCTION()
+		void ActivatePink();
+
+	UFUNCTION()
+		void ActivateCyan();
+
+	UFUNCTION()
+		void ActivateOrange();
+
 };
