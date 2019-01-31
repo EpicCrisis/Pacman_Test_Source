@@ -42,6 +42,9 @@ APacmanPawn::APacmanPawn()
 	SpriteFlipBook->AttachToComponent(SceneRoot, FAttachmentTransformRules::KeepRelativeTransform);
 	SpriteFlipBook->SetRelativeRotation(FRotator(90.0f, 0.0f, 0.0f));
 
+	PacmanSound = CreateDefaultSubobject<UAudioComponent>(TEXT("PacmanSound"));
+	PacmanSound->AttachToComponent(SceneRoot, FAttachmentTransformRules::KeepRelativeTransform);
+
 	MoveTimeline = CreateDefaultSubobject<UTimelineComponent>(TEXT("MoveTimeline"));
 
 	InterpFunction.BindUFunction(this, FName("TimelineFloatReturn"));
@@ -89,6 +92,18 @@ APacmanPawn::APacmanPawn()
 	{
 		PacmanBlock = pacBlock.Object;
 	}
+	ConstructorHelpers::FObjectFinder<USoundWave> pacMoveSound
+	(TEXT("SoundWave'/Game/Sounds/Pacman_Waka_Waka.Pacman_Waka_Waka'"));
+	if (pacMoveSound.Succeeded())
+	{
+		PacmanMoveSound = pacMoveSound.Object;
+	}
+	ConstructorHelpers::FObjectFinder<USoundWave> pacDeathSound
+	(TEXT("SoundWave'/Game/Sounds/Pacman_Dies.Pacman_Dies'"));
+	if (pacDeathSound.Succeeded())
+	{
+		PacmanDeathSound = pacDeathSound.Object;
+	}
 }
 
 // Called when the game starts or when spawned
@@ -105,6 +120,8 @@ void APacmanPawn::BeginPlay()
 
 	MoveTimeline->AddInterpFloat(MoveCurve, InterpFunction, FName("Alpha"));
 	MoveTimeline->SetTimelineFinishedFunc(TimelineFinish);
+
+	DirectionX = -1;
 }
 
 // Called every frame
@@ -523,6 +540,9 @@ void APacmanPawn::UpdateAnimation()
 		TempYaw = 180.0f;
 		SpriteFlipBook->SetFlipbook(PacmanDeath);
 		SpriteFlipBook->SetPlayRate(0.5f);
+
+		PacmanSound->SetSound(PacmanDeathSound);
+		PacmanSound->Play();
 	}
 	else
 	{
@@ -530,25 +550,39 @@ void APacmanPawn::UpdateAnimation()
 		{
 			TempYaw = 180.0f;
 			SpriteFlipBook->SetFlipbook(PacmanMoving);
+
+			PacmanSound->SetSound(PacmanMoveSound);
+			PacmanSound->Play();
 		}
 		else if (DirectionX == -1)
 		{
 			TempYaw = 0.0f;
 			SpriteFlipBook->SetFlipbook(PacmanMoving);
+
+			PacmanSound->SetSound(PacmanMoveSound);
+			PacmanSound->Play();
 		}
 		else if (DirectionY == 1)
 		{
 			TempYaw = 270.0f;
 			SpriteFlipBook->SetFlipbook(PacmanMoving);
+
+			PacmanSound->SetSound(PacmanMoveSound);
+			PacmanSound->Play();
 		}
 		else if (DirectionY == -1)
 		{
 			TempYaw = 90.0f;
 			SpriteFlipBook->SetFlipbook(PacmanMoving);
+
+			PacmanSound->SetSound(PacmanMoveSound);
+			PacmanSound->Play();
 		}
 		else
 		{
 			SpriteFlipBook->SetFlipbook(PacmanBlock);
+
+			PacmanSound->Stop();
 		}
 	}
 

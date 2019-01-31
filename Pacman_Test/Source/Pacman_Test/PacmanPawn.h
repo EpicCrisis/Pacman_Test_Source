@@ -10,6 +10,8 @@
 #include "Components/TimelineComponent.h"
 #include "PaperFlipbookComponent.h"
 #include "PaperFlipbook.h"
+#include "Components/AudioComponent.h"
+#include "Sound/SoundWave.h"
 #include "PacmanPawn.generated.h"
 
 // Forward Declaration
@@ -73,6 +75,14 @@ public:
 
 	UPROPERTY(EditAnywhere)
 		UPaperFlipbookComponent* SpriteFlipBook;
+
+	UPROPERTY(EditAnywhere)
+		UAudioComponent* PacmanSound;
+
+	UPROPERTY(EditAnywhere, Category = "PacSound")
+		USoundWave* PacmanMoveSound;
+	UPROPERTY(EditAnywhere, Category = "PacSound")
+		USoundWave* PacmanDeathSound;
 
 	UPROPERTY(EditAnywhere)
 		USceneComponent* SceneRoot;

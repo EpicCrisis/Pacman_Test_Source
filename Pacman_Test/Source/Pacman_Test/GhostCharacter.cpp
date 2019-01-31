@@ -23,6 +23,9 @@ AGhostCharacter::AGhostCharacter()
 	SpriteFlipBook = CreateDefaultSubobject<UPaperFlipbookComponent>(TEXT("SpriteFlipBook"));
 	SpriteFlipBook->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 
+	GhostSound = CreateDefaultSubobject<UAudioComponent>(TEXT("GhostSound"));
+	GhostSound->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+
 	RedSpeed = 340.0f;
 	PinkSpeed = 360.0f;
 	CyanSpeed = 350.0f;
@@ -177,6 +180,14 @@ AGhostCharacter::AGhostCharacter()
 	if (moveRightOrange.Succeeded())
 	{
 		MoveRight_Orange = moveRightOrange.Object;
+	}
+
+	// Set death sound
+	ConstructorHelpers::FObjectFinder<USoundWave> ghostDeathSound
+	(TEXT("SoundWave'/Game/Sounds/Pacman_Eating_Ghost.Pacman_Eating_Ghost'"));
+	if (ghostDeathSound.Succeeded())
+	{
+		GhostDeathSound = ghostDeathSound.Object;
 	}
 }
 
@@ -440,6 +451,9 @@ void AGhostCharacter::EatEvent()
 
 		CanBeEaten = false;
 		isDead = true;
+
+		GhostSound->SetSound(GhostDeathSound);
+		GhostSound->Play();
 
 		GetCharacterMovement()->StopActiveMovement();
 

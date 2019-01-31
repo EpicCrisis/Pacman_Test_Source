@@ -54,6 +54,8 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 	ENGINE_API UClass* Z_Construct_UClass_UBoxComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USceneComponent_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_USoundWave_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_UAudioComponent_NoRegister();
 	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbookComponent_NoRegister();
 	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbook_NoRegister();
 // End Cross Module References
@@ -747,6 +749,28 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 #endif
 			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_SceneRoot = { UE4CodeGen_Private::EPropertyClass::Object, "SceneRoot", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000080009, 1, nullptr, STRUCT_OFFSET(APacmanPawn, SceneRoot), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(NewProp_SceneRoot_MetaData, ARRAY_COUNT(NewProp_SceneRoot_MetaData)) };
 #if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_PacmanDeathSound_MetaData[] = {
+				{ "Category", "PacSound" },
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_PacmanDeathSound = { UE4CodeGen_Private::EPropertyClass::Object, "PacmanDeathSound", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacmanPawn, PacmanDeathSound), Z_Construct_UClass_USoundWave_NoRegister, METADATA_PARAMS(NewProp_PacmanDeathSound_MetaData, ARRAY_COUNT(NewProp_PacmanDeathSound_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_PacmanMoveSound_MetaData[] = {
+				{ "Category", "PacSound" },
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_PacmanMoveSound = { UE4CodeGen_Private::EPropertyClass::Object, "PacmanMoveSound", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(APacmanPawn, PacmanMoveSound), Z_Construct_UClass_USoundWave_NoRegister, METADATA_PARAMS(NewProp_PacmanMoveSound_MetaData, ARRAY_COUNT(NewProp_PacmanMoveSound_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_PacmanSound_MetaData[] = {
+				{ "Category", "PacmanPawn" },
+				{ "EditInline", "true" },
+				{ "ModuleRelativePath", "PacmanPawn.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_PacmanSound = { UE4CodeGen_Private::EPropertyClass::Object, "PacmanSound", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000080009, 1, nullptr, STRUCT_OFFSET(APacmanPawn, PacmanSound), Z_Construct_UClass_UAudioComponent_NoRegister, METADATA_PARAMS(NewProp_PacmanSound_MetaData, ARRAY_COUNT(NewProp_PacmanSound_MetaData)) };
+#if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SpriteFlipBook_MetaData[] = {
 				{ "Category", "PacmanPawn" },
 				{ "EditInline", "true" },
@@ -849,6 +873,9 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_Box,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_Sphere,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_SceneRoot,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_PacmanDeathSound,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_PacmanMoveSound,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_PacmanSound,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_SpriteFlipBook,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_PacmanBlock,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_PacmanMoving,
@@ -880,7 +907,7 @@ void EmptyLinkFunctionForGeneratedCodePacmanPawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APacmanPawn, 3042472036);
+	IMPLEMENT_CLASS(APacmanPawn, 3625179787);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_APacmanPawn(Z_Construct_UClass_APacmanPawn, &APacmanPawn::StaticClass, TEXT("/Script/Pacman_Test"), TEXT("APacmanPawn"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(APacmanPawn);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

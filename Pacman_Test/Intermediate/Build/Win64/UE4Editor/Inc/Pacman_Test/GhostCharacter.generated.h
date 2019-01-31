@@ -13,7 +13,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define PACMAN_TEST_GhostCharacter_generated_h
 
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_RPC_WRAPPERS \
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_23_RPC_WRAPPERS \
  \
 	DECLARE_FUNCTION(execActivateOrange) \
 	{ \
@@ -152,7 +152,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_23_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execActivateOrange) \
 	{ \
@@ -291,7 +291,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_INCLASS_NO_PURE_DECLS \
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_23_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAGhostCharacter(); \
 	friend PACMAN_TEST_API class UClass* Z_Construct_UClass_AGhostCharacter(); \
@@ -301,7 +301,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_INCLASS \
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_23_INCLASS \
 private: \
 	static void StaticRegisterNativesAGhostCharacter(); \
 	friend PACMAN_TEST_API class UClass* Z_Construct_UClass_AGhostCharacter(); \
@@ -311,7 +311,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_STANDARD_CONSTRUCTORS \
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_23_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AGhostCharacter(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AGhostCharacter) \
@@ -324,7 +324,7 @@ private: \
 public:
 
 
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_ENHANCED_CONSTRUCTORS \
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_23_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AGhostCharacter(AGhostCharacter&&); \
@@ -335,26 +335,26 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AGhostCharacter); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AGhostCharacter)
 
 
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_PRIVATE_PROPERTY_OFFSET
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_18_PROLOG
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_GENERATED_BODY_LEGACY \
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_23_PRIVATE_PROPERTY_OFFSET
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_20_PROLOG
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_23_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_PRIVATE_PROPERTY_OFFSET \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_RPC_WRAPPERS \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_INCLASS \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_STANDARD_CONSTRUCTORS \
+	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_23_PRIVATE_PROPERTY_OFFSET \
+	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_23_RPC_WRAPPERS \
+	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_23_INCLASS \
+	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_23_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_GENERATED_BODY \
+#define Pacman_Test_Source_Pacman_Test_GhostCharacter_h_23_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_PRIVATE_PROPERTY_OFFSET \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_INCLASS_NO_PURE_DECLS \
-	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_21_ENHANCED_CONSTRUCTORS \
+	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_23_PRIVATE_PROPERTY_OFFSET \
+	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_23_RPC_WRAPPERS_NO_PURE_DECLS \
+	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_23_INCLASS_NO_PURE_DECLS \
+	Pacman_Test_Source_Pacman_Test_GhostCharacter_h_23_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

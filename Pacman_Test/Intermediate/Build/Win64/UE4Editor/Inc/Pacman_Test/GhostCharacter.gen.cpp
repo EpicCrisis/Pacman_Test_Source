@@ -39,6 +39,8 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTimerHandle();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	PACMAN_TEST_API UEnum* Z_Construct_UEnum_Pacman_Test_GhostType();
+	ENGINE_API UClass* Z_Construct_UClass_USoundWave_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_UAudioComponent_NoRegister();
 	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbookComponent_NoRegister();
 	PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbook_NoRegister();
 // End Cross Module References
@@ -598,6 +600,21 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 #endif
 			static const UE4CodeGen_Private::FBytePropertyParams NewProp_GType = { UE4CodeGen_Private::EPropertyClass::Byte, "GType", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, GType), Z_Construct_UEnum_Pacman_Test_GhostType, METADATA_PARAMS(NewProp_GType_MetaData, ARRAY_COUNT(NewProp_GType_MetaData)) };
 #if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_GhostDeathSound_MetaData[] = {
+				{ "Category", "GhostSound" },
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_GhostDeathSound = { UE4CodeGen_Private::EPropertyClass::Object, "GhostDeathSound", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000001, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, GhostDeathSound), Z_Construct_UClass_USoundWave_NoRegister, METADATA_PARAMS(NewProp_GhostDeathSound_MetaData, ARRAY_COUNT(NewProp_GhostDeathSound_MetaData)) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_GhostSound_MetaData[] = {
+				{ "Category", "GhostCharacter" },
+				{ "EditInline", "true" },
+				{ "ModuleRelativePath", "GhostCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_GhostSound = { UE4CodeGen_Private::EPropertyClass::Object, "GhostSound", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000080009, 1, nullptr, STRUCT_OFFSET(AGhostCharacter, GhostSound), Z_Construct_UClass_UAudioComponent_NoRegister, METADATA_PARAMS(NewProp_GhostSound_MetaData, ARRAY_COUNT(NewProp_GhostSound_MetaData)) };
+#if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SpriteFlipBook_MetaData[] = {
 				{ "Category", "GhostCharacter" },
 				{ "EditInline", "true" },
@@ -800,6 +817,8 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_isDead,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CanKill,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_GType,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_GhostDeathSound,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_GhostSound,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_SpriteFlipBook,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_MoveRight_Orange,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_MoveLeft_Orange,
@@ -842,7 +861,7 @@ void EmptyLinkFunctionForGeneratedCodeGhostCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AGhostCharacter, 1045341674);
+	IMPLEMENT_CLASS(AGhostCharacter, 1520596286);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AGhostCharacter(Z_Construct_UClass_AGhostCharacter, &AGhostCharacter::StaticClass, TEXT("/Script/Pacman_Test"), TEXT("AGhostCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AGhostCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

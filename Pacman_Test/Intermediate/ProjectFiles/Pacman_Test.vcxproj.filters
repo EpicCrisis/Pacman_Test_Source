@@ -4,7 +4,7 @@
 	<ItemGroup>
 		<None Include="..\..\Pacman_Test.uproject" />
 		<Filter Include="Source">
-			<UniqueIdentifier>{09DA6811-21AE-4AEE-88BC-5BFC114D6D39}</UniqueIdentifier>
+			<UniqueIdentifier>{B2F51A99-48E7-4FAC-961D-7EE9DB801541}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Source\Pacman_Test.Target.cs">
 			<Filter>Source</Filter>
@@ -13,7 +13,7 @@
 			<Filter>Source</Filter>
 		</None >
 		<Filter Include="Config">
-			<UniqueIdentifier>{7804F03D-A1C4-48ED-8056-DAF5C57A9C19}</UniqueIdentifier>
+			<UniqueIdentifier>{8B5A2CD8-469C-4CD5-A825-3806BC49B041}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
 			<Filter>Config</Filter>
@@ -25,7 +25,7 @@
 			<Filter>Config</Filter>
 		</None >
 		<Filter Include="Source\Pacman_Test">
-			<UniqueIdentifier>{5952DBE3-5A78-4A82-8D4E-11D08926CD37}</UniqueIdentifier>
+			<UniqueIdentifier>{79CE9E06-5467-4FDD-86E6-75358330405A}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="..\..\Source\Pacman_Test\AI_Controller.cpp">
 			<Filter>Source\Pacman_Test</Filter>

@@ -8,6 +8,8 @@
 #include "PaperFlipbookComponent.h"
 #include "PaperFlipbook.h"
 #include "AIController.h"
+#include "Components/AudioComponent.h"
+#include "Sound/SoundWave.h"
 #include "GhostCharacter.generated.h"
 
 // Forward declaration
@@ -90,6 +92,12 @@ public:
 
 	UPROPERTY(EditAnywhere)
 		UPaperFlipbookComponent* SpriteFlipBook;
+
+	UPROPERTY(EditAnywhere)
+		UAudioComponent* GhostSound;
+
+	UPROPERTY(EditAnywhere, Category = "GhostSound")
+		USoundWave* GhostDeathSound;
 
 	UPROPERTY(EditAnywhere)
 		TEnumAsByte<GhostType> GType;
